@@ -126,6 +126,23 @@ class DatabaseService {
             FOREIGN KEY(bakterija) REFERENCES Bakterijas(id)
           )
         ''');
+        // for testing
+        Bakterija bakt_1 = Bakterija(
+          id: 1,
+          name: "Pirma bakterija",
+          matched: true,
+          pics: [],
+          patogen_apr: "[Garš patoģenēzes apraksts]",
+          slimibas_apr: "[Garš slimības gaitas apraksts]",
+          patogen_apr_available: false,
+          slimibas_apr_available: false,
+          questions: [],
+        );
+        db.insert(
+          _bakterijas_table_name,
+          bakt_1.toMap(),
+          conflictAlgorithm: ConflictAlgorithm.replace,
+        );
       },
       version: 1,
     );
@@ -168,6 +185,16 @@ class DatabaseService {
       whereArgs: [id],
     );
     print("Bakterija with id $id deleted");
+  }
+
+  Future<void> updateBakterija(int id, bool matched) async {
+    final db = await database;
+    await db.update(
+      _bakterijas_table_name,
+      {"matched": matched ? 1 : 0},
+      where: "id = ?",
+      whereArgs: [id],
+    );
   }
 
   Future<List<Bakterija>> getAllBakterijas() async {

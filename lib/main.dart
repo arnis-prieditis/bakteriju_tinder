@@ -1,31 +1,19 @@
 import 'package:flutter/material.dart';
 import 'database_utils.dart';
 
-// for testing
-// Bakterija bakt_1 = Bakterija(
-//   id: 1,
-//   name: "Pirma bakterija",
-//   matched: true,
-//   pics: [],
-//   patogen_apr: "[Garš patoģenēzes apraksts]",
-//   slimibas_apr: "[Garš slimības gaitas apraksts]",
-//   patogen_apr_available: false,
-//   slimibas_apr_available: false,
-//   questions: [],
-// );
-
 void main() {
   runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
+  static const String app_name = "Baktēriju Tinder";
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Baktēriju Tinder",
+      title: app_name,
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
@@ -57,7 +45,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Baktēriju Tinder",
+          MainApp.app_name,
           style: style,
         ),
         centerTitle: true,
@@ -88,6 +76,20 @@ class _HomePageState extends State<HomePage> {
           //   },
           //   child: const Text("Remove  that thang"),
           // ),
+          // ElevatedButton(
+          //   onPressed: () {
+          //     _db_service.updateBakterija(bakt_1.id, true);
+          //     setState(() {});
+          //   },
+          //   child: Text("Match ${bakt_1.name}"),
+          // ),
+          // ElevatedButton(
+          //   onPressed: () {
+          //     _db_service.updateBakterija(bakt_1.id, false);
+          //     setState(() {});
+          //   },
+          //   child: Text("Unmatch ${bakt_1.name}"),
+          // ),
           const Padding(
             padding: EdgeInsets.all(8.0),
             child: Text("Current Matches:"),
@@ -113,6 +115,13 @@ class _HomePageState extends State<HomePage> {
                       for (var bakt in matches)
                         ListTile(
                           title: Text(bakt.name),
+                          trailing: ElevatedButton(
+                            onPressed: () {
+                              _db_service.updateBakterija(bakt.id, false);
+                              setState(() {});
+                            },
+                            child: const Text("Unmatch"),
+                          ),
                         ),
                     ],
                   );
