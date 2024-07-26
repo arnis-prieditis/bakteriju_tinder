@@ -202,28 +202,62 @@ class DatabaseService {
     // Query the table for all bakterijas.
     final List<Map<String, Object?>> baktMaps =
         await db.query(_bakterijas_table_name);
-
-    return [
+    List<Bakterija> bakt_list = [];
+    for (final {
+          'id': id as int,
+          'name': name as String,
+          'matched': matched as int,
+          'patogen_apr': patogen_apr as String,
+          'slimibas_apr': slimibas_apr as String,
+          'patogen_apr_available': patogen_apr_available as int,
+          'slimibas_apr_available': slimibas_apr_available as int,
+        } in baktMaps) {
+      Bakterija bakt = Bakterija(
+        id: id,
+        name: name,
+        matched: matched == 1 ? true : false,
+        pics: [],
+        patogen_apr: patogen_apr,
+        slimibas_apr: slimibas_apr,
+        patogen_apr_available: patogen_apr_available == 1 ? true : false,
+        slimibas_apr_available: slimibas_apr_available == 1 ? true : false,
+        questions: [],
+      );
+      //query for corresponding pictures
+      final List<Map<String, Object?>> picsMaps = await db.query(
+          _pics_table_name,
+          where: "bakterija = ?",
+          whereArgs: [bakt.id]);
       for (final {
-            'id': id as int,
-            'name': name as String,
-            'matched': matched as int,
-            'patogen_apr': patogen_apr as String,
-            'slimibas_apr': slimibas_apr as String,
-            'patogen_apr_available': patogen_apr_available as int,
-            'slimibas_apr_available': slimibas_apr_available as int,
-          } in baktMaps)
-        Bakterija(
-          id: id,
-          name: name,
-          matched: matched == 1 ? true : false,
-          pics: [],
-          patogen_apr: patogen_apr,
-          slimibas_apr: slimibas_apr,
-          patogen_apr_available: patogen_apr_available == 1 ? true : false,
-          slimibas_apr_available: slimibas_apr_available == 1 ? true : false,
-          questions: [],
-        )
-    ];
+            "id": id as int,
+            "path": path as String,
+            "bakterija": bakterija as int,
+          } in picsMaps) {
+        bakt.pics.add(path);
+      }
+      //query for corresponding multiple choice questions
+      final List<Map<String, Object?>> mcqMaps = await db
+          .query(_mcq_table_name, where: "bakterija = ?", whereArgs: [bakt.id]);
+      for (final {
+            "id": id as int,
+            "jaut": jaut as String,
+            "pareiza_atb": pareiza_atb as String,
+            "nepareiza_atb": nepareiza_atb as String,
+            "bakterija": bakterija as int,
+          } in mcqMaps) {
+        bakt.questions.add(
+          MCQ(
+            id: id,
+            jaut: jaut,
+            pareiza_atb: pareiza_atb,
+            nepareizas_atb: [nepareiza_atb],
+            bakterija: bakterija,
+          ),
+        );
+      }
+
+      bakt_list.add(bakt);
+    }
+    return bakt_list;
   }
 }
