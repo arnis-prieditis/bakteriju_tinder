@@ -72,38 +72,35 @@ class _HomePageState extends State<HomePage> {
             child: Text("Current Matches:"),
           ),
           Expanded(
-            child: SizedBox(
-              width: 385, // has to be device max width!
-              child: FutureBuilder(
-                future: _db_service.getAllBakterijas(),
-                builder: (context, AsyncSnapshot<List<Bakterija>> snapshot) {
-                  List<Bakterija> matches = [];
-                  if (snapshot.hasData) {
-                    for (Bakterija b in snapshot.data!) {
-                      if (b.matched) {
-                        matches.add(b);
-                      }
+            child: FutureBuilder(
+              future: _db_service.getAllBakterijas(),
+              builder: (context, AsyncSnapshot<List<Bakterija>> snapshot) {
+                List<Bakterija> matches = [];
+                if (snapshot.hasData) {
+                  for (Bakterija b in snapshot.data!) {
+                    if (b.matched) {
+                      matches.add(b);
                     }
-                  } else {
-                    // matches.add(bakt_1);
                   }
-                  return ListView(
-                    children: [
-                      for (var bakt in matches)
-                        ListTile(
-                          title: Text(bakt.name),
-                          trailing: ElevatedButton(
-                            onPressed: () {
-                              _db_service.updateBakterija(bakt.id, false);
-                              setState(() {});
-                            },
-                            child: const Text("Unmatch"),
-                          ),
+                } else {
+                  // matches.add(bakt_1);
+                }
+                return ListView(
+                  children: [
+                    for (var bakt in matches)
+                      ListTile(
+                        title: Text(bakt.name),
+                        trailing: ElevatedButton(
+                          onPressed: () {
+                            _db_service.updateBakterija(bakt.id, false);
+                            setState(() {});
+                          },
+                          child: const Text("Unmatch"),
                         ),
-                    ],
-                  );
-                },
-              ),
+                      ),
+                  ],
+                );
+              },
             ),
           ),
         ],
