@@ -57,6 +57,18 @@ class Bakterija {
     required this.questions,
   });
 
+  Bakterija.empty({
+    this.id = 0,
+    this.name = "Bakterija",
+    this.matched = false,
+    this.patogen_apr = "",
+    this.slimibas_apr = "",
+    this.patogen_apr_available = false,
+    this.slimibas_apr_available = false,
+    this.pics = const [],
+    this.questions = const [],
+  });
+
   Map<String, Object?> toMap() {
     return {
       'id': id,
