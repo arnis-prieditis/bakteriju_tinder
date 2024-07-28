@@ -138,11 +138,29 @@ class DatabaseService {
           slimibas_apr_available: false,
           questions: [],
         );
+        Bakterija bakt_2 = Bakterija(
+          id: 2,
+          name: "Otra bakterija",
+          matched: true,
+          pics: [],
+          patogen_apr: "[Garš patoģenēzes apraksts 2]",
+          slimibas_apr: "[Garš slimības gaitas apraksts 2]",
+          patogen_apr_available: true,
+          slimibas_apr_available: false,
+          questions: [],
+        );
         db.insert(
           _bakterijas_table_name,
           bakt_1.toMap(),
           conflictAlgorithm: ConflictAlgorithm.replace,
         );
+        db.insert(
+          _bakterijas_table_name,
+          bakt_2.toMap(),
+          conflictAlgorithm: ConflictAlgorithm.replace,
+        );
+        insertPic(10, "assets/flower1.jpeg", 1);
+        insertPic(20, "assets/flower2.jpeg", 2);
       },
       version: 1,
     );
@@ -187,7 +205,7 @@ class DatabaseService {
     print("Bakterija with id $id deleted");
   }
 
-  Future<void> updateBakterija(int id, bool matched) async {
+  Future<void> updateBaktMatched(int id, bool matched) async {
     final db = await database;
     await db.update(
       _bakterijas_table_name,
@@ -223,6 +241,7 @@ class DatabaseService {
         slimibas_apr_available: slimibas_apr_available == 1 ? true : false,
         questions: [],
       );
+      print("Bakterija: $bakt");
       //query for corresponding pictures
       final List<Map<String, Object?>> picsMaps = await db.query(
           _pics_table_name,
@@ -235,6 +254,7 @@ class DatabaseService {
           } in picsMaps) {
         bakt.pics.add(path);
       }
+      print("Pics: ${bakt.pics}");
       //query for corresponding multiple choice questions
       final List<Map<String, Object?>> mcqMaps = await db
           .query(_mcq_table_name, where: "bakterija = ?", whereArgs: [bakt.id]);
@@ -255,6 +275,7 @@ class DatabaseService {
           ),
         );
       }
+      print("MCQs: ${bakt.questions}");
 
       bakt_list.add(bakt);
     }

@@ -88,14 +88,22 @@ class _HomePageState extends State<HomePage> {
                 return ListView(
                   children: [
                     for (var bakt in matches)
-                      ListTile(
-                        title: Text(bakt.name),
-                        trailing: ElevatedButton(
-                          onPressed: () {
-                            _db_service.updateBakterija(bakt.id, false);
-                            setState(() {});
-                          },
-                          child: const Text("Unmatch"),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 8.0),
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            radius: 30.0,
+                            backgroundImage: AssetImage(bakt.pics[0]),
+                            backgroundColor: Colors.transparent,
+                          ),
+                          title: Text(bakt.name),
+                          trailing: ElevatedButton(
+                            onPressed: () {
+                              _db_service.updateBaktMatched(bakt.id, false);
+                              setState(() {});
+                            },
+                            child: const Text("Unmatch"),
+                          ),
                         ),
                       ),
                   ],
