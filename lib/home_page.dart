@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'database_utils.dart';
+import 'match_finder_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -32,8 +33,13 @@ class _HomePageState extends State<HomePage> {
         children: [
           ElevatedButton(
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Placeholder()));
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const MatchFinderPage()),
+              ).then((_) {
+                setState(() {});
+              });
             },
             child: const Text("Find a Match!"),
           ),
