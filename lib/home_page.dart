@@ -43,36 +43,6 @@ class _HomePageState extends State<HomePage> {
             },
             child: const Text("Find a Match!"),
           ),
-          // ElevatedButton(
-          //   onPressed: () {
-          //     _db_service.insertBakterija(bakt_1);
-          //     setState(() {
-          //       // _db_service.database;
-          //     });
-          //   },
-          //   child: const Text("Add  that thang"),
-          // ),
-          // ElevatedButton(
-          //   onPressed: () {
-          //     _db_service.deleteBakterija(bakt_1.id);
-          //     setState(() {});
-          //   },
-          //   child: const Text("Remove  that thang"),
-          // ),
-          // ElevatedButton(
-          //   onPressed: () {
-          //     _db_service.updateBakterija(bakt_1.id, true);
-          //     setState(() {});
-          //   },
-          //   child: Text("Match ${bakt_1.name}"),
-          // ),
-          // ElevatedButton(
-          //   onPressed: () {
-          //     _db_service.updateBakterija(bakt_1.id, false);
-          //     setState(() {});
-          //   },
-          //   child: Text("Unmatch ${bakt_1.name}"),
-          // ),
           const Padding(
             padding: EdgeInsets.all(8.0),
             child: Text("Current Matches:"),
@@ -89,7 +59,9 @@ class _HomePageState extends State<HomePage> {
                     }
                   }
                 } else {
-                  // matches.add(bakt_1);
+                  return const Center(
+                    child: Text("No data in bakt list"),
+                  );
                 }
                 return ListView(
                   children: [

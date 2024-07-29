@@ -108,75 +108,77 @@ class DatabaseService {
     final database_path = join(database_dir, 'bakterijas.db');
     final database = openDatabase(
       database_path,
-      onCreate: (db, version) {
-        db.execute('''
-          CREATE TABLE $_bakterijas_table_name(
-            id INTEGER PRIMARY KEY,
-            name TEXT,
-            matched INTEGER,
-            patogen_apr TEXT,
-            slimibas_apr TEXT,
-            patogen_apr_available INTEGER,
-            slimibas_apr_available INTEGER
-          )
-        ''');
-        db.execute('''
-          CREATE TABLE $_mcq_table_name(
-            id INTEGER PRIMARY KEY,
-            jaut TEXT,
-            pareiza_atb TEXT,
-            nepareiza_atb TEXT,
-            bakterija INTEGER,
-            FOREIGN KEY(bakterija) REFERENCES Bakterijas(id)
-          )
-        ''');
-        db.execute('''
-          CREATE TABLE $_pics_table_name(
-            id INTEGER PRIMARY KEY,
-            path TEXT,
-            bakterija INTEGER,
-            FOREIGN KEY(bakterija) REFERENCES Bakterijas(id)
-          )
-        ''');
-        // for testing
-        Bakterija bakt_1 = Bakterija(
-          id: 1,
-          name: "Pirma bakterija",
-          matched: true,
-          pics: [],
-          patogen_apr: "[Garš patoģenēzes apraksts]",
-          slimibas_apr: "[Garš slimības gaitas apraksts]",
-          patogen_apr_available: false,
-          slimibas_apr_available: false,
-          questions: [],
-        );
-        Bakterija bakt_2 = Bakterija(
-          id: 2,
-          name: "Otra bakterija",
-          matched: true,
-          pics: [],
-          patogen_apr: "[Garš patoģenēzes apraksts 2]",
-          slimibas_apr: "[Garš slimības gaitas apraksts 2]",
-          patogen_apr_available: true,
-          slimibas_apr_available: false,
-          questions: [],
-        );
-        db.insert(
-          _bakterijas_table_name,
-          bakt_1.toMap(),
-          conflictAlgorithm: ConflictAlgorithm.replace,
-        );
-        db.insert(
-          _bakterijas_table_name,
-          bakt_2.toMap(),
-          conflictAlgorithm: ConflictAlgorithm.replace,
-        );
-        insertPic(10, "assets/flower1.jpeg", 1);
-        insertPic(20, "assets/flower2.jpeg", 2);
-      },
+      onCreate: createDatabase,
       version: 1,
     );
     return database;
+  }
+
+  Future<void> createDatabase(Database db, int version) async {
+    await db.execute('''
+      CREATE TABLE $_bakterijas_table_name(
+        id INTEGER PRIMARY KEY,
+        name TEXT,
+        matched INTEGER,
+        patogen_apr TEXT,
+        slimibas_apr TEXT,
+        patogen_apr_available INTEGER,
+        slimibas_apr_available INTEGER
+      )
+    ''');
+    await db.execute('''
+      CREATE TABLE $_mcq_table_name(
+        id INTEGER PRIMARY KEY,
+        jaut TEXT,
+        pareiza_atb TEXT,
+        nepareiza_atb TEXT,
+        bakterija INTEGER,
+        FOREIGN KEY(bakterija) REFERENCES Bakterijas(id)
+      )
+    ''');
+    await db.execute('''
+      CREATE TABLE $_pics_table_name(
+        id INTEGER PRIMARY KEY,
+        path TEXT,
+        bakterija INTEGER,
+        FOREIGN KEY(bakterija) REFERENCES Bakterijas(id)
+      )
+    ''');
+    // for testing
+    Bakterija bakt_1 = Bakterija(
+      id: 1,
+      name: "Pirma bakterija",
+      matched: true,
+      pics: [],
+      patogen_apr: "[Garš patoģenēzes apraksts]",
+      slimibas_apr: "[Garš slimības gaitas apraksts]",
+      patogen_apr_available: false,
+      slimibas_apr_available: false,
+      questions: [],
+    );
+    Bakterija bakt_2 = Bakterija(
+      id: 2,
+      name: "Otra bakterija",
+      matched: true,
+      pics: [],
+      patogen_apr: "[Garš patoģenēzes apraksts 2]",
+      slimibas_apr: "[Garš slimības gaitas apraksts 2]",
+      patogen_apr_available: true,
+      slimibas_apr_available: false,
+      questions: [],
+    );
+    await db.insert(
+      _bakterijas_table_name,
+      bakt_1.toMap(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _bakterijas_table_name,
+      bakt_2.toMap(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await insertPic(10, "assets/flower1.jpeg", 1);
+    await insertPic(20, "assets/flower2.jpeg", 2);
   }
 
   Future<void> insertBakterija(Bakterija bakt) async {
