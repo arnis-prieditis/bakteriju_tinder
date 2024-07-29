@@ -34,6 +34,10 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
       color: theme.colorScheme.onPrimary,
       fontWeight: FontWeight.bold,
     );
+    final style1 = theme.textTheme.titleLarge!.copyWith(
+      color: theme.colorScheme.primary,
+      fontWeight: FontWeight.bold,
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -52,37 +56,49 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
             bakt = snapshot.data!;
           } else if (snapshot.data == null) {
             return const Center(
-              child: Text("You've already matched with everyone, you fuckboy!"),
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 50.0),
+                child: Text("You've already matched with everyone, you fuckboy!", textAlign: TextAlign.center,),
+              ),
             );
           }
-          return Column(
+          return ListView(
             children: [
-              Expanded(
-                child: Image.asset(
+              ListTile(
+                title: Image.asset(
                   bakt.pics[0],
                   fit: BoxFit.fitWidth,
                 ),
               ),
-              Row(
-                children: [
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      _db_service.updateBaktMatched(bakt.id, true);
-                      getNewPotentialMatch();
-                      setState(() {});
-                    },
-                    label: const Icon(Icons.favorite_border),
-                  ),
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      getNewPotentialMatch();
-                      setState(() {});
-                    },
-                    label: const Icon(Icons.highlight_off_outlined),
-                  ),
-                ],
-              )
-              //TODO: name, bio, better layout
+              ListTile(
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    ElevatedButton.icon(
+                      onPressed: () {
+                        _db_service.updateBaktMatched(bakt.id, true);
+                        getNewPotentialMatch();
+                        setState(() {});
+                      },
+                      label: const Icon(Icons.favorite_border),
+                    ),
+                    ElevatedButton.icon(
+                      onPressed: () {
+                        getNewPotentialMatch();
+                        setState(() {});
+                      },
+                      label: const Icon(Icons.highlight_off_outlined),
+                    ),
+                  ],
+                ),
+              ),
+              ListTile(
+                title: Text(
+                  bakt.name,
+                  style: style1,
+                ),
+              ),
+              //TODO: bio
             ],
           );
         },
