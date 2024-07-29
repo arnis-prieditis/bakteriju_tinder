@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'database_utils.dart';
 import 'dart:math';
+import 'package:flutter_markdown/flutter_markdown.dart';
 
 class MatchFinderPage extends StatefulWidget {
   const MatchFinderPage({super.key});
@@ -58,7 +59,10 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
             return const Center(
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 50.0),
-                child: Text("You've already matched with everyone, you fuckboy!", textAlign: TextAlign.center,),
+                child: Text(
+                  "You've already matched with everyone, you fuckboy!",
+                  textAlign: TextAlign.center,
+                ),
               ),
             );
           }
@@ -98,7 +102,9 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
                   style: style1,
                 ),
               ),
-              //TODO: bio
+              ListTile(
+                title: MarkdownBody(data: bakt.patogen_apr),
+              ),
             ],
           );
         },
