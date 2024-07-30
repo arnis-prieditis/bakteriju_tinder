@@ -44,6 +44,7 @@ class Bakterija {
   bool patogen_apr_available;
   bool slimibas_apr_available;
   final List<MCQ> questions;
+  final String bio;
 
   Bakterija({
     required this.id,
@@ -55,6 +56,7 @@ class Bakterija {
     required this.patogen_apr_available,
     required this.slimibas_apr_available,
     required this.questions,
+    required this.bio,
   });
 
   Bakterija.empty({
@@ -67,6 +69,7 @@ class Bakterija {
     this.slimibas_apr_available = false,
     this.pics = const [],
     this.questions = const [],
+    this.bio = "",
   });
 
   Map<String, Object?> toMap() {
@@ -78,6 +81,7 @@ class Bakterija {
       'slimibas_apr': slimibas_apr,
       'patogen_apr_available': patogen_apr_available ? 1 : 0,
       'slimibas_apr_available': slimibas_apr_available ? 1 : 0,
+      'bio': bio,
     };
   }
 
@@ -99,22 +103,25 @@ class DatabaseService {
 
   Future<Database> get database async {
     if (_database != null) return _database!;
-    return await initDatabase();
+    _database = await initDatabase();
+    return _database!;
   }
 
   Future<Database> initDatabase() async {
-    // WidgetsFlutterBinding.ensureInitialized(); //idk what this does
+    print("initDatabase called");
     final database_dir = await getDatabasesPath();
     final database_path = join(database_dir, 'bakterijas.db');
     final database = openDatabase(
       database_path,
-      onCreate: createDatabase,
+      onCreate: _createDatabase,
       version: 1,
     );
+    print("initDatabase finished");
     return database;
   }
 
-  Future<void> createDatabase(Database db, int version) async {
+  Future<void> _createDatabase(Database db, int version) async {
+    print("createDatabase called");
     await db.execute('''
       CREATE TABLE $_bakterijas_table_name(
         id INTEGER PRIMARY KEY,
@@ -123,7 +130,8 @@ class DatabaseService {
         patogen_apr TEXT,
         slimibas_apr TEXT,
         patogen_apr_available INTEGER,
-        slimibas_apr_available INTEGER
+        slimibas_apr_available INTEGER,
+        bio TEXT
       )
     ''');
     await db.execute('''
@@ -155,6 +163,7 @@ class DatabaseService {
       patogen_apr_available: false,
       slimibas_apr_available: false,
       questions: [],
+      bio: "I am veri gud"
     );
     Bakterija bakt_2 = Bakterija(
       id: 2,
@@ -166,6 +175,7 @@ class DatabaseService {
       patogen_apr_available: true,
       slimibas_apr_available: false,
       questions: [],
+      bio: "## Hobiji\n- vairošanās\n- sudoku\n---\nLorem ipsum dolor sit amet",
     );
     await db.insert(
       _bakterijas_table_name,
@@ -179,6 +189,7 @@ class DatabaseService {
     );
     await insertPic(10, "assets/flower1.jpeg", 1);
     await insertPic(20, "assets/flower2.jpeg", 2);
+    print("createDatabase finished");
   }
 
   Future<void> insertBakterija(Bakterija bakt) async {
@@ -230,6 +241,7 @@ class DatabaseService {
   }
 
   Future<List<Bakterija>> getAllBakterijas() async {
+    print("getAllBakterijas called");
     final db = await database;
     // Query the table for all bakterijas.
     final List<Map<String, Object?>> baktMaps =
@@ -243,6 +255,7 @@ class DatabaseService {
           'slimibas_apr': slimibas_apr as String,
           'patogen_apr_available': patogen_apr_available as int,
           'slimibas_apr_available': slimibas_apr_available as int,
+          'bio': bio as String,
         } in baktMaps) {
       Bakterija bakt = Bakterija(
         id: id,
@@ -254,6 +267,7 @@ class DatabaseService {
         patogen_apr_available: patogen_apr_available == 1 ? true : false,
         slimibas_apr_available: slimibas_apr_available == 1 ? true : false,
         questions: [],
+        bio: bio,
       );
       print("Bakterija: $bakt");
       //query for corresponding pictures
@@ -293,6 +307,12 @@ class DatabaseService {
 
       bakt_list.add(bakt);
     }
+    print("getAllBakterijas finished");
     return bakt_list;
+  }
+
+  Future<void> close() async {
+    final db = await database;
+    db.close();
   }
 }

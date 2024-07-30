@@ -103,7 +103,7 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
                 ),
               ),
               ListTile(
-                title: MarkdownBody(data: bakt.patogen_apr),
+                title: MarkdownBody(data: bakt.bio),
               ),
             ],
           );
