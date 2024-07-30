@@ -193,7 +193,7 @@ class DatabaseService {
   }
 
   Future<void> insertBakterija(Bakterija bakt) async {
-    final db = await database;
+    final db = await instance.database;
     await db.insert(
       _bakterijas_table_name,
       bakt.toMap(),
@@ -203,7 +203,7 @@ class DatabaseService {
   }
 
   Future<void> insertMCQ(MCQ q) async {
-    final db = await database;
+    final db = await instance.database;
     await db.insert(
       _mcq_table_name,
       q.toMap(),
@@ -212,7 +212,7 @@ class DatabaseService {
   }
 
   Future<void> insertPic(int id, String path, int bakterija_id) async {
-    final db = await database;
+    final db = await instance.database;
     await db.insert(
       _pics_table_name,
       {'id': id, 'path': path, 'bakterija': bakterija_id},
@@ -221,7 +221,7 @@ class DatabaseService {
   }
 
   Future<void> deleteBakterija(int id) async {
-    final db = await database;
+    final db = await instance.database;
     await db.delete(
       _bakterijas_table_name,
       where: 'id = ?',
@@ -231,7 +231,7 @@ class DatabaseService {
   }
 
   Future<void> updateBaktMatched(int id, bool matched) async {
-    final db = await database;
+    final db = await instance.database;
     await db.update(
       _bakterijas_table_name,
       {"matched": matched ? 1 : 0},
@@ -242,7 +242,7 @@ class DatabaseService {
 
   Future<List<Bakterija>> getAllBakterijas() async {
     print("getAllBakterijas called");
-    final db = await database;
+    final db = await instance.database;
     // Query the table for all bakterijas.
     final List<Map<String, Object?>> baktMaps =
         await db.query(_bakterijas_table_name);
@@ -322,7 +322,7 @@ class DatabaseService {
   }
 
   Future<void> close() async {
-    final db = await database;
+    final db = await instance.database;
     db.close();
   }
 }
