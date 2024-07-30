@@ -93,13 +93,13 @@ class Bakterija {
 
 class DatabaseService {
   static final DatabaseService instance =
-      DatabaseService._constructor(); // ensures there is only one instance
+      DatabaseService._init(); // ensures there is only one instance
   static Database? _database;
   static const String _bakterijas_table_name = "Bakterijas";
   static const String _mcq_table_name = "MCQ_2";
   static const String _pics_table_name = "Pics";
 
-  DatabaseService._constructor();
+  DatabaseService._init();
 
   Future<Database> get database async {
     if (_database != null) return _database!;
@@ -309,6 +309,16 @@ class DatabaseService {
     }
     print("getAllBakterijas finished");
     return bakt_list;
+  }
+
+  Future<List<Bakterija>> getMatchedBakterijas() async {
+    List<Bakterija> all_bakt = await getAllBakterijas();
+    return all_bakt.where((i) => i.matched).toList();
+  }
+
+  Future<List<Bakterija>> getNotMatchedBakterijas() async {
+    List<Bakterija> all_bakt = await getAllBakterijas();
+    return all_bakt.where((i) => !i.matched).toList();
   }
 
   Future<void> close() async {

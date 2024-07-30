@@ -11,19 +11,33 @@ class MatchFinderPage extends StatefulWidget {
 }
 
 class _MatchFinderPageState extends State<MatchFinderPage> {
-  final DatabaseService _db_service = DatabaseService.instance;
+  late List<Bakterija> bakt_not_matched_list;
+  bool isLoading = false;
+  late Bakterija? curr_pot_match;
 
-  Future<Bakterija?> getNewPotentialMatch() async {
-    List<Bakterija> bakt_list = await _db_service.getAllBakterijas();
-    List<Bakterija> unmatched_list = [];
-    for (Bakterija bakt in bakt_list) {
-      if (!bakt.matched) {
-        unmatched_list.add(bakt);
-      }
-    }
-    if (unmatched_list.isEmpty) return null;
+  @override
+  void initState() {
+    super.initState();
+    refreshNotMatchedList();
+  }
+
+  @override
+  void dispose() {
+    DatabaseService.instance.close();
+    super.dispose();
+  }
+
+  Future<void> refreshNotMatchedList() async {
+    setState(() => isLoading = true);
+    bakt_not_matched_list = await DatabaseService.instance.getNotMatchedBakterijas();
+    curr_pot_match = getNewPotentialMatch();
+    setState(() => isLoading = false);
+  }
+
+  Bakterija? getNewPotentialMatch() {
+    if (bakt_not_matched_list.isEmpty) return null;
     Bakterija potential_match =
-        unmatched_list[Random().nextInt(unmatched_list.length)];
+        bakt_not_matched_list[Random().nextInt(bakt_not_matched_list.length)];
     print("New potential match: $potential_match");
     return potential_match;
   }
@@ -49,28 +63,25 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
         centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
-      body: FutureBuilder(
-        future: getNewPotentialMatch(),
-        builder: (context, AsyncSnapshot<Bakterija?> snapshot) {
-          Bakterija bakt = Bakterija.empty();
-          if (snapshot.hasData) {
-            bakt = snapshot.data!;
-          } else if (snapshot.data == null) {
-            return const Center(
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 50.0),
-                child: Text(
-                  "You've already matched with everyone, you fuckboy!",
-                  textAlign: TextAlign.center,
-                ),
+      body: isLoading ?
+        const Center(
+          child: CircularProgressIndicator(),
+        )
+        : bakt_not_matched_list.isEmpty ? 
+          const Center(
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 50.0),
+              child: Text(
+                "You've already matched with everyone, you fuckboy!",
+                textAlign: TextAlign.center,
               ),
-            );
-          }
-          return ListView(
+            ),
+          )
+          : ListView(
             children: [
               ListTile(
                 title: Image.asset(
-                  bakt.pics[0],
+                  curr_pot_match!.pics[0],
                   fit: BoxFit.fitWidth,
                 ),
               ),
@@ -80,16 +91,14 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
                   children: [
                     ElevatedButton.icon(
                       onPressed: () {
-                        _db_service.updateBaktMatched(bakt.id, true);
-                        getNewPotentialMatch();
-                        setState(() {});
+                        DatabaseService.instance.updateBaktMatched(curr_pot_match!.id, true);
+                        refreshNotMatchedList();
                       },
                       label: const Icon(Icons.favorite_border),
                     ),
                     ElevatedButton.icon(
                       onPressed: () {
-                        getNewPotentialMatch();
-                        setState(() {});
+                        curr_pot_match = getNewPotentialMatch(); //wrap in setState??
                       },
                       label: const Icon(Icons.highlight_off_outlined),
                     ),
@@ -98,17 +107,15 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
               ),
               ListTile(
                 title: Text(
-                  bakt.name,
+                  curr_pot_match!.name,
                   style: style1,
                 ),
               ),
               ListTile(
-                title: MarkdownBody(data: bakt.bio),
+                title: MarkdownBody(data: curr_pot_match!.bio),
               ),
             ],
-          );
-        },
-      ),
+          )
     );
   }
 }
