@@ -56,11 +56,7 @@ class _HomePageState extends State<HomePage> {
                 context,
                 MaterialPageRoute(
                     builder: (context) => const MatchFinderPage()),
-              );
-              // .then((_) {
-              //   // setState(() {}); // remake this??
-              //   refreshMatchedList();
-              // });
+              ).then((_) => refreshMatchedList());
             },
             child: const Text("Find a Match!"),
           ),

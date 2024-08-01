@@ -111,7 +111,7 @@ class DatabaseService {
     print("initDatabase called");
     final database_dir = await getDatabasesPath();
     final database_path = join(database_dir, 'bakterijas.db');
-    final database = openDatabase(
+    final database = await openDatabase(
       database_path,
       onCreate: _createDatabase,
       version: 1,
@@ -163,7 +163,7 @@ class DatabaseService {
       patogen_apr_available: false,
       slimibas_apr_available: false,
       questions: [],
-      bio: "I am veri gud"
+      bio: "I am veri gud",
     );
     Bakterija bakt_2 = Bakterija(
       id: 2,
@@ -187,8 +187,24 @@ class DatabaseService {
       bakt_2.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
-    await insertPic(10, "assets/flower1.jpeg", 1);
-    await insertPic(20, "assets/flower2.jpeg", 2);
+    await db.insert(
+      _pics_table_name,
+      {
+        'id': 10,
+        'path': "assets/flower1.jpeg",
+        'bakterija': 1,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _pics_table_name,
+      {
+        'id': 20,
+        'path': "assets/flower2.jpeg",
+        'bakterija': 2,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
     print("createDatabase finished");
   }
 
@@ -323,6 +339,7 @@ class DatabaseService {
 
   Future<void> close() async {
     final db = await instance.database;
+    _database = null;
     db.close();
   }
 }
