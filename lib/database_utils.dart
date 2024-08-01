@@ -205,6 +205,15 @@ class DatabaseService {
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
+    await db.insert(
+      _pics_table_name,
+      {
+        'id': 21,
+        'path': "assets/flower0.jpg",
+        'bakterija': 2,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
     print("createDatabase finished");
   }
 

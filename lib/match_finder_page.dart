@@ -14,6 +14,7 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
   late List<Bakterija> bakt_not_matched_list;
   bool isLoading = false;
   late Bakterija? curr_pot_match;
+  late String? curr_pic;
 
   @override
   void initState() {
@@ -31,6 +32,7 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
     setState(() => isLoading = true);
     bakt_not_matched_list = await DatabaseService.instance.getNotMatchedBakterijas();
     curr_pot_match = getNewPotentialMatch();
+    curr_pic = curr_pot_match?.pics[0];
     setState(() => isLoading = false);
   }
 
@@ -80,9 +82,33 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
           : ListView(
             children: [
               ListTile(
-                title: Image.asset(
-                  curr_pot_match!.pics[0],
-                  fit: BoxFit.fitWidth,
+                title: GestureDetector(
+                  onTapUp: (details) {
+                    setState(() {
+                      double glob_pos_x = details.globalPosition.dx;
+                      double dev_width = MediaQuery.of(context).size.width;
+                      if (glob_pos_x >= (dev_width/2)) {
+                        print("Tapped on right");
+                        if (curr_pic != curr_pot_match!.pics.last) {
+                          print("Should update pic");
+                          int next_index = curr_pot_match!.pics.indexOf(curr_pic!) + 1;
+                          curr_pic = curr_pot_match!.pics[next_index];
+                        }
+                      }
+                      else {
+                        print("Tapped on left");
+                        if (curr_pic != curr_pot_match!.pics.first) {
+                          print("Should update pic");
+                          int prev_index = curr_pot_match!.pics.indexOf(curr_pic!) - 1;
+                          curr_pic = curr_pot_match!.pics[prev_index];
+                        }
+                      }
+                    });
+                  },
+                  child: Image.asset(
+                    curr_pic!,
+                    fit: BoxFit.fitWidth,
+                  ),
                 ),
               ),
               ListTile(
@@ -98,7 +124,10 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
                     ),
                     ElevatedButton.icon(
                       onPressed: () {
-                        curr_pot_match = getNewPotentialMatch(); //wrap in setState??
+                        setState(() {
+                          curr_pot_match = getNewPotentialMatch();
+                          curr_pic = curr_pot_match!.pics[0];
+                        });
                       },
                       label: const Icon(Icons.highlight_off_outlined),
                     ),
