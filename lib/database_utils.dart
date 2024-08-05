@@ -300,11 +300,7 @@ class DatabaseService {
           _pics_table_name,
           where: "bakterija = ?",
           whereArgs: [bakt.id]);
-      for (final {
-            "id": id as int,
-            "path": path as String,
-            "bakterija": bakterija as int,
-          } in picsMaps) {
+      for (final {"path": path as String} in picsMaps) {
         bakt.pics.add(path);
       }
       print("Pics: ${bakt.pics}");

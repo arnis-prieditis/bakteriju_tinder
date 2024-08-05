@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final style = theme.textTheme.titleLarge!.copyWith(
-      color: theme.colorScheme.onPrimary,
+      color: theme.colorScheme.onPrimaryContainer,
       fontWeight: FontWeight.bold,
     );
 
@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
           style: style,
         ),
         centerTitle: true,
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       ),
       body: Column(
         children: [
