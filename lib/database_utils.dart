@@ -214,6 +214,39 @@ class DatabaseService {
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
+    await db.insert(
+      _mcq_table_name,
+      {
+        'id': 101,
+        'jaut': "1. jautājums par baktēriju?",
+        'pareiza_atb': "[Pareizā atbilde]",
+        'nepareiza_atb': "[Nepareizā atbilde]",
+        'bakterija': 1,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _mcq_table_name,
+      {
+        'id': 102,
+        'jaut': "2. jautājums par baktēriju?",
+        'pareiza_atb': "[Pareizā atbilde]",
+        'nepareiza_atb': "[Nepareizā atbilde]",
+        'bakterija': 1,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _mcq_table_name,
+      {
+        'id': 103,
+        'jaut': "Tu esi beidzot sastapis/-usi viņu dzīvē! Izsaki komplimentu par to, kas viņai mugurā!",
+        'pareiza_atb': "Tie auskari ļoti labi piestāv tavai somiņai :)",
+        'nepareiza_atb': "Tev ir ļoti lielas ausis ;)",
+        'bakterija': 1,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
     print("createDatabase finished");
   }
 
