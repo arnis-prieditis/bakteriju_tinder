@@ -116,8 +116,8 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ElevatedButton.icon(
-                      onPressed: () {
-                        DatabaseService.instance.updateBaktMatched(curr_pot_match!.id, true);
+                      onPressed: () async {
+                        await DatabaseService.instance.updateBaktMatched(curr_pot_match!.id, true);
                         refreshNotMatchedList();
                       },
                       label: const Icon(Icons.favorite_border),

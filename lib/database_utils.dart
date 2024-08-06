@@ -45,6 +45,7 @@ class Bakterija {
   bool slimibas_apr_available;
   final List<MCQ> questions;
   final String bio;
+  int convers_progress;
 
   Bakterija({
     required this.id,
@@ -57,6 +58,7 @@ class Bakterija {
     required this.slimibas_apr_available,
     required this.questions,
     required this.bio,
+    required this.convers_progress,
   });
 
   Bakterija.empty({
@@ -70,6 +72,7 @@ class Bakterija {
     this.pics = const [],
     this.questions = const [],
     this.bio = "",
+    this.convers_progress = 0,
   });
 
   Map<String, Object?> toMap() {
@@ -82,12 +85,13 @@ class Bakterija {
       'patogen_apr_available': patogen_apr_available ? 1 : 0,
       'slimibas_apr_available': slimibas_apr_available ? 1 : 0,
       'bio': bio,
+      'convers_progress': convers_progress,
     };
   }
 
   @override
   String toString() {
-    return 'Bakterija{id: $id, name: $name, matched: $matched}';
+    return 'Bakterija{id: $id, name: $name, matched: $matched, convers_progress: $convers_progress}';
   }
 }
 
@@ -131,7 +135,8 @@ class DatabaseService {
         slimibas_apr TEXT,
         patogen_apr_available INTEGER,
         slimibas_apr_available INTEGER,
-        bio TEXT
+        bio TEXT,
+        convers_progress INTEGER
       )
     ''');
     await db.execute('''
@@ -164,6 +169,7 @@ class DatabaseService {
       slimibas_apr_available: false,
       questions: [],
       bio: "I am veri gud",
+      convers_progress: 0,
     );
     Bakterija bakt_2 = Bakterija(
       id: 2,
@@ -176,6 +182,7 @@ class DatabaseService {
       slimibas_apr_available: false,
       questions: [],
       bio: "## Hobiji\n- vairošanās\n- sudoku\n---\nLorem ipsum dolor sit amet",
+      convers_progress: 0,
     );
     await db.insert(
       _bakterijas_table_name,
@@ -240,7 +247,8 @@ class DatabaseService {
       _mcq_table_name,
       {
         'id': 103,
-        'jaut': "Tu esi beidzot sastapis/-usi viņu dzīvē! Izsaki komplimentu par to, kas viņai mugurā!",
+        'jaut':
+            "Tu esi beidzot sastapis/-usi viņu dzīvē! Izsaki komplimentu par to, kas viņai mugurā!",
         'pareiza_atb': "Tie auskari ļoti labi piestāv tavai somiņai :)",
         'nepareiza_atb': "Tev ir ļoti lielas ausis ;)",
         'bakterija': 1,
@@ -298,6 +306,27 @@ class DatabaseService {
     );
   }
 
+  Future<void> updateBaktConversProgress(int id, int convers_progress) async {
+    final db = await instance.database;
+    await db.update(
+      _bakterijas_table_name,
+      {"convers_progress": convers_progress},
+      where: "id = ?",
+      whereArgs: [id],
+    );
+  }
+
+  Future<int> getBaktConversProgress(int id) async {
+    final db = await instance.database;
+    final List<Map<String, Object?>> baktMaps = await db.query(
+      _bakterijas_table_name,
+      where: "id = ?",
+      whereArgs: [id],
+    );
+    final int convers_progress = baktMaps[0]["convers_progress"] as int;
+    return convers_progress;
+  }
+
   Future<List<Bakterija>> getAllBakterijas() async {
     print("getAllBakterijas called");
     final db = await instance.database;
@@ -314,6 +343,7 @@ class DatabaseService {
           'patogen_apr_available': patogen_apr_available as int,
           'slimibas_apr_available': slimibas_apr_available as int,
           'bio': bio as String,
+          'convers_progress': convers_progress as int,
         } in baktMaps) {
       Bakterija bakt = Bakterija(
         id: id,
@@ -326,6 +356,7 @@ class DatabaseService {
         slimibas_apr_available: slimibas_apr_available == 1 ? true : false,
         questions: [],
         bio: bio,
+        convers_progress: convers_progress,
       );
       print("Bakterija: $bakt");
       //query for corresponding pictures
@@ -338,8 +369,12 @@ class DatabaseService {
       }
       print("Pics: ${bakt.pics}");
       //query for corresponding multiple choice questions
-      final List<Map<String, Object?>> mcqMaps = await db
-          .query(_mcq_table_name, where: "bakterija = ?", whereArgs: [bakt.id]);
+      final List<Map<String, Object?>> mcqMaps = await db.query(
+        _mcq_table_name,
+        where: "bakterija = ?",
+        whereArgs: [bakt.id],
+        orderBy: "id",
+      );
       for (final {
             "id": id as int,
             "jaut": jaut as String,

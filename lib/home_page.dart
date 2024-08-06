@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'database_utils.dart';
 import 'match_finder_page.dart';
+import 'dm_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -55,7 +56,8 @@ class _HomePageState extends State<HomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const MatchFinderPage()),
+                  builder: (context) => const MatchFinderPage(),
+                ),
               ).then((_) => refreshMatchedList());
             },
             child: const Text("Find a Match!"),
@@ -81,7 +83,17 @@ class _HomePageState extends State<HomePage> {
                               backgroundImage: AssetImage(bakt.pics[0]),
                               backgroundColor: Colors.transparent,
                             ),
-                            title: Text(bakt.name),
+                            title: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => DmPage(bakt: bakt),
+                                  ),
+                                ).then((_) => refreshMatchedList());
+                              },
+                              child: Text(bakt.name),
+                            ),
                             trailing: ElevatedButton(
                               onPressed: () {
                                 DatabaseService.instance
