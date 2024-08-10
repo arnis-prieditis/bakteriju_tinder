@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'database_utils.dart';
-import 'msg_box_painter.dart';
+import 'msg_box.dart';
 import 'dart:math';
 
 class DmPage extends StatefulWidget {
