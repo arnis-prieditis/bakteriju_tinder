@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'database_utils.dart';
 import 'msg_box_painter.dart';
+import 'dart:math';
 
 class DmPage extends StatefulWidget {
   final Bakterija bakt;
@@ -66,11 +67,12 @@ class _DmPageState extends State<DmPage> {
             )
           : ListView(
               children: [
-                for (int i = 0;
-                    i < convers_progress && i < questions.length;
-                    i++)
+                for (int i = 0; i < min(convers_progress, questions.length); i++)
                   ListTile(
-                    title: MsgExchange(theme: theme, question: questions[i]),
+                    title: MsgExchange(
+                      theme: theme,
+                      question: questions[i],
+                    ),
                   ),
                 ListTile(
                   title: ElevatedButton(
@@ -112,52 +114,24 @@ class MsgExchange extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double max_msg_width = MediaQuery.of(context).size.width * 2 / 3;
+
     return Column(
       children: [
-        Row(
-          children: [
-            ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 2 / 3),
-              child: CustomPaint(
-                painter: MsgBoxPainter(
-                  outgoing: false,
-                  filled: true,
-                  color: theme.colorScheme.secondaryContainer,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    question.jaut,
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-            ),
-            const Spacer(),
-          ],
+        MsgBox(
+          text: question.jaut,
+          outgoing: false,
+          filled: true,
+          color: theme.colorScheme.secondaryContainer,
+          max_width: max_msg_width,
         ),
         const SizedBox(height: 20.0),
-        Row(
-          children: [
-            const Spacer(),
-            ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 2 / 3),
-              child: CustomPaint(
-                painter: MsgBoxPainter(
-                  outgoing: true,
-                  filled: true,
-                  color: theme.colorScheme.primaryContainer,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    question.pareiza_atb,
-                    textAlign: TextAlign.right,
-                  ),
-                ),
-              ),
-            ),
-          ],
+        MsgBox(
+          text: question.pareiza_atb,
+          outgoing: true,
+          filled: true,
+          color: theme.colorScheme.primaryContainer,
+          max_width: max_msg_width,
         ),
         const SizedBox(height: 20.0),
       ],
