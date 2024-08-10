@@ -63,7 +63,7 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
           style: style,
         ),
         centerTitle: true,
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: theme.colorScheme.primary,
       ),
       body: isLoading ?
         const Center(

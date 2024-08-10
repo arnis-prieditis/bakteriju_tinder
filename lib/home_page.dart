@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
           style: style,
         ),
         centerTitle: true,
-        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        backgroundColor: theme.colorScheme.primaryContainer,
       ),
       body: Column(
         children: [
