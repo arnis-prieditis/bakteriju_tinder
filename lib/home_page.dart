@@ -98,6 +98,8 @@ class _HomePageState extends State<HomePage> {
                               onPressed: () {
                                 DatabaseService.instance
                                     .updateBaktMatched(bakt.id, false);
+                                DatabaseService.instance
+                                    .updateBaktConversProgress(bakt.id, 0);
                                 refreshMatchedList();
                               },
                               child: const Text("Unmatch"),

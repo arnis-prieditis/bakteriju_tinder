@@ -29,8 +29,14 @@ class MCQ {
 
   @override
   String toString() {
-    String nepareiza_atb = nepareizas_atb[0];
-    return 'MCQ{id: $id, jaut: $jaut, pareiza_atb: $pareiza_atb, nepareiza_atb: $nepareiza_atb}';
+    return 'MCQ{id: $id, jaut: $jaut, pareiza_atb: $pareiza_atb, nepareizas_atb: $nepareizas_atb}';
+  }
+
+  List<String> getAtbilzuVarianti() {
+    List<String> atbilzu_varianti = nepareizas_atb.toList();
+    atbilzu_varianti.add(pareiza_atb);
+    atbilzu_varianti.shuffle();
+    return atbilzu_varianti;
   }
 }
 

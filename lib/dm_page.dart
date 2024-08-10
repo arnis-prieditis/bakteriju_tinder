@@ -16,6 +16,8 @@ class _DmPageState extends State<DmPage> {
   late List<MCQ> questions;
   bool isLoading = false;
   late int convers_progress;
+  bool isAnswering = false;
+  late List<String> atbilzu_varianti;
 
   @override
   void initState() {
@@ -37,6 +39,18 @@ class _DmPageState extends State<DmPage> {
     setState(() => isLoading = false);
   }
 
+  Future<void> onAnswerTapped(String answer) async {
+    if (answer != questions[convers_progress].pareiza_atb) return;
+    await DatabaseService.instance.updateBaktConversProgress(
+      widget.bakt.id,
+      convers_progress + 1,
+    );
+    refreshConversProgress();
+    setState(() {
+      isAnswering = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -47,7 +61,7 @@ class _DmPageState extends State<DmPage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        backgroundColor: theme.colorScheme.primaryContainer,
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: CircleAvatar(
@@ -67,16 +81,64 @@ class _DmPageState extends State<DmPage> {
             )
           : ListView(
               children: [
-                for (int i = 0; i < min(convers_progress, questions.length); i++)
+                for (int i = 0;
+                    i < min(convers_progress, questions.length);
+                    i++)
                   ListTile(
                     title: MsgExchange(
                       theme: theme,
                       question: questions[i],
                     ),
                   ),
+                isAnswering
+                    ? ListTile(
+                        title: Column(
+                          children: [
+                            MsgBox(
+                              text: questions[convers_progress].jaut,
+                              outgoing: false,
+                              filled: true,
+                              color: theme.colorScheme.secondaryContainer,
+                              max_width:
+                                  MediaQuery.of(context).size.width * 2 / 3,
+                            ),
+                            const SizedBox(height: 20.0,),
+                            for (int i = 0; i < atbilzu_varianti.length; i++)
+                              Column(
+                                children: [
+                                  GestureDetector(
+                                    onTap: () => onAnswerTapped(atbilzu_varianti[i]),
+                                    child: MsgBox(
+                                      text: atbilzu_varianti[i],
+                                      outgoing: true,
+                                      filled: false,
+                                      color: theme.colorScheme.primaryContainer,
+                                      max_width: MediaQuery.of(context).size.width * 2 / 3,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 25.0),
+                                ],
+                              ),
+                          ],
+                        ),
+                      )
+                    : ListTile(
+                        title: ElevatedButton(
+                          onPressed: () {
+                            if (convers_progress < questions.length) {
+                              setState(() {
+                                isAnswering = true;
+                                atbilzu_varianti = questions[convers_progress].getAtbilzuVarianti();
+                              });
+                            }
+                          },
+                          child: const Text("Next question"),
+                        ),
+                      ),
                 ListTile(
                   title: ElevatedButton(
                     onPressed: () async {
+                      if (isAnswering) return;
                       if (convers_progress >= questions.length) return;
                       await DatabaseService.instance.updateBaktConversProgress(
                           widget.bakt.id, convers_progress + 1);
@@ -88,6 +150,7 @@ class _DmPageState extends State<DmPage> {
                 ListTile(
                   title: ElevatedButton(
                     onPressed: () async {
+                      if (isAnswering) return;
                       if (convers_progress <= 0) return;
                       await DatabaseService.instance.updateBaktConversProgress(
                           widget.bakt.id, convers_progress - 1);
