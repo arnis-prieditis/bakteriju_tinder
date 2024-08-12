@@ -62,17 +62,19 @@ class _DmPageState extends State<DmPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: theme.colorScheme.primaryContainer,
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: CircleAvatar(
-            radius: 30.0,
-            backgroundImage: AssetImage(widget.bakt.pics[0]),
-            backgroundColor: Colors.transparent,
-          ),
-        ),
-        title: Text(
-          widget.bakt.name,
-          style: style,
+        title: Row(
+          children: [
+            CircleAvatar(
+              radius: 20.0,
+              backgroundImage: AssetImage(widget.bakt.pics[0]),
+              backgroundColor: Colors.transparent,
+            ),
+            const SizedBox(width: 10.0),
+            Text(
+              widget.bakt.name,
+              style: style,
+            ),
+          ],
         ),
       ),
       body: isLoading
