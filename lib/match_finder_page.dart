@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'database_utils.dart';
-import 'dart:math';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
 class MatchFinderPage extends StatefulWidget {
@@ -13,7 +12,7 @@ class MatchFinderPage extends StatefulWidget {
 class _MatchFinderPageState extends State<MatchFinderPage> {
   late List<Bakterija> bakt_not_matched_list;
   bool isLoading = false;
-  late Bakterija? curr_pot_match;
+  Bakterija? curr_pot_match;
   late String? curr_pic;
 
   @override
@@ -38,8 +37,12 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
 
   Bakterija? getNewPotentialMatch() {
     if (bakt_not_matched_list.isEmpty) return null;
-    Bakterija potential_match =
-        bakt_not_matched_list[Random().nextInt(bakt_not_matched_list.length)];
+    if (curr_pot_match != null) {
+      Bakterija last_pot_match = bakt_not_matched_list.removeAt(0);
+      bakt_not_matched_list.shuffle();
+      bakt_not_matched_list.add(last_pot_match);
+    }
+    Bakterija potential_match = bakt_not_matched_list[0];
     print("New potential match: $potential_match");
     return potential_match;
   }
