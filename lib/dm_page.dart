@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'database_utils.dart';
 import 'msg_box.dart';
 import 'dart:math';
+import 'profile_page.dart';
 
 class DmPage extends StatefulWidget {
   final Bakterija bakt;
@@ -62,19 +63,27 @@ class _DmPageState extends State<DmPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: theme.colorScheme.primaryContainer,
-        title: Row(
-          children: [
-            CircleAvatar(
-              radius: 20.0,
-              backgroundImage: AssetImage(widget.bakt.pics[0]),
-              backgroundColor: Colors.transparent,
+        title: GestureDetector(
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ProfilePage(bakt: widget.bakt),
             ),
-            const SizedBox(width: 10.0),
-            Text(
-              widget.bakt.name,
-              style: style,
-            ),
-          ],
+          ),
+          child: Row(
+            children: [
+              CircleAvatar(
+                radius: 20.0,
+                backgroundImage: AssetImage(widget.bakt.pics[0]),
+                backgroundColor: Colors.transparent,
+              ),
+              const SizedBox(width: 10.0),
+              Text(
+                widget.bakt.name,
+                style: style,
+              ),
+            ],
+          ),
         ),
       ),
       body: isLoading
@@ -104,7 +113,7 @@ class _DmPageState extends State<DmPage> {
                               max_width:
                                   MediaQuery.of(context).size.width * 2 / 3,
                             ),
-                            const SizedBox(height: 20.0,),
+                            const SizedBox(height: 20.0),
                             for (int i = 0; i < atbilzu_varianti.length; i++)
                               Column(
                                 children: [
@@ -130,7 +139,8 @@ class _DmPageState extends State<DmPage> {
                             if (convers_progress < questions.length) {
                               setState(() {
                                 isAnswering = true;
-                                atbilzu_varianti = questions[convers_progress].getAtbilzuVarianti();
+                                atbilzu_varianti = questions[convers_progress]
+                                    .getAtbilzuVarianti();
                               });
                             }
                           },
