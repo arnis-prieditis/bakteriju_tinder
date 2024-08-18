@@ -3,6 +3,7 @@ import 'database_utils.dart';
 import 'msg_box.dart';
 import 'dart:math';
 import 'profile_page.dart';
+import 'single_question_page.dart';
 
 class DmPage extends StatefulWidget {
   final Bakterija bakt;
@@ -147,6 +148,23 @@ class _DmPageState extends State<DmPage> {
                           child: const Text("Next question"),
                         ),
                       ),
+                ListTile(
+                  title: ElevatedButton(
+                    onPressed: () {
+                      if (convers_progress >= questions.length) return;
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SingleQuestionPage(
+                            question: questions[convers_progress],
+                            bakt_name: widget.bakt.name,
+                          ),
+                        ),
+                      ).then((_) => refreshConversProgress());
+                    },
+                    child: const Text("Next question in separate view"),
+                  ),
+                ),
                 ListTile(
                   title: ElevatedButton(
                     onPressed: () async {
