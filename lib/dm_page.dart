@@ -20,7 +20,8 @@ class _DmPageState extends State<DmPage> {
   late int convers_progress;
   bool isAnswering = false;
   late List<String> atbilzu_varianti;
-  String? wrong_answer;
+  List<String> selected_answers = [];
+  int correct_answers_selected = 0;
 
   @override
   void initState() {
@@ -43,21 +44,26 @@ class _DmPageState extends State<DmPage> {
   }
 
   Future<void> onAnswerTapped(String answer) async {
-    if (answer != questions[convers_progress].pareiza_atb) {
-      setState(() {
-        wrong_answer = answer;
-      });
-      return;
-    }
-    await DatabaseService.instance.updateBaktConversProgress(
-      widget.bakt.id,
-      convers_progress + 1,
-    );
-    refreshConversProgress();
     setState(() {
-      isAnswering = false;
-      wrong_answer = null;
+      selected_answers.add(answer);
     });
+    if (questions[convers_progress].pareizas_atb.contains(answer)) {
+      setState(() {
+        correct_answers_selected++;
+      });
+    }
+    if (correct_answers_selected >= questions[convers_progress].pareizas_atb.length) {
+      await DatabaseService.instance.updateBaktConversProgress(
+        widget.bakt.id,
+        convers_progress + 1,
+      );
+      refreshConversProgress();
+      setState(() {
+        isAnswering = false;
+        correct_answers_selected = 0;
+        selected_answers.clear();
+      });
+    }
   }
 
   @override
@@ -114,7 +120,7 @@ class _DmPageState extends State<DmPage> {
                         title: Column(
                           children: [
                             MsgBox(
-                              text: questions[convers_progress].jaut,
+                              text: questions[convers_progress].teikums,
                               outgoing: false,
                               filled: true,
                               color: const Color(0xFF46B1E1),
@@ -131,9 +137,17 @@ class _DmPageState extends State<DmPage> {
                                     child: MsgBox(
                                       text: atbilzu_varianti[i],
                                       outgoing: true,
-                                      filled: (atbilzu_varianti[i] == wrong_answer) ? true : false,
-                                      color: (atbilzu_varianti[i] == wrong_answer) ? Colors.red : const Color(0xFF46B1E1),
-                                      text_color: (atbilzu_varianti[i] == wrong_answer) ? Colors.white : const Color(0xFF46B1E1),
+                                      filled: (selected_answers.contains(atbilzu_varianti[i]))
+                                          ? true
+                                          : false,
+                                      color: (!selected_answers.contains(atbilzu_varianti[i]))
+                                          ? const Color(0xFF46B1E1)
+                                          : (questions[convers_progress].pareizas_atb.contains(atbilzu_varianti[i]))
+                                              ? Colors.green
+                                              : Colors.red,
+                                      text_color: (selected_answers.contains(atbilzu_varianti[i]))
+                                          ? Colors.white
+                                          : const Color(0xFF46B1E1),
                                       max_width: MediaQuery.of(context).size.width * 2 / 3,
                                     ),
                                   ),
@@ -221,7 +235,7 @@ class MsgExchange extends StatelessWidget {
     return Column(
       children: [
         MsgBox(
-          text: question.jaut,
+          text: question.teikums,
           outgoing: false,
           filled: true,
           color: const Color(0xFF46B1E1),
@@ -230,7 +244,7 @@ class MsgExchange extends StatelessWidget {
         ),
         const SizedBox(height: 20.0),
         MsgBox(
-          text: question.pareiza_atb,
+          text: question.pareizas_atb.join(", "),
           outgoing: true,
           filled: true,
           color: const Color(0xFF00B050),

@@ -17,7 +17,8 @@ class SingleQuestionPage extends StatefulWidget {
 }
 
 class _SingleQuestionPageState extends State<SingleQuestionPage> {
-  String? selection;
+  List<String> selected_answers = [];
+  int correct_answers_selected = 0;
   late List<String> atbilzu_varianti = widget.question.getAtbilzuVarianti();
 
   @override
@@ -33,10 +34,13 @@ class _SingleQuestionPageState extends State<SingleQuestionPage> {
 
   Future<bool> onAnswerTapped(answer) async {
     setState(() {
-      selection = answer;
+      selected_answers.add(answer);
+      if (widget.question.pareizas_atb.contains(answer)) {
+        correct_answers_selected++;
+      }
     });
-    if (answer == widget.question.pareiza_atb) {
-      print("Pareizā atbilde");
+    if (correct_answers_selected >= widget.question.pareizas_atb.length) {
+      print("Visas pareizās atbildes atzīmētas");
       int bakt_id = widget.question.bakterija;
       int curr_conv_progress =
           await DatabaseService.instance.getBaktConversProgress(bakt_id);
@@ -88,7 +92,7 @@ class _SingleQuestionPageState extends State<SingleQuestionPage> {
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Text(
-                    widget.question.jaut,
+                    widget.question.teikums,
                     style: style_question,
                     textAlign: TextAlign.center,
                   ),
@@ -110,9 +114,9 @@ class _SingleQuestionPageState extends State<SingleQuestionPage> {
                   child: Container(
                     width: MediaQuery.of(context).size.width - 30.0,
                     decoration: BoxDecoration(
-                      color: (atbilzu_varianti[i] != selection)
+                      color: (!selected_answers.contains(atbilzu_varianti[i]))
                           ? Colors.white
-                          : (atbilzu_varianti[i] == widget.question.pareiza_atb)
+                          : (widget.question.pareizas_atb.contains(atbilzu_varianti[i]))
                               ? Colors.green
                               : Colors.red,
                       borderRadius:
@@ -122,7 +126,7 @@ class _SingleQuestionPageState extends State<SingleQuestionPage> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         atbilzu_varianti[i],
-                        style: (atbilzu_varianti[i] == selection)
+                        style: (selected_answers.contains(atbilzu_varianti[i]))
                             ? style_ans_selected
                             : style_ans,
                         textAlign: TextAlign.center,

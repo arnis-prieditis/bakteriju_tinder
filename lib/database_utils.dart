@@ -4,43 +4,35 @@ import 'dart:async';
 
 class MCQ {
   final int id;
-  final String jaut;
-  final String pareiza_atb;
+  final String teikums;
+  final List<String> pareizas_atb;
   final List<String> nepareizas_atb;
   final int bakterija;
 
   const MCQ({
     required this.id,
-    required this.jaut,
-    required this.pareiza_atb,
+    required this.teikums,
+    required this.pareizas_atb,
     required this.nepareizas_atb,
     required this.bakterija,
   });
 
   Map<String, Object?> toMap() {
-    int list_length = nepareizas_atb.length;
-    String? nepareiza_atb_0 = list_length > 0 ? nepareizas_atb[0] : null;
-    String? nepareiza_atb_1 = list_length > 1 ? nepareizas_atb[1] : null;
-    String? nepareiza_atb_2 = list_length > 2 ? nepareizas_atb[2] : null;
     return {
       'id': id,
-      'jaut': jaut,
-      'pareiza_atb': pareiza_atb,
-      'nepareiza_atb_0': nepareiza_atb_0,
-      'nepareiza_atb_1': nepareiza_atb_1,
-      'nepareiza_atb_2': nepareiza_atb_2,
+      'teikums': teikums,
       'bakterija': bakterija,
     };
   }
 
   @override
   String toString() {
-    return 'MCQ{id: $id, jaut: $jaut, pareiza_atb: $pareiza_atb, nepareizas_atb: $nepareizas_atb}';
+    return 'MCQ{id: $id, jaut: $teikums, pareizas_atb: $pareizas_atb, nepareizas_atb: $nepareizas_atb}';
   }
 
   List<String> getAtbilzuVarianti() {
     List<String> atbilzu_varianti = nepareizas_atb.toList();
-    atbilzu_varianti.add(pareiza_atb);
+    atbilzu_varianti.addAll(pareizas_atb);
     atbilzu_varianti.shuffle();
     return atbilzu_varianti;
   }
@@ -113,6 +105,7 @@ class DatabaseService {
   static Database? _database;
   static const String _bakterijas_table_name = "Bakterijas";
   static const String _mcq_table_name = "MCQ";
+  static const String _atbildes_table_name = "Atbildes";
   static const String _pics_table_name = "Pics";
 
   DatabaseService._init();
@@ -154,13 +147,18 @@ class DatabaseService {
     await db.execute('''
       CREATE TABLE $_mcq_table_name(
         id INTEGER PRIMARY KEY,
-        jaut TEXT,
-        pareiza_atb TEXT,
-        nepareiza_atb_0 TEXT,
-        nepareiza_atb_1 TEXT,
-        nepareiza_atb_2 TEXT,
+        teikums TEXT,
         bakterija INTEGER,
-        FOREIGN KEY(bakterija) REFERENCES Bakterijas(id)
+        FOREIGN KEY(bakterija) REFERENCES $_bakterijas_table_name(id)
+      )
+    ''');
+    await db.execute('''
+      CREATE TABLE $_atbildes_table_name(
+        id INTEGER PRIMARY KEY,
+        teikums TEXT,
+        pareizi INTEGER,
+        jautajums INTEGER,
+        FOREIGN KEY(jautajums) REFERENCES $_mcq_table_name(id)
       )
     ''');
     await db.execute('''
@@ -168,10 +166,10 @@ class DatabaseService {
         id INTEGER PRIMARY KEY,
         path TEXT,
         bakterija INTEGER,
-        FOREIGN KEY(bakterija) REFERENCES Bakterijas(id)
+        FOREIGN KEY(bakterija) REFERENCES $_bakterijas_table_name(id)
       )
     ''');
-    // for testing
+    // data for testing
     Bakterija bakt_1 = Bakterija(
       id: 1,
       name: "Pirma bakterija",
@@ -239,12 +237,28 @@ class DatabaseService {
       _mcq_table_name,
       {
         'id': 101,
-        'jaut': "1. jautājums par baktēriju?",
-        'pareiza_atb': "[Pareizā atbilde]",
-        'nepareiza_atb_0': "[Nepareizā atbilde]",
-        'nepareiza_atb_1': null,
-        'nepareiza_atb_2': null,
+        'teikums': "1. jautājums par baktēriju?",
         'bakterija': 1,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _atbildes_table_name,
+      {
+        "id": 1011,
+        "teikums": "Pareizā atbilde 1",
+        "pareizi": 1,
+        "jautajums": 101,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _atbildes_table_name,
+      {
+        "id": 1012,
+        "teikums": "Nepareizā atbilde 1",
+        "pareizi": 0,
+        "jautajums": 101,
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
@@ -252,12 +266,28 @@ class DatabaseService {
       _mcq_table_name,
       {
         'id': 102,
-        'jaut': "2. jautājums par baktēriju?",
-        'pareiza_atb': "[Pareizā atbilde]",
-        'nepareiza_atb_0': "[Nepareizā atbilde]",
-        'nepareiza_atb_1': null,
-        'nepareiza_atb_2': null,
+        'teikums': "2. jautājums par baktēriju?",
         'bakterija': 1,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _atbildes_table_name,
+      {
+        "id": 1021,
+        "teikums": "Pareizā atbilde 2",
+        "pareizi": 1,
+        "jautajums": 102,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _atbildes_table_name,
+      {
+        "id": 1022,
+        "teikums": "Nepareizā atbilde 2",
+        "pareizi": 0,
+        "jautajums": 102,
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
@@ -265,55 +295,53 @@ class DatabaseService {
       _mcq_table_name,
       {
         'id': 103,
-        'jaut':
+        'teikums':
             "Tu esi beidzot sastapis/-usi viņu dzīvē! Izsaki komplimentu par to, kas viņai mugurā!",
-        'pareiza_atb': "Tie auskari ļoti labi piestāv tavai somiņai :)",
-        'nepareiza_atb_0': "Tev ir ļoti lielas ausis ;)",
-        'nepareiza_atb_1': "Dayum!",
-        'nepareiza_atb_2': "*finger guns*",
         'bakterija': 1,
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
+    await db.insert(
+      _atbildes_table_name,
+      {
+        "id": 1031,
+        "teikums": "Tie auskari ļoti labi piestāv tavai somiņai :)",
+        "pareizi": 1,
+        "jautajums": 103,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _atbildes_table_name,
+      {
+        "id": 1032,
+        "teikums": "Tev ir ļoti lielas ausis ;)",
+        "pareizi": 0,
+        "jautajums": 103,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _atbildes_table_name,
+      {
+        "id": 1033,
+        "teikums": "Dayum!",
+        "pareizi": 0,
+        "jautajums": 103,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _atbildes_table_name,
+      {
+        "id": 1034,
+        "teikums": "*finger guns*",
+        "pareizi": 1,
+        "jautajums": 103,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
     print("createDatabase finished");
-  }
-
-  Future<void> insertBakterija(Bakterija bakt) async {
-    final db = await instance.database;
-    await db.insert(
-      _bakterijas_table_name,
-      bakt.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
-    print("${bakt.name} inserted");
-  }
-
-  Future<void> insertMCQ(MCQ q) async {
-    final db = await instance.database;
-    await db.insert(
-      _mcq_table_name,
-      q.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
-  }
-
-  Future<void> insertPic(int id, String path, int bakterija_id) async {
-    final db = await instance.database;
-    await db.insert(
-      _pics_table_name,
-      {'id': id, 'path': path, 'bakterija': bakterija_id},
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
-  }
-
-  Future<void> deleteBakterija(int id) async {
-    final db = await instance.database;
-    await db.delete(
-      _bakterijas_table_name,
-      where: 'id = ?',
-      whereArgs: [id],
-    );
-    print("Bakterija with id $id deleted");
   }
 
   Future<void> updateBaktMatched(int id, bool matched) async {
@@ -345,6 +373,52 @@ class DatabaseService {
     );
     final int convers_progress = baktMaps[0]["convers_progress"] as int;
     return convers_progress;
+  }
+
+  Future<List<MCQ>> getMcqsOfBakterija(int bakt_id) async {
+    final db = await instance.database;
+
+    final List<Map<String, Object?>> mcqMaps = await db.query(
+      _mcq_table_name,
+      where: "bakterija = ?",
+      whereArgs: [bakt_id],
+      orderBy: "id",
+    );
+
+    List<MCQ> mcqList = [];
+    for (final {
+          "id": mcq_id as int,
+          "teikums": teikums as String,
+          "bakterija": bakterija as int,
+        } in mcqMaps) {
+      MCQ mcq = MCQ(
+        id: mcq_id,
+        teikums: teikums,
+        pareizas_atb: [],
+        nepareizas_atb: [],
+        bakterija: bakterija,
+      );
+
+      final List<Map<String, Object?>> atbMaps = await db.query(
+        _atbildes_table_name,
+        where: "jautajums = ?",
+        whereArgs: [mcq_id],
+      );
+      for (final {
+            "teikums": teikums as String,
+            "pareizi": pareizi as int,
+          } in atbMaps) {
+        if (pareizi == 1) {
+          mcq.pareizas_atb.add(teikums);
+        } else {
+          mcq.nepareizas_atb.add(teikums);
+        }
+      }
+
+      mcqList.add(mcq);
+    }
+
+    return mcqList;
   }
 
   Future<List<Bakterija>> getAllBakterijas() async {
@@ -389,35 +463,8 @@ class DatabaseService {
       }
       print("Pics: ${bakt.pics}");
       //query for corresponding multiple choice questions
-      final List<Map<String, Object?>> mcqMaps = await db.query(
-        _mcq_table_name,
-        where: "bakterija = ?",
-        whereArgs: [bakt.id],
-        orderBy: "id",
-      );
-      for (final {
-            "id": id as int,
-            "jaut": jaut as String,
-            "pareiza_atb": pareiza_atb as String,
-            "nepareiza_atb_0": nepareiza_atb_0 as String?,
-            "nepareiza_atb_1": nepareiza_atb_1 as String?,
-            "nepareiza_atb_2": nepareiza_atb_2 as String?,
-            "bakterija": bakterija as int,
-          } in mcqMaps) {
-        List<String> nepareizas_atb = [];
-        if (nepareiza_atb_0 != null) nepareizas_atb.add(nepareiza_atb_0);
-        if (nepareiza_atb_1 != null) nepareizas_atb.add(nepareiza_atb_1);
-        if (nepareiza_atb_2 != null) nepareizas_atb.add(nepareiza_atb_2);
-        bakt.questions.add(
-          MCQ(
-            id: id,
-            jaut: jaut,
-            pareiza_atb: pareiza_atb,
-            nepareizas_atb: nepareizas_atb,
-            bakterija: bakterija,
-          ),
-        );
-      }
+      List<MCQ> mcqs = await getMcqsOfBakterija(bakt.id);
+      bakt.questions.addAll(mcqs);
       print("MCQs: ${bakt.questions}");
 
       bakt_list.add(bakt);
@@ -440,5 +487,44 @@ class DatabaseService {
     final db = await instance.database;
     _database = null;
     db.close();
+  }
+
+  // ----- unused helper functions -----
+  Future<void> insertBakterija(Bakterija bakt) async {
+    final db = await instance.database;
+    await db.insert(
+      _bakterijas_table_name,
+      bakt.toMap(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    print("${bakt.name} inserted");
+  }
+
+  Future<void> insertMCQ(MCQ q) async {
+    final db = await instance.database;
+    await db.insert(
+      _mcq_table_name,
+      q.toMap(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<void> insertPic(int id, String path, int bakterija_id) async {
+    final db = await instance.database;
+    await db.insert(
+      _pics_table_name,
+      {'id': id, 'path': path, 'bakterija': bakterija_id},
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<void> deleteBakterija(int id) async {
+    final db = await instance.database;
+    await db.delete(
+      _bakterijas_table_name,
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+    print("Bakterija with id $id deleted");
   }
 }
