@@ -20,6 +20,7 @@ class _DmPageState extends State<DmPage> {
   late int convers_progress;
   bool isAnswering = false;
   late List<String> atbilzu_varianti;
+  String? wrong_answer;
 
   @override
   void initState() {
@@ -42,7 +43,12 @@ class _DmPageState extends State<DmPage> {
   }
 
   Future<void> onAnswerTapped(String answer) async {
-    if (answer != questions[convers_progress].pareiza_atb) return;
+    if (answer != questions[convers_progress].pareiza_atb) {
+      setState(() {
+        wrong_answer = answer;
+      });
+      return;
+    }
     await DatabaseService.instance.updateBaktConversProgress(
       widget.bakt.id,
       convers_progress + 1,
@@ -124,9 +130,9 @@ class _DmPageState extends State<DmPage> {
                                     child: MsgBox(
                                       text: atbilzu_varianti[i],
                                       outgoing: true,
-                                      filled: false,
-                                      color: const Color(0xFF46B1E1),
-                                      text_color: const Color(0xFF46B1E1),
+                                      filled: (atbilzu_varianti[i] == wrong_answer) ? true : false,
+                                      color: (atbilzu_varianti[i] == wrong_answer) ? Colors.red : const Color(0xFF46B1E1),
+                                      text_color: (atbilzu_varianti[i] == wrong_answer) ? Colors.white : const Color(0xFF46B1E1),
                                       max_width: MediaQuery.of(context).size.width * 2 / 3,
                                     ),
                                   ),
