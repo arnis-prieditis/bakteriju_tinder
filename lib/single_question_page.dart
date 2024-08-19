@@ -64,6 +64,7 @@ class _SingleQuestionPageState extends State<SingleQuestionPage> {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
               padding: const EdgeInsets.all(15.0),
@@ -86,8 +87,9 @@ class _SingleQuestionPageState extends State<SingleQuestionPage> {
               GestureDetector(
                 onTap: () => onAnswerTapped(atbilzu_varianti[i]),
                 child: Padding(
-                  padding: const EdgeInsets.all(5.0),
+                  padding: const EdgeInsets.symmetric(vertical: 5.0),
                   child: Container(
+                    width: MediaQuery.of(context).size.width - 30.0,
                     decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
