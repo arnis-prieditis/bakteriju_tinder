@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'database_utils.dart';
+import 'dart:io';
 
 class SingleQuestionPage extends StatefulWidget {
   final MCQ question;
@@ -16,6 +17,9 @@ class SingleQuestionPage extends StatefulWidget {
 }
 
 class _SingleQuestionPageState extends State<SingleQuestionPage> {
+  String? selection;
+  late List<String> atbilzu_varianti = widget.question.getAtbilzuVarianti();
+
   @override
   void initState() {
     super.initState();
@@ -27,32 +31,40 @@ class _SingleQuestionPageState extends State<SingleQuestionPage> {
     super.dispose();
   }
 
-  void onAnswerTapped(answer) async {
+  Future<bool> onAnswerTapped(answer) async {
+    setState(() {
+      selection = answer;
+    });
     if (answer == widget.question.pareiza_atb) {
       print("Pareizā atbilde");
       int bakt_id = widget.question.bakterija;
-      int curr_conv_progress = await DatabaseService.instance.getBaktConversProgress(bakt_id);
-      await DatabaseService.instance.updateBaktConversProgress(bakt_id, curr_conv_progress + 1);
-      Navigator.pop(context);
+      int curr_conv_progress =
+          await DatabaseService.instance.getBaktConversProgress(bakt_id);
+      await DatabaseService.instance
+          .updateBaktConversProgress(bakt_id, curr_conv_progress + 1);
+      return true;
     } else {
       print("Nepareizā atbilde");
+      return false;
     }
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final style1 = theme.textTheme.titleLarge!.copyWith(
+    final style_question = theme.textTheme.titleLarge!.copyWith(
       color: theme.colorScheme.onPrimaryContainer,
     );
-    final style2 = theme.textTheme.bodyLarge!.copyWith(
-      color: theme.colorScheme.primaryContainer,
+    final style_ans = theme.textTheme.bodyLarge!.copyWith(
+      color: const Color(0xFF46B1E1),
+    );
+    final style_ans_selected = theme.textTheme.bodyLarge!.copyWith(
+      color: Colors.white,
     );
     final style_title = theme.textTheme.titleLarge!.copyWith(
       color: theme.colorScheme.onPrimaryContainer,
       fontWeight: FontWeight.bold,
     );
-    List<String> atbilzu_varianti = widget.question.getAtbilzuVarianti();
 
     return Scaffold(
       appBar: AppBar(
@@ -77,7 +89,7 @@ class _SingleQuestionPageState extends State<SingleQuestionPage> {
                   padding: const EdgeInsets.all(10.0),
                   child: Text(
                     widget.question.jaut,
-                    style: style1,
+                    style: style_question,
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -85,20 +97,34 @@ class _SingleQuestionPageState extends State<SingleQuestionPage> {
             ),
             for (int i = 0; i < atbilzu_varianti.length; i++)
               GestureDetector(
-                onTap: () => onAnswerTapped(atbilzu_varianti[i]),
+                onTap: () => onAnswerTapped(atbilzu_varianti[i]).then(
+                  (ans_correct) {
+                    if (ans_correct) {
+                      sleep(Durations.extralong1);
+                      Navigator.pop(context);
+                    }
+                  },
+                ),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 5.0),
                   child: Container(
                     width: MediaQuery.of(context).size.width - 30.0,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    decoration: BoxDecoration(
+                      color: (atbilzu_varianti[i] != selection)
+                          ? Colors.white
+                          : (atbilzu_varianti[i] == widget.question.pareiza_atb)
+                              ? Colors.green
+                              : Colors.red,
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(10.0)),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         atbilzu_varianti[i],
-                        style: style2,
+                        style: (atbilzu_varianti[i] == selection)
+                            ? style_ans_selected
+                            : style_ans,
                         textAlign: TextAlign.center,
                       ),
                     ),
