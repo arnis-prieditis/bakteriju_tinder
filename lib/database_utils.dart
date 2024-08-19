@@ -18,11 +18,17 @@ class MCQ {
   });
 
   Map<String, Object?> toMap() {
+    int list_length = nepareizas_atb.length;
+    String? nepareiza_atb_0 = list_length > 0 ? nepareizas_atb[0] : null;
+    String? nepareiza_atb_1 = list_length > 1 ? nepareizas_atb[1] : null;
+    String? nepareiza_atb_2 = list_length > 2 ? nepareizas_atb[2] : null;
     return {
       'id': id,
       'jaut': jaut,
       'pareiza_atb': pareiza_atb,
-      'nepareiza_atb': nepareizas_atb[0],
+      'nepareiza_atb_0': nepareiza_atb_0,
+      'nepareiza_atb_1': nepareiza_atb_1,
+      'nepareiza_atb_2': nepareiza_atb_2,
       'bakterija': bakterija,
     };
   }
@@ -106,7 +112,7 @@ class DatabaseService {
       DatabaseService._init(); // ensures there is only one instance
   static Database? _database;
   static const String _bakterijas_table_name = "Bakterijas";
-  static const String _mcq_table_name = "MCQ_2";
+  static const String _mcq_table_name = "MCQ";
   static const String _pics_table_name = "Pics";
 
   DatabaseService._init();
@@ -150,7 +156,9 @@ class DatabaseService {
         id INTEGER PRIMARY KEY,
         jaut TEXT,
         pareiza_atb TEXT,
-        nepareiza_atb TEXT,
+        nepareiza_atb_0 TEXT,
+        nepareiza_atb_1 TEXT,
+        nepareiza_atb_2 TEXT,
         bakterija INTEGER,
         FOREIGN KEY(bakterija) REFERENCES Bakterijas(id)
       )
@@ -187,7 +195,7 @@ class DatabaseService {
       patogen_apr_available: true,
       slimibas_apr_available: false,
       questions: [],
-      bio: "## Hobiji\n- vairošanās\n- sudoku\n---\nLorem ipsum dolor sit amet",
+      bio: "## Hobiji\n- paukošana\n- sudoku\n---\nLorem ipsum dolor sit amet",
       convers_progress: 0,
     );
     await db.insert(
@@ -213,7 +221,7 @@ class DatabaseService {
       _pics_table_name,
       {
         'id': 20,
-        'path': "assets/flower2.jpeg",
+        'path': "assets/flower0.jpg",
         'bakterija': 2,
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
@@ -222,7 +230,7 @@ class DatabaseService {
       _pics_table_name,
       {
         'id': 21,
-        'path': "assets/flower0.jpg",
+        'path': "assets/flower2.jpeg",
         'bakterija': 2,
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
@@ -233,7 +241,9 @@ class DatabaseService {
         'id': 101,
         'jaut': "1. jautājums par baktēriju?",
         'pareiza_atb': "[Pareizā atbilde]",
-        'nepareiza_atb': "[Nepareizā atbilde]",
+        'nepareiza_atb_0': "[Nepareizā atbilde]",
+        'nepareiza_atb_1': null,
+        'nepareiza_atb_2': null,
         'bakterija': 1,
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
@@ -244,7 +254,9 @@ class DatabaseService {
         'id': 102,
         'jaut': "2. jautājums par baktēriju?",
         'pareiza_atb': "[Pareizā atbilde]",
-        'nepareiza_atb': "[Nepareizā atbilde]",
+        'nepareiza_atb_0': "[Nepareizā atbilde]",
+        'nepareiza_atb_1': null,
+        'nepareiza_atb_2': null,
         'bakterija': 1,
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
@@ -256,7 +268,9 @@ class DatabaseService {
         'jaut':
             "Tu esi beidzot sastapis/-usi viņu dzīvē! Izsaki komplimentu par to, kas viņai mugurā!",
         'pareiza_atb': "Tie auskari ļoti labi piestāv tavai somiņai :)",
-        'nepareiza_atb': "Tev ir ļoti lielas ausis ;)",
+        'nepareiza_atb_0': "Tev ir ļoti lielas ausis ;)",
+        'nepareiza_atb_1': "Dayum!",
+        'nepareiza_atb_2': "*finger guns*",
         'bakterija': 1,
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
@@ -385,15 +399,21 @@ class DatabaseService {
             "id": id as int,
             "jaut": jaut as String,
             "pareiza_atb": pareiza_atb as String,
-            "nepareiza_atb": nepareiza_atb as String,
+            "nepareiza_atb_0": nepareiza_atb_0 as String?,
+            "nepareiza_atb_1": nepareiza_atb_1 as String?,
+            "nepareiza_atb_2": nepareiza_atb_2 as String?,
             "bakterija": bakterija as int,
           } in mcqMaps) {
+        List<String> nepareizas_atb = [];
+        if (nepareiza_atb_0 != null) nepareizas_atb.add(nepareiza_atb_0);
+        if (nepareiza_atb_1 != null) nepareizas_atb.add(nepareiza_atb_1);
+        if (nepareiza_atb_2 != null) nepareizas_atb.add(nepareiza_atb_2);
         bakt.questions.add(
           MCQ(
             id: id,
             jaut: jaut,
             pareiza_atb: pareiza_atb,
-            nepareizas_atb: [nepareiza_atb],
+            nepareizas_atb: nepareizas_atb,
             bakterija: bakterija,
           ),
         );
