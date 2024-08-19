@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'database_utils.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'dm_page.dart';
 
 class MatchFinderPage extends StatefulWidget {
   const MatchFinderPage({super.key});
@@ -135,6 +136,12 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
                       onPressed: () async {
                         await DatabaseService.instance.updateBaktMatched(curr_pot_match!.id, true);
                         refreshNotMatchedList();
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DmPage(bakt: curr_pot_match!),
+                          ),
+                        );
                       },
                       label: const Icon(Icons.favorite),
                       style: const ButtonStyle(
