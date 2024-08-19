@@ -119,26 +119,26 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ElevatedButton.icon(
-                      onPressed: () async {
-                        await DatabaseService.instance.updateBaktMatched(curr_pot_match!.id, true);
-                        refreshNotMatchedList();
-                      },
-                      label: const Icon(Icons.favorite_border),
-                      style: const ButtonStyle(
-                        backgroundColor: WidgetStatePropertyAll(Colors.green),
-                        foregroundColor: WidgetStatePropertyAll(Colors.white),
-                      ),
-                    ),
-                    ElevatedButton.icon(
                       onPressed: () {
                         setState(() {
                           curr_pot_match = getNewPotentialMatch();
                           curr_pic = curr_pot_match!.pics[0];
                         });
                       },
-                      label: const Icon(Icons.highlight_off_outlined),
+                      label: const Icon(Icons.close),
                       style: const ButtonStyle(
                         backgroundColor: WidgetStatePropertyAll(Colors.red),
+                        foregroundColor: WidgetStatePropertyAll(Colors.white),
+                      ),
+                    ),
+                    ElevatedButton.icon(
+                      onPressed: () async {
+                        await DatabaseService.instance.updateBaktMatched(curr_pot_match!.id, true);
+                        refreshNotMatchedList();
+                      },
+                      label: const Icon(Icons.favorite),
+                      style: const ButtonStyle(
+                        backgroundColor: WidgetStatePropertyAll(Colors.green),
                         foregroundColor: WidgetStatePropertyAll(Colors.white),
                       ),
                     ),

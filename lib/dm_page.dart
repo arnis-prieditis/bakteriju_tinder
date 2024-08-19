@@ -56,7 +56,7 @@ class _DmPageState extends State<DmPage> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final style = theme.textTheme.titleLarge!.copyWith(
+    final title_style = theme.textTheme.titleLarge!.copyWith(
       color: theme.colorScheme.onPrimaryContainer,
       fontWeight: FontWeight.bold,
     );
@@ -81,7 +81,7 @@ class _DmPageState extends State<DmPage> {
               const SizedBox(width: 10.0),
               Text(
                 widget.bakt.name,
-                style: style,
+                style: title_style,
               ),
             ],
           ),
@@ -110,7 +110,8 @@ class _DmPageState extends State<DmPage> {
                               text: questions[convers_progress].jaut,
                               outgoing: false,
                               filled: true,
-                              color: theme.colorScheme.secondaryContainer,
+                              color: const Color(0xFF46B1E1),
+                              text_color: Colors.white,
                               max_width:
                                   MediaQuery.of(context).size.width * 2 / 3,
                             ),
@@ -124,7 +125,8 @@ class _DmPageState extends State<DmPage> {
                                       text: atbilzu_varianti[i],
                                       outgoing: true,
                                       filled: false,
-                                      color: theme.colorScheme.primaryContainer,
+                                      color: const Color(0xFF46B1E1),
+                                      text_color: const Color(0xFF46B1E1),
                                       max_width: MediaQuery.of(context).size.width * 2 / 3,
                                     ),
                                   ),
@@ -215,7 +217,8 @@ class MsgExchange extends StatelessWidget {
           text: question.jaut,
           outgoing: false,
           filled: true,
-          color: theme.colorScheme.secondaryContainer,
+          color: const Color(0xFF46B1E1),
+          text_color: Colors.white,
           max_width: max_msg_width,
         ),
         const SizedBox(height: 20.0),
@@ -223,7 +226,8 @@ class MsgExchange extends StatelessWidget {
           text: question.pareiza_atb,
           outgoing: true,
           filled: true,
-          color: theme.colorScheme.primaryContainer,
+          color: const Color(0xFF00B050),
+          text_color: Colors.white,
           max_width: max_msg_width,
         ),
         const SizedBox(height: 20.0),

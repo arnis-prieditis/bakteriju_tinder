@@ -70,7 +70,7 @@ class _SingleQuestionPageState extends State<SingleQuestionPage> {
               padding: const EdgeInsets.all(15.0),
               child: Container(
                 decoration: const BoxDecoration(
-                  color: Colors.orange,
+                  color: Color(0xFFFF9966),
                   borderRadius: BorderRadius.all(Radius.circular(20.0)),
                 ),
                 child: Padding(

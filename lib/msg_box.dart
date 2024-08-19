@@ -35,6 +35,7 @@ class MsgBox extends StatelessWidget {
   final bool outgoing;
   final bool filled;
   final Color color;
+  final Color text_color;
   final double max_width;
 
   const MsgBox({
@@ -43,11 +44,17 @@ class MsgBox extends StatelessWidget {
     required this.outgoing,
     required this.filled,
     required this.color,
+    required this.text_color,
     required this.max_width,
   });
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final style = theme.textTheme.bodyLarge!.copyWith(
+      color: text_color,
+    );
+
     return Row(
       children: [
         if (outgoing)
@@ -67,6 +74,7 @@ class MsgBox extends StatelessWidget {
               child: Text(
                 text,
                 textAlign: outgoing ? TextAlign.right : TextAlign.left,
+                style: style,
               ),
             ),
           ),
