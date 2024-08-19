@@ -124,6 +124,10 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
                         refreshNotMatchedList();
                       },
                       label: const Icon(Icons.favorite_border),
+                      style: const ButtonStyle(
+                        backgroundColor: WidgetStatePropertyAll(Colors.green),
+                        foregroundColor: WidgetStatePropertyAll(Colors.white),
+                      ),
                     ),
                     ElevatedButton.icon(
                       onPressed: () {
@@ -133,6 +137,10 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
                         });
                       },
                       label: const Icon(Icons.highlight_off_outlined),
+                      style: const ButtonStyle(
+                        backgroundColor: WidgetStatePropertyAll(Colors.red),
+                        foregroundColor: WidgetStatePropertyAll(Colors.white),
+                      ),
                     ),
                   ],
                 ),
@@ -147,7 +155,7 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
                 title: MarkdownBody(data: curr_pot_match!.bio),
               ),
             ],
-          )
+          ),
     );
   }
 }
