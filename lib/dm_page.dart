@@ -56,6 +56,7 @@ class _DmPageState extends State<DmPage> {
     refreshConversProgress();
     setState(() {
       isAnswering = false;
+      wrong_answer = null;
     });
   }
 
