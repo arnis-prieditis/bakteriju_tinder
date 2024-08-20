@@ -57,25 +57,27 @@ class _ProfilePageState extends State<ProfilePage> {
           ListTile(
             title: GestureDetector(
               onTapUp: (details) {
-                setState(() {
-                  double glob_pos_x = details.globalPosition.dx;
-                  double dev_width = MediaQuery.of(context).size.width;
-                  if (glob_pos_x >= (dev_width / 2)) {
-                    print("Tapped on right");
-                    if (curr_pic != widget.bakt.pics.last) {
-                      print("Should update pic");
-                      int next_index = widget.bakt.pics.indexOf(curr_pic) + 1;
+                double glob_pos_x = details.globalPosition.dx;
+                double dev_width = MediaQuery.of(context).size.width;
+                if (glob_pos_x >= (dev_width / 2)) {
+                  print("Tapped on right");
+                  if (curr_pic != widget.bakt.pics.last) {
+                    int next_index = widget.bakt.pics.indexOf(curr_pic) + 1;
+                    setState(() {
                       curr_pic = widget.bakt.pics[next_index];
-                    }
-                  } else {
-                    print("Tapped on left");
-                    if (curr_pic != widget.bakt.pics.first) {
-                      print("Should update pic");
-                      int prev_index = widget.bakt.pics.indexOf(curr_pic) - 1;
-                      curr_pic = widget.bakt.pics[prev_index];
-                    }
+                    });
+                    print("Should update pic");
                   }
-                });
+                } else {
+                  print("Tapped on left");
+                  if (curr_pic != widget.bakt.pics.first) {
+                    int prev_index = widget.bakt.pics.indexOf(curr_pic) - 1;
+                    setState(() {
+                      curr_pic = widget.bakt.pics[prev_index];
+                    });
+                    print("Should update pic");
+                  }
+                }
               },
               child: Image.asset(
                 curr_pic,
@@ -110,7 +112,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         apraksts: widget.bakt.slimibas_apr),
                   ),
                 ),
-                child: const Text("Patoģenēzes apraksts"),
+                child: const Text("Slimības gaitas apraksts"),
               ),
             ),
           ListTile(

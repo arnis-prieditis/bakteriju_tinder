@@ -47,10 +47,8 @@ class _SingleQuestionPageState extends State<SingleQuestionPage> {
       await DatabaseService.instance
           .updateBaktConversProgress(bakt_id, curr_conv_progress + 1);
       return true;
-    } else {
-      print("Nepareizā atbilde");
-      return false;
     }
+    return false;
   }
 
   @override

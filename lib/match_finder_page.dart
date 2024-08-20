@@ -88,26 +88,28 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
               ListTile(
                 title: GestureDetector(
                   onTapUp: (details) {
-                    setState(() {
-                      double glob_pos_x = details.globalPosition.dx;
-                      double dev_width = MediaQuery.of(context).size.width;
-                      if (glob_pos_x >= (dev_width/2)) {
-                        print("Tapped on right");
-                        if (curr_pic != curr_pot_match!.pics.last) {
-                          print("Should update pic");
-                          int next_index = curr_pot_match!.pics.indexOf(curr_pic!) + 1;
+                    double glob_pos_x = details.globalPosition.dx;
+                    double dev_width = MediaQuery.of(context).size.width;
+                    if (glob_pos_x >= (dev_width/2)) {
+                      print("Tapped on right");
+                      if (curr_pic != curr_pot_match!.pics.last) {
+                        int next_index = curr_pot_match!.pics.indexOf(curr_pic!) + 1;
+                        setState(() {
                           curr_pic = curr_pot_match!.pics[next_index];
-                        }
+                        });
+                        print("Should update pic");
                       }
-                      else {
-                        print("Tapped on left");
-                        if (curr_pic != curr_pot_match!.pics.first) {
-                          print("Should update pic");
-                          int prev_index = curr_pot_match!.pics.indexOf(curr_pic!) - 1;
+                    }
+                    else {
+                      print("Tapped on left");
+                      if (curr_pic != curr_pot_match!.pics.first) {
+                        int prev_index = curr_pot_match!.pics.indexOf(curr_pic!) - 1;
+                        setState(() {
                           curr_pic = curr_pot_match!.pics[prev_index];
-                        }
+                        });
+                        print("Should update pic");
                       }
-                    });
+                    }
                   },
                   child: Image.asset(
                     curr_pic!,
@@ -135,13 +137,12 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
                     ElevatedButton.icon(
                       onPressed: () async {
                         await DatabaseService.instance.updateBaktMatched(curr_pot_match!.id, true);
-                        refreshNotMatchedList();
-                        Navigator.pushReplacement(
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => DmPage(bakt: curr_pot_match!),
                           ),
-                        );
+                        ).then((_) => refreshNotMatchedList());
                       },
                       label: const Icon(Icons.favorite),
                       style: const ButtonStyle(
