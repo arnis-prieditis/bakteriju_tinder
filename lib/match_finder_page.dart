@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'database_utils.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'dm_page.dart';
+import 'matched_banner_page.dart';
 
 class MatchFinderPage extends StatefulWidget {
   const MatchFinderPage({super.key});
@@ -140,7 +140,7 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => DmPage(bakt: curr_pot_match!),
+                            builder: (context) => MatchedBannerPage(bakt: curr_pot_match!),
                           ),
                         ).then((_) => refreshNotMatchedList());
                       },
