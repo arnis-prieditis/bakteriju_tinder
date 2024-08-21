@@ -421,6 +421,53 @@ class DatabaseService {
     return mcqList;
   }
 
+  Future<Bakterija> getBakterija(int bakt_id) async {
+    final db = await instance.database;
+    final List<Map<String, Object?>> baktMap = await db.query(
+      _bakterijas_table_name,
+      where: "id = ?",
+      whereArgs: [bakt_id],
+    );
+    final {
+      'id': id as int,
+      'name': name as String,
+      'matched': matched as int,
+      'patogen_apr': patogen_apr as String,
+      'slimibas_apr': slimibas_apr as String,
+      'patogen_apr_available': patogen_apr_available as int,
+      'slimibas_apr_available': slimibas_apr_available as int,
+      'bio': bio as String,
+      'convers_progress': convers_progress as int,
+    } = baktMap[0];
+    Bakterija bakt = Bakterija(
+      id: id,
+      name: name,
+      matched: matched == 1 ? true : false,
+      pics: [],
+      patogen_apr: patogen_apr,
+      slimibas_apr: slimibas_apr,
+      patogen_apr_available: patogen_apr_available == 1 ? true : false,
+      slimibas_apr_available: slimibas_apr_available == 1 ? true : false,
+      questions: [],
+      bio: bio,
+      convers_progress: convers_progress,
+    );
+    print("Bakterija: $bakt");
+    //query for corresponding pictures
+    final List<Map<String, Object?>> picsMaps = await db
+        .query(_pics_table_name, where: "bakterija = ?", whereArgs: [bakt_id]);
+    for (final {"path": path as String} in picsMaps) {
+      bakt.pics.add(path);
+    }
+    print("Pics: ${bakt.pics}");
+    //query for corresponding multiple choice questions
+    List<MCQ> mcqs = await getMcqsOfBakterija(bakt_id);
+    bakt.questions.addAll(mcqs);
+    print("MCQs: ${bakt.questions}");
+
+    return bakt;
+  }
+
   Future<List<Bakterija>> getAllBakterijas() async {
     print("getAllBakterijas called");
     final db = await instance.database;
