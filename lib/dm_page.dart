@@ -57,12 +57,12 @@ class _DmPageState extends State<DmPage> {
         widget.bakt.id,
         convers_progress + 1,
       );
-      refreshConversProgress();
       setState(() {
         isAnswering = false;
         correct_answers_selected = 0;
         selected_answers.clear();
       });
+      refreshConversProgress();
     }
   }
 
@@ -115,79 +115,87 @@ class _DmPageState extends State<DmPage> {
                       question: questions[i],
                     ),
                   ),
-                isAnswering
-                    ? ListTile(
-                        title: Column(
-                          children: [
-                            MsgBox(
-                              text: questions[convers_progress].teikums,
-                              outgoing: false,
-                              filled: true,
-                              color: const Color(0xFF46B1E1),
-                              text_color: Colors.white,
-                              max_width:
-                                  MediaQuery.of(context).size.width * 2 / 3,
-                            ),
-                            const SizedBox(height: 20.0),
-                            for (int i = 0; i < atbilzu_varianti.length; i++)
-                              Column(
-                                children: [
-                                  GestureDetector(
-                                    onTap: () => onAnswerTapped(atbilzu_varianti[i]),
-                                    child: MsgBox(
-                                      text: atbilzu_varianti[i],
-                                      outgoing: true,
-                                      filled: (selected_answers.contains(atbilzu_varianti[i]))
-                                          ? true
-                                          : false,
-                                      color: (!selected_answers.contains(atbilzu_varianti[i]))
-                                          ? const Color(0xFF46B1E1)
-                                          : (questions[convers_progress].pareizas_atb.contains(atbilzu_varianti[i]))
-                                              ? Colors.green
-                                              : Colors.red,
-                                      text_color: (selected_answers.contains(atbilzu_varianti[i]))
-                                          ? Colors.white
-                                          : const Color(0xFF46B1E1),
-                                      max_width: MediaQuery.of(context).size.width * 2 / 3,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 25.0),
-                                ],
+                if (isAnswering)
+                  ListTile(
+                    title: Column(
+                      children: [
+                        MsgBox(
+                          text: questions[convers_progress].teikums,
+                          outgoing: false,
+                          filled: true,
+                          color: const Color(0xFF46B1E1),
+                          text_color: Colors.white,
+                          max_width: MediaQuery.of(context).size.width * 2 / 3,
+                        ),
+                        const SizedBox(height: 20.0),
+                        for (int i = 0; i < atbilzu_varianti.length; i++)
+                          Column(
+                            children: [
+                              GestureDetector(
+                                onTap: () =>
+                                    onAnswerTapped(atbilzu_varianti[i]),
+                                child: MsgBox(
+                                  text: atbilzu_varianti[i],
+                                  outgoing: true,
+                                  filled: (selected_answers
+                                          .contains(atbilzu_varianti[i]))
+                                      ? true
+                                      : false,
+                                  color: (!selected_answers
+                                          .contains(atbilzu_varianti[i]))
+                                      ? const Color(0xFF46B1E1)
+                                      : (questions[convers_progress]
+                                              .pareizas_atb
+                                              .contains(atbilzu_varianti[i]))
+                                          ? Colors.green
+                                          : Colors.red,
+                                  text_color: (selected_answers
+                                          .contains(atbilzu_varianti[i]))
+                                      ? Colors.white
+                                      : const Color(0xFF46B1E1),
+                                  max_width:
+                                      MediaQuery.of(context).size.width * 2 / 3,
+                                ),
                               ),
-                          ],
-                        ),
-                      )
-                    : ListTile(
-                        title: ElevatedButton(
-                          onPressed: () {
-                            if (convers_progress < questions.length) {
-                              setState(() {
-                                isAnswering = true;
-                                atbilzu_varianti = questions[convers_progress]
-                                    .getAtbilzuVarianti();
-                              });
-                            }
-                          },
-                          child: const Text("Next question"),
-                        ),
-                      ),
-                ListTile(
-                  title: ElevatedButton(
-                    onPressed: () {
-                      if (convers_progress >= questions.length) return;
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SingleQuestionPage(
-                            question: questions[convers_progress],
-                            bakt_name: widget.bakt.name,
+                              const SizedBox(height: 25.0),
+                            ],
                           ),
-                        ),
-                      ).then((_) => refreshConversProgress());
-                    },
-                    child: const Text("Next question in separate view"),
+                      ],
+                    ),
                   ),
-                ),
+                if (!isAnswering)
+                  ListTile(
+                    title: ElevatedButton(
+                      onPressed: () {
+                        if (convers_progress < questions.length) {
+                          setState(() {
+                            isAnswering = true;
+                            atbilzu_varianti = questions[convers_progress]
+                                .getAtbilzuVarianti();
+                          });
+                        }
+                      },
+                      child: const Text("Next question"),
+                    ),
+                  ),
+                if (!isAnswering)
+                  ListTile(
+                    title: ElevatedButton(
+                      onPressed: () {
+                        if (convers_progress >= questions.length) return;
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SingleQuestionPage(
+                              question: questions[convers_progress],
+                              bakt_name: widget.bakt.name,
+                            ),
+                          ),
+                        ).then((_) => refreshConversProgress());
+                      },
+                      child: const Text("Next question in separate view"),
+                    ),
+                  ),
                 ListTile(
                   title: ElevatedButton(
                     onPressed: () async {
