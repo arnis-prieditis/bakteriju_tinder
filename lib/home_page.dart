@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                               onTap: () => Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => ProfilePage(bakt: bakt),
+                                  builder: (context) => ProfilePage(bakt_id: bakt.id),
                                 ),
                               ).then((_) => refreshMatchedList()),
                               child: CircleAvatar(

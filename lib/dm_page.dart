@@ -81,7 +81,7 @@ class _DmPageState extends State<DmPage> {
           onTap: () => Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ProfilePage(bakt: widget.bakt),
+              builder: (context) => ProfilePage(bakt_id: widget.bakt.id),
             ),
           ),
           child: Row(
