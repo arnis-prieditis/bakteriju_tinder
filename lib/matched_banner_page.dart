@@ -20,8 +20,10 @@ class MatchedBannerPage extends StatelessWidget {
     );
     List<String> congrats = [
       "It's a match!",
-      "ofc your sexy ass matched!",
+      "You've matched!",
       "Matched!",
+      "Match successful!",
+      "ofc your sexy ass matched!",
       "Baktērijas nav diži izvēlīgas",
       "Another day another match!",
     ];
