@@ -4,6 +4,7 @@ import 'msg_box.dart';
 import 'dart:math';
 import 'profile_page.dart';
 import 'single_question_page.dart';
+import 'apraksts_page.dart';
 
 class DmPage extends StatefulWidget {
   final Bakterija bakt;
@@ -52,7 +53,8 @@ class _DmPageState extends State<DmPage> {
         correct_answers_selected++;
       });
     }
-    if (correct_answers_selected >= questions[convers_progress].pareizas_atb.length) {
+    if (correct_answers_selected >=
+        questions[convers_progress].pareizas_atb.length) {
       await DatabaseService.instance.updateBaktConversProgress(
         widget.bakt.id,
         convers_progress + 1,
@@ -166,34 +168,73 @@ class _DmPageState extends State<DmPage> {
                 if (!isAnswering)
                   ListTile(
                     title: ElevatedButton(
-                      onPressed: () {
-                        if (convers_progress < questions.length) {
-                          setState(() {
-                            isAnswering = true;
-                            atbilzu_varianti = questions[convers_progress]
-                                .getAtbilzuVarianti();
-                          });
+                      onPressed: () async {
+                        if (convers_progress >= questions.length) return;
+                        switch (questions[convers_progress].type) {
+                          case "small":
+                            setState(() {
+                              isAnswering = true;
+                              atbilzu_varianti = questions[convers_progress]
+                                  .getAtbilzuVarianti();
+                            });
+                            break;
+                          case "big":
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SingleQuestionPage(
+                                  question: questions[convers_progress],
+                                  bakt_name: widget.bakt.name,
+                                ),
+                              ),
+                            ).then((_) => refreshConversProgress());
+                            break;
+                          case "P":
+                            await DatabaseService.instance
+                                .updateBaktConversProgress(
+                              widget.bakt.id,
+                              convers_progress + 1,
+                            );
+                            await DatabaseService.instance.updateBaktP(
+                              widget.bakt.id,
+                              true,
+                            );
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AprakstsPage(
+                                  bakt_name: widget.bakt.name,
+                                  apraksts: widget.bakt.patogen_apr,
+                                ),
+                              ),
+                            ).then((_) => refreshConversProgress());
+                            break;
+                          case "S":
+                            await DatabaseService.instance
+                                .updateBaktConversProgress(
+                              widget.bakt.id,
+                              convers_progress + 1,
+                            );
+                            await DatabaseService.instance.updateBaktS(
+                              widget.bakt.id,
+                              true,
+                            );
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AprakstsPage(
+                                  bakt_name: widget.bakt.name,
+                                  apraksts: widget.bakt.slimibas_apr,
+                                ),
+                              ),
+                            ).then((_) => refreshConversProgress());
+                            break;
+                          default:
+                            print("Question type is wrong!");
+                            break;
                         }
                       },
-                      child: const Text("Next question"),
-                    ),
-                  ),
-                if (!isAnswering)
-                  ListTile(
-                    title: ElevatedButton(
-                      onPressed: () {
-                        if (convers_progress >= questions.length) return;
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => SingleQuestionPage(
-                              question: questions[convers_progress],
-                              bakt_name: widget.bakt.name,
-                            ),
-                          ),
-                        ).then((_) => refreshConversProgress());
-                      },
-                      child: const Text("Next question in separate view"),
+                      child: const Text("Nākamais jautājums"),
                     ),
                   ),
                 ListTile(
@@ -251,14 +292,15 @@ class MsgExchange extends StatelessWidget {
           max_width: max_msg_width,
         ),
         const SizedBox(height: 20.0),
-        MsgBox(
-          text: question.pareizas_atb.join(", "),
-          outgoing: true,
-          filled: true,
-          color: const Color(0xFF00B050),
-          text_color: Colors.white,
-          max_width: max_msg_width,
-        ),
+        if (question.pareizas_atb.isNotEmpty)
+          MsgBox(
+            text: question.pareizas_atb.join(", "),
+            outgoing: true,
+            filled: true,
+            color: const Color(0xFF00B050),
+            text_color: Colors.white,
+            max_width: max_msg_width,
+          ),
         const SizedBox(height: 20.0),
       ],
     );

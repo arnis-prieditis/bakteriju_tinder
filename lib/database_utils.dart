@@ -4,6 +4,7 @@ import 'dart:async';
 
 class MCQ {
   final int id;
+  final String type;
   final String teikums;
   final List<String> pareizas_atb;
   final List<String> nepareizas_atb;
@@ -11,6 +12,7 @@ class MCQ {
 
   const MCQ({
     required this.id,
+    required this.type,
     required this.teikums,
     required this.pareizas_atb,
     required this.nepareizas_atb,
@@ -20,6 +22,7 @@ class MCQ {
   Map<String, Object?> toMap() {
     return {
       'id': id,
+      'type': type,
       'teikums': teikums,
       'bakterija': bakterija,
     };
@@ -27,7 +30,7 @@ class MCQ {
 
   @override
   String toString() {
-    return 'MCQ{id: $id, jaut: $teikums, pareizas_atb: $pareizas_atb, nepareizas_atb: $nepareizas_atb}';
+    return 'MCQ{id: $id, type: $type, jaut: $teikums, pareizas_atb: $pareizas_atb, nepareizas_atb: $nepareizas_atb}';
   }
 
   List<String> getAtbilzuVarianti() {
@@ -147,6 +150,7 @@ class DatabaseService {
     await db.execute('''
       CREATE TABLE $_mcq_table_name(
         id INTEGER PRIMARY KEY,
+        type TEXT,
         teikums TEXT,
         bakterija INTEGER,
         FOREIGN KEY(bakterija) REFERENCES $_bakterijas_table_name(id)
@@ -237,6 +241,7 @@ class DatabaseService {
       _mcq_table_name,
       {
         'id': 101,
+        'type': "small",
         'teikums': "1. jautājums par baktēriju?",
         'bakterija': 1,
       },
@@ -266,6 +271,7 @@ class DatabaseService {
       _mcq_table_name,
       {
         'id': 102,
+        'type': "small",
         'teikums': "2. jautājums par baktēriju?",
         'bakterija': 1,
       },
@@ -295,6 +301,7 @@ class DatabaseService {
       _mcq_table_name,
       {
         'id': 103,
+        'type': "big",
         'teikums':
             "Tu esi beidzot sastapis/-usi viņu dzīvē! Izsaki komplimentu par to, kas viņai mugurā!",
         'bakterija': 1,
@@ -345,6 +352,7 @@ class DatabaseService {
       _mcq_table_name,
       {
         'id': 201,
+        'type': "small",
         'teikums': "1. jautājums par 2. baktēriju",
         'bakterija': 2,
       },
@@ -374,6 +382,7 @@ class DatabaseService {
       _mcq_table_name,
       {
         'id': 202,
+        'type': "small",
         'teikums': "2. jautājums par 2. baktēriju",
         'bakterija': 2,
       },
@@ -403,6 +412,7 @@ class DatabaseService {
       _mcq_table_name,
       {
         'id': 203,
+        'type': "small",
         'teikums': "Tu man ļoti patīc ;)\nVai nevēlies aiziet uz randiņu?",
         'bakterija': 2,
       },
@@ -422,7 +432,9 @@ class DatabaseService {
       _mcq_table_name,
       {
         'id': 204,
-        'teikums': "Parādi baktērijai, ka tu esi viņu labi iepazinis(-usi)! Izvēlies vislabāko vietu randiņam!",
+        'type': "big",
+        'teikums':
+            "Parādi baktērijai, ka tu esi viņu labi iepazinis(-usi)! Izvēlies vislabāko vietu randiņam!",
         'bakterija': 2,
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
@@ -471,7 +483,9 @@ class DatabaseService {
       _mcq_table_name,
       {
         'id': 205,
-        'teikums': "Un tagad tu viņu beidzot esi sastapis(-usi)! Izsaki komplementu par to kas viņai mugurā!",
+        'type': "big",
+        'teikums':
+            "Un tagad tu viņu beidzot esi sastapis(-usi)! Izsaki komplementu par to kas viņai mugurā!",
         'bakterija': 2,
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
@@ -500,6 +514,7 @@ class DatabaseService {
       _mcq_table_name,
       {
         'id': 206,
+        'type': "P",
         'teikums': "[Randiņš ar Bakterija 2]",
         'bakterija': 2,
       },
@@ -509,6 +524,7 @@ class DatabaseService {
       _mcq_table_name,
       {
         'id': 207,
+        'type': "S",
         'teikums': "[Attiecības ar Bakterija 2]",
         'bakterija': 2,
       },
@@ -518,7 +534,9 @@ class DatabaseService {
       _mcq_table_name,
       {
         'id': 208,
-        'teikums': "Jūs esat kopā, taču dažreiz liekas, ka šī baktērija tev ir vēljoprojām sveša. Ar kādiem paņēmieniem centīsies noskaidrot, kas viņa patiesībā ir?",
+        'type': "big",
+        'teikums':
+            "Jūs esat kopā, taču dažreiz liekas, ka šī baktērija tev ir vēljoprojām sveša. Ar kādiem paņēmieniem centīsies noskaidrot, kas viņa patiesībā ir?",
         'bakterija': 2,
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
@@ -547,7 +565,9 @@ class DatabaseService {
       _mcq_table_name,
       {
         'id': 209,
-        'teikums': "Tu tagad pazīsti viņu tuvāk, bet kaut kas ir mainījies. Tu viņu vairs neredzi tādu pašu kā agrāk un saproti, ka tu viņu vairāk nemīli. Izdomāsim vislabāko metodi kā šķirties!",
+        'type': "big",
+        'teikums':
+            "Tu tagad pazīsti viņu tuvāk, bet kaut kas ir mainījies. Tu viņu vairs neredzi tādu pašu kā agrāk un saproti, ka tu viņu vairāk nemīli. Izdomāsim vislabāko metodi kā šķirties!",
         'bakterija': 2,
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
@@ -595,6 +615,26 @@ class DatabaseService {
     );
   }
 
+  Future<void> updateBaktP(int id, bool patogen_apr_available) async {
+    final db = await instance.database;
+    await db.update(
+      _bakterijas_table_name,
+      {"patogen_apr_available": patogen_apr_available},
+      where: "id = ?",
+      whereArgs: [id],
+    );
+  }
+
+  Future<void> updateBaktS(int id, bool slimibas_apr_available) async {
+    final db = await instance.database;
+    await db.update(
+      _bakterijas_table_name,
+      {"slimibas_apr_available": slimibas_apr_available},
+      where: "id = ?",
+      whereArgs: [id],
+    );
+  }
+
   Future<int> getBaktConversProgress(int id) async {
     final db = await instance.database;
     final List<Map<String, Object?>> baktMaps = await db.query(
@@ -619,11 +659,13 @@ class DatabaseService {
     List<MCQ> mcqList = [];
     for (final {
           "id": mcq_id as int,
+          "type": type as String,
           "teikums": teikums as String,
           "bakterija": bakterija as int,
         } in mcqMaps) {
       MCQ mcq = MCQ(
         id: mcq_id,
+        type: type,
         teikums: teikums,
         pareizas_atb: [],
         nepareizas_atb: [],

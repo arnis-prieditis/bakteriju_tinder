@@ -100,7 +100,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 if (db_bakt.patogen_apr_available)
                   ListTile(
-                    leading: const Icon(Icons.info_outline),
+                    leading: const Icon(Icons.info),
                     title: GestureDetector(
                       onTap: () => Navigator.push(
                         context,
