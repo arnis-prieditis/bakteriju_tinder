@@ -173,7 +173,7 @@ class DatabaseService {
     Bakterija bakt_1 = Bakterija(
       id: 1,
       name: "Pirma bakterija",
-      matched: true,
+      matched: false,
       pics: [],
       patogen_apr: "[Garš patoģenēzes apraksts]",
       slimibas_apr: "[Garš slimības gaitas apraksts]",
@@ -186,11 +186,11 @@ class DatabaseService {
     Bakterija bakt_2 = Bakterija(
       id: 2,
       name: "Otra bakterija",
-      matched: true,
+      matched: false,
       pics: [],
       patogen_apr: "[Garš patoģenēzes apraksts 2]",
       slimibas_apr: "[Garš slimības gaitas apraksts 2]",
-      patogen_apr_available: true,
+      patogen_apr_available: false,
       slimibas_apr_available: false,
       questions: [],
       bio: "## Hobiji\n- paukošana\n- sudoku\n---\nLorem ipsum dolor sit amet",
@@ -338,6 +338,237 @@ class DatabaseService {
         "teikums": "*finger guns*",
         "pareizi": 1,
         "jautajums": 103,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _mcq_table_name,
+      {
+        'id': 201,
+        'teikums': "1. jautājums par 2. baktēriju",
+        'bakterija': 2,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _atbildes_table_name,
+      {
+        "id": 2011,
+        "teikums": "Pareizā atbilde",
+        "pareizi": 1,
+        "jautajums": 201,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _atbildes_table_name,
+      {
+        "id": 2012,
+        "teikums": "Nepareizā atbilde",
+        "pareizi": 0,
+        "jautajums": 201,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _mcq_table_name,
+      {
+        'id': 202,
+        'teikums': "2. jautājums par 2. baktēriju",
+        'bakterija': 2,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _atbildes_table_name,
+      {
+        "id": 2021,
+        "teikums": "Pareizā atbilde",
+        "pareizi": 1,
+        "jautajums": 202,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _atbildes_table_name,
+      {
+        "id": 2022,
+        "teikums": "Nepareizā atbilde",
+        "pareizi": 0,
+        "jautajums": 202,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _mcq_table_name,
+      {
+        'id': 203,
+        'teikums': "Tu man ļoti patīc ;)\nVai nevēlies aiziet uz randiņu?",
+        'bakterija': 2,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _atbildes_table_name,
+      {
+        "id": 2031,
+        "teikums": "Protams",
+        "pareizi": 1,
+        "jautajums": 203,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _mcq_table_name,
+      {
+        'id': 204,
+        'teikums': "Parādi baktērijai, ka tu esi viņu labi iepazinis(-usi)! Izvēlies vislabāko vietu randiņam!",
+        'bakterija': 2,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _atbildes_table_name,
+      {
+        "id": 2041,
+        "teikums": "Romantiskas vakariņas",
+        "pareizi": 1,
+        "jautajums": 204,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _atbildes_table_name,
+      {
+        "id": 2042,
+        "teikums": "Uzreiz starp palagiem",
+        "pareizi": 0,
+        "jautajums": 204,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _atbildes_table_name,
+      {
+        "id": 2043,
+        "teikums": "Pastaiga parkā ar cieši sadotām rokām",
+        "pareizi": 0,
+        "jautajums": 204,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _atbildes_table_name,
+      {
+        "id": 2044,
+        "teikums": "Rondezvous slimnīcā",
+        "pareizi": 0,
+        "jautajums": 204,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _mcq_table_name,
+      {
+        'id': 205,
+        'teikums': "Un tagad tu viņu beidzot esi sastapis(-usi)! Izsaki komplementu par to kas viņai mugurā!",
+        'bakterija': 2,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _atbildes_table_name,
+      {
+        "id": 2051,
+        "teikums": "Pareizā atbilde",
+        "pareizi": 1,
+        "jautajums": 205,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _atbildes_table_name,
+      {
+        "id": 2052,
+        "teikums": "Nepareizā atbilde",
+        "pareizi": 0,
+        "jautajums": 205,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _mcq_table_name,
+      {
+        'id': 206,
+        'teikums': "[Randiņš ar Bakterija 2]",
+        'bakterija': 2,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _mcq_table_name,
+      {
+        'id': 207,
+        'teikums': "[Attiecības ar Bakterija 2]",
+        'bakterija': 2,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _mcq_table_name,
+      {
+        'id': 208,
+        'teikums': "Jūs esat kopā, taču dažreiz liekas, ka šī baktērija tev ir vēljoprojām sveša. Ar kādiem paņēmieniem centīsies noskaidrot, kas viņa patiesībā ir?",
+        'bakterija': 2,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _atbildes_table_name,
+      {
+        "id": 2081,
+        "teikums": "Pareizās diagnostikas metodes",
+        "pareizi": 1,
+        "jautajums": 208,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _atbildes_table_name,
+      {
+        "id": 2082,
+        "teikums": "Nepareizās diagnostikas metodes",
+        "pareizi": 0,
+        "jautajums": 208,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _mcq_table_name,
+      {
+        'id': 209,
+        'teikums': "Tu tagad pazīsti viņu tuvāk, bet kaut kas ir mainījies. Tu viņu vairs neredzi tādu pašu kā agrāk un saproti, ka tu viņu vairāk nemīli. Izdomāsim vislabāko metodi kā šķirties!",
+        'bakterija': 2,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _atbildes_table_name,
+      {
+        "id": 2091,
+        "teikums": "Pareizās terapijas metodes",
+        "pareizi": 1,
+        "jautajums": 209,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    await db.insert(
+      _atbildes_table_name,
+      {
+        "id": 2092,
+        "teikums": "Nepareizās terapijas metodes",
+        "pareizi": 0,
+        "jautajums": 209,
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
