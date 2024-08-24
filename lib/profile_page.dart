@@ -38,6 +38,8 @@ class _ProfilePageState extends State<ProfilePage> {
   Future<void> unmatch() async {
     await DatabaseService.instance.updateBaktMatched(db_bakt.id, false);
     await DatabaseService.instance.updateBaktConversProgress(db_bakt.id, 0);
+    await DatabaseService.instance.updateBaktP(db_bakt.id, false);
+    await DatabaseService.instance.updateBaktS(db_bakt.id, false);
   }
 
   @override
