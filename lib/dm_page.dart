@@ -115,6 +115,7 @@ class _DmPageState extends State<DmPage> {
                     title: MsgExchange(
                       theme: theme,
                       question: questions[i],
+                      bakt: widget.bakt,
                     ),
                   ),
                 if (isAnswering)
@@ -167,100 +168,103 @@ class _DmPageState extends State<DmPage> {
                   ),
                 if (!isAnswering)
                   ListTile(
-                    title: ElevatedButton(
-                      onPressed: () async {
-                        if (convers_progress >= questions.length) return;
-                        switch (questions[convers_progress].type) {
-                          case "small":
-                            setState(() {
-                              isAnswering = true;
-                              atbilzu_varianti = questions[convers_progress]
-                                  .getAtbilzuVarianti();
-                            });
-                            break;
-                          case "big":
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => SingleQuestionPage(
-                                  question: questions[convers_progress],
-                                  bakt_name: widget.bakt.name,
+                    title: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          if (convers_progress >= questions.length) return;
+                          switch (questions[convers_progress].type) {
+                            case "small":
+                              setState(() {
+                                isAnswering = true;
+                                atbilzu_varianti = questions[convers_progress]
+                                    .getAtbilzuVarianti();
+                              });
+                              break;
+                            case "big":
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SingleQuestionPage(
+                                    question: questions[convers_progress],
+                                    bakt_name: widget.bakt.name,
+                                  ),
                                 ),
-                              ),
-                            ).then((_) => refreshConversProgress());
-                            break;
-                          case "P":
-                            await DatabaseService.instance
-                                .updateBaktConversProgress(
-                              widget.bakt.id,
-                              convers_progress + 1,
-                            );
-                            await DatabaseService.instance.updateBaktP(
-                              widget.bakt.id,
-                              true,
-                            );
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => AprakstsPage(
-                                  bakt_name: widget.bakt.name,
-                                  apraksts: widget.bakt.patogen_apr,
+                              ).then((_) => refreshConversProgress());
+                              break;
+                            case "P":
+                              await DatabaseService.instance
+                                  .updateBaktConversProgress(
+                                widget.bakt.id,
+                                convers_progress + 1,
+                              );
+                              await DatabaseService.instance.updateBaktP(
+                                widget.bakt.id,
+                                true,
+                              );
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => AprakstsPage(
+                                    bakt_name: widget.bakt.name,
+                                    apraksts: widget.bakt.patogen_apr,
+                                  ),
                                 ),
-                              ),
-                            ).then((_) => refreshConversProgress());
-                            break;
-                          case "S":
-                            await DatabaseService.instance
-                                .updateBaktConversProgress(
-                              widget.bakt.id,
-                              convers_progress + 1,
-                            );
-                            await DatabaseService.instance.updateBaktS(
-                              widget.bakt.id,
-                              true,
-                            );
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => AprakstsPage(
-                                  bakt_name: widget.bakt.name,
-                                  apraksts: widget.bakt.slimibas_apr,
+                              ).then((_) => refreshConversProgress());
+                              break;
+                            case "S":
+                              await DatabaseService.instance
+                                  .updateBaktConversProgress(
+                                widget.bakt.id,
+                                convers_progress + 1,
+                              );
+                              await DatabaseService.instance.updateBaktS(
+                                widget.bakt.id,
+                                true,
+                              );
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => AprakstsPage(
+                                    bakt_name: widget.bakt.name,
+                                    apraksts: widget.bakt.slimibas_apr,
+                                  ),
                                 ),
-                              ),
-                            ).then((_) => refreshConversProgress());
-                            break;
-                          default:
-                            print("Question type is wrong!");
-                            break;
-                        }
-                      },
-                      child: const Text("Nākamais jautājums"),
+                              ).then((_) => refreshConversProgress());
+                              break;
+                            default:
+                              print("Question type is wrong!");
+                              break;
+                          }
+                        },
+                        child: const Text("Nākamais jautājums"),
+                      ),
                     ),
                   ),
-                ListTile(
-                  title: ElevatedButton(
-                    onPressed: () async {
-                      if (isAnswering) return;
-                      if (convers_progress >= questions.length) return;
-                      await DatabaseService.instance.updateBaktConversProgress(
-                          widget.bakt.id, convers_progress + 1);
-                      refreshConversProgress();
-                    },
-                    child: const Text("Further conversation"),
-                  ),
-                ),
-                ListTile(
-                  title: ElevatedButton(
-                    onPressed: () async {
-                      if (isAnswering) return;
-                      if (convers_progress <= 0) return;
-                      await DatabaseService.instance.updateBaktConversProgress(
-                          widget.bakt.id, convers_progress - 1);
-                      refreshConversProgress();
-                    },
-                    child: const Text("Rollback conversation"),
-                  ),
-                ),
+                // ListTile(
+                //   title: ElevatedButton(
+                //     onPressed: () async {
+                //       if (isAnswering) return;
+                //       if (convers_progress >= questions.length) return;
+                //       await DatabaseService.instance.updateBaktConversProgress(
+                //           widget.bakt.id, convers_progress + 1);
+                //       refreshConversProgress();
+                //     },
+                //     child: const Text("Further conversation"),
+                //   ),
+                // ),
+                // ListTile(
+                //   title: ElevatedButton(
+                //     onPressed: () async {
+                //       if (isAnswering) return;
+                //       if (convers_progress <= 0) return;
+                //       await DatabaseService.instance.updateBaktConversProgress(
+                //           widget.bakt.id, convers_progress - 1);
+                //       refreshConversProgress();
+                //     },
+                //     child: const Text("Rollback conversation"),
+                //   ),
+                // ),
               ],
             ),
     );
@@ -272,27 +276,29 @@ class MsgExchange extends StatelessWidget {
     super.key,
     required this.theme,
     required this.question,
+    required this.bakt,
   });
 
   final ThemeData theme;
   final MCQ question;
+  final Bakterija bakt;
 
   @override
   Widget build(BuildContext context) {
     final double max_msg_width = MediaQuery.of(context).size.width * 2 / 3;
 
-    return Column(
-      children: [
-        MsgBox(
-          text: question.teikums,
-          outgoing: false,
-          filled: true,
-          color: const Color(0xFF46B1E1),
-          text_color: Colors.white,
-          max_width: max_msg_width,
-        ),
-        const SizedBox(height: 20.0),
-        if (question.pareizas_atb.isNotEmpty)
+    if (["small", "big"].contains(question.type)) {
+      return Column(
+        children: [
+          MsgBox(
+            text: question.teikums,
+            outgoing: false,
+            filled: true,
+            color: const Color(0xFF46B1E1),
+            text_color: Colors.white,
+            max_width: max_msg_width,
+          ),
+          const SizedBox(height: 20.0),
           MsgBox(
             text: question.pareizas_atb.join(", "),
             outgoing: true,
@@ -301,6 +307,41 @@ class MsgExchange extends StatelessWidget {
             text_color: Colors.white,
             max_width: max_msg_width,
           ),
+          const SizedBox(height: 20.0),
+        ],
+      );
+    }
+
+    late String apraksts;
+    if (question.type == "P") {
+      apraksts = bakt.patogen_apr;
+    } else if (question.type == "S") {
+      apraksts = bakt.slimibas_apr;
+    } else {
+      print("Question type should be P or S");
+      throw TypeError();
+    }
+    return Column(
+      children: [
+        GestureDetector(
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AprakstsPage(
+                bakt_name: bakt.name,
+                apraksts: apraksts,
+              ),
+            ),
+          ),
+          child: MsgBox(
+            text: question.teikums,
+            outgoing: false,
+            filled: true,
+            color: const Color(0xFF46B1E1),
+            text_color: Colors.white,
+            max_width: max_msg_width,
+          ),
+        ),
         const SizedBox(height: 20.0),
       ],
     );
