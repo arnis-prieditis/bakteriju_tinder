@@ -619,7 +619,7 @@ class DatabaseService {
     final db = await instance.database;
     await db.update(
       _bakterijas_table_name,
-      {"patogen_apr_available": patogen_apr_available},
+      {"patogen_apr_available": patogen_apr_available ? 1 : 0},
       where: "id = ?",
       whereArgs: [id],
     );
@@ -629,7 +629,7 @@ class DatabaseService {
     final db = await instance.database;
     await db.update(
       _bakterijas_table_name,
-      {"slimibas_apr_available": slimibas_apr_available},
+      {"slimibas_apr_available": slimibas_apr_available ? 1 : 0},
       where: "id = ?",
       whereArgs: [id],
     );
