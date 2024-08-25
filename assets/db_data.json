@@ -1,0 +1,257 @@
+{
+    "bakterijas": [
+        {
+            "id": 1,
+            "name": "Pirmā baktērija",
+            "matched": 0,
+            "patogen_apr": "# Randiņš ar Pirmo Baktēriju\nJeb patoģenēzes apraksts",
+            "slimibas_apr": "# Attiecības ar Pirmo Baktēriju\nJeb slimības gaitas apraksts",
+            "patogen_apr_available": 0,
+            "slimibas_apr_available": 0,
+            "bio": "I am veri gud",
+            "convers_progress": 0
+        },
+        {
+            "id": 2,
+            "name": "Otrā baktērija",
+            "matched": 0,
+            "patogen_apr": "# Randiņš ar Otro Baktēriju\nJeb patoģenēzes apraksts",
+            "slimibas_apr": "# Attiecības ar Otro Baktēriju\nJeb slimības gaitas apraksts",
+            "patogen_apr_available": 0,
+            "slimibas_apr_available": 0,
+            "bio": "## Hobiji\n- paukošana\n- sudoku\n---\nLorem ipsum dolor sit amet",
+            "convers_progress": 0
+        }
+    ],
+    "jautajumi": [
+        {
+            "id": 101,
+            "type": "small",
+            "teikums": "1. jautājums par baktēriju?",
+            "bakterija": 1
+        },
+        {
+            "id": 102,
+            "type": "small",
+            "teikums": "2. jautājums par baktēriju?",
+            "bakterija": 1
+        },
+        {
+            "id": 103,
+            "type": "big",
+            "teikums": "Tu esi beidzot sastapis/-usi viņu dzīvē! Izsaki komplimentu par to, kas viņai mugurā!",
+            "bakterija": 1
+        },
+        {
+            "id": 201,
+            "type": "small",
+            "teikums": "1. jautājums par 2. baktēriju",
+            "bakterija": 2
+        },
+        {
+            "id": 202,
+            "type": "small",
+            "teikums": "2. jautājums par 2. baktēriju",
+            "bakterija": 2
+        },
+        {
+            "id": 203,
+            "type": "small",
+            "teikums": "Tu man ļoti patīc ;)\nVai nevēlies aiziet uz randiņu?",
+            "bakterija": 2
+        },
+        {
+            "id": 204,
+            "type": "big",
+            "teikums": "Parādi baktērijai, ka tu esi viņu labi iepazinis(-usi)! Izvēlies vislabāko vietu randiņam!",
+            "bakterija": 2
+        },
+        {
+            "id": 205,
+            "type": "big",
+            "teikums": "Un tagad tu viņu beidzot esi sastapis(-usi)! Izsaki komplementu par to kas viņai mugurā!",
+            "bakterija": 2
+        },
+        {
+            "id": 206,
+            "type": "P",
+            "teikums": "[Randiņš ar Bakterija 2]",
+            "bakterija": 2
+        },
+        {
+            "id": 207,
+            "type": "S",
+            "teikums": "[Attiecības ar Bakterija 2]",
+            "bakterija": 2
+        },
+        {
+            "id": 208,
+            "type": "big",
+            "teikums": "Jūs esat kopā, taču dažreiz liekas, ka šī baktērija tev ir vēljoprojām sveša. Ar kādiem paņēmieniem centīsies noskaidrot, kas viņa patiesībā ir?",
+            "bakterija": 2
+        },
+        {
+            "id": 209,
+            "type": "big",
+            "teikums": "Tu tagad pazīsti viņu tuvāk, bet kaut kas ir mainījies. Tu viņu vairs neredzi tādu pašu kā agrāk un saproti, ka tu viņu vairāk nemīli. Izdomāsim vislabāko metodi kā šķirties!",
+            "bakterija": 2
+        }
+    ],
+    "atbildes": [
+        {
+            "id": 1011,
+            "teikums": "Pareizā atbilde 1",
+            "pareizi": 1,
+            "jautajums": 101
+        },
+        {
+            "id": 1012,
+            "teikums": "Nepareizā atbilde 1",
+            "pareizi": 0,
+            "jautajums": 101
+        },
+        {
+            "id": 1021,
+            "teikums": "Pareizā atbilde 2",
+            "pareizi": 1,
+            "jautajums": 102
+        },
+        {
+            "id": 1022,
+            "teikums": "Nepareizā atbilde 2",
+            "pareizi": 0,
+            "jautajums": 102
+        },
+        {
+            "id": 1031,
+            "teikums": "Tie auskari ļoti labi piestāv tavai somiņai :)",
+            "pareizi": 1,
+            "jautajums": 103
+        },
+        {
+            "id": 1032,
+            "teikums": "Tev ir ļoti lielas ausis ;)",
+            "pareizi": 0,
+            "jautajums": 103
+        },
+        {
+            "id": 1033,
+            "teikums": "Dayum!",
+            "pareizi": 0,
+            "jautajums": 103
+        },
+        {
+            "id": 1034,
+            "teikums": "*finger guns*",
+            "pareizi": 1,
+            "jautajums": 103
+        },
+        {
+            "id": 2011,
+            "teikums": "Pareizā atbilde",
+            "pareizi": 1,
+            "jautajums": 201
+        },
+        {
+            "id": 2012,
+            "teikums": "Nepareizā atbilde",
+            "pareizi": 0,
+            "jautajums": 201
+        },
+        {
+            "id": 2021,
+            "teikums": "Pareizā atbilde",
+            "pareizi": 1,
+            "jautajums": 202
+        },
+        {
+            "id": 2022,
+            "teikums": "Nepareizā atbilde",
+            "pareizi": 0,
+            "jautajums": 202
+        },
+        {
+            "id": 2031,
+            "teikums": "Protams",
+            "pareizi": 1,
+            "jautajums": 203
+        },
+        {
+            "id": 2041,
+            "teikums": "Romantiskas vakariņas",
+            "pareizi": 1,
+            "jautajums": 204
+        },
+        {
+            "id": 2042,
+            "teikums": "Uzreiz starp palagiem",
+            "pareizi": 0,
+            "jautajums": 204
+        },
+        {
+            "id": 2043,
+            "teikums": "Pastaiga parkā ar cieši sadotām rokām",
+            "pareizi": 0,
+            "jautajums": 204
+        },
+        {
+            "id": 2044,
+            "teikums": "Rondezvous slimnīcā",
+            "pareizi": 0,
+            "jautajums": 204
+        },
+        {
+            "id": 2051,
+            "teikums": "Pareizā atbilde",
+            "pareizi": 1,
+            "jautajums": 205
+        },
+        {
+            "id": 2052,
+            "teikums": "Nepareizā atbilde",
+            "pareizi": 0,
+            "jautajums": 205
+        },
+        {
+            "id": 2081,
+            "teikums": "Pareizās diagnostikas metodes",
+            "pareizi": 1,
+            "jautajums": 208
+        },
+        {
+            "id": 2082,
+            "teikums": "Nepareizās diagnostikas metodes",
+            "pareizi": 0,
+            "jautajums": 208
+        },
+        {
+            "id": 2091,
+            "teikums": "Pareizās terapijas metodes",
+            "pareizi": 1,
+            "jautajums": 209
+        },
+        {
+            "id": 2092,
+            "teikums": "Nepareizās terapijas metodes",
+            "pareizi": 0,
+            "jautajums": 209
+        }
+    ],
+    "bildes": [
+        {
+            "id": 10,
+            "path": "assets/flower1.jpeg",
+            "bakterija": 1
+        },
+        {
+            "id": 20,
+            "path": "assets/flower0.jpg",
+            "bakterija": 2
+        },
+        {
+            "id": 21,
+            "path": "assets/flower2.jpeg",
+            "bakterija": 2
+        }
+    ]
+}
