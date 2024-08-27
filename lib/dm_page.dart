@@ -86,19 +86,9 @@ class _DmPageState extends State<DmPage> {
               builder: (context) => ProfilePage(bakt_id: widget.bakt.id),
             ),
           ),
-          child: Row(
-            children: [
-              CircleAvatar(
-                radius: 20.0,
-                backgroundImage: AssetImage(widget.bakt.pics[0]),
-                backgroundColor: Colors.transparent,
-              ),
-              const SizedBox(width: 10.0),
-              Text(
-                widget.bakt.name,
-                style: title_style,
-              ),
-            ],
+          child: Text(
+            widget.bakt.name,
+            style: title_style,
           ),
         ),
       ),
@@ -128,7 +118,7 @@ class _DmPageState extends State<DmPage> {
                           filled: true,
                           color: const Color(0xFF46B1E1),
                           text_color: Colors.white,
-                          max_width: MediaQuery.of(context).size.width * 2 / 3,
+                          max_width: MediaQuery.of(context).size.width * 3 / 4 ,
                         ),
                         const SizedBox(height: 20.0),
                         for (int i = 0; i < atbilzu_varianti.length; i++)
@@ -157,7 +147,7 @@ class _DmPageState extends State<DmPage> {
                                       ? Colors.white
                                       : const Color(0xFF46B1E1),
                                   max_width:
-                                      MediaQuery.of(context).size.width * 2 / 3,
+                                      MediaQuery.of(context).size.width * 3 / 4 ,
                                 ),
                               ),
                               const SizedBox(height: 25.0),
@@ -166,7 +156,7 @@ class _DmPageState extends State<DmPage> {
                       ],
                     ),
                   ),
-                if (!isAnswering)
+                if (!isAnswering && convers_progress < questions.length)
                   ListTile(
                     title: Padding(
                       padding: const EdgeInsets.all(20.0),
@@ -241,6 +231,19 @@ class _DmPageState extends State<DmPage> {
                       ),
                     ),
                   ),
+                if (convers_progress >= questions.length)
+                  ListTile(
+                    title: ElevatedButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          "Esi veiksmīgi šķīries(-usies)!\nTagad vari atkal meklēt jaunu sirdsāķīti!",
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ),
                 // ListTile(
                 //   title: ElevatedButton(
                 //     onPressed: () async {
@@ -285,7 +288,7 @@ class MsgExchange extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double max_msg_width = MediaQuery.of(context).size.width * 2 / 3;
+    final double max_msg_width = MediaQuery.of(context).size.width * 3 / 4 ;
 
     if (["small", "big"].contains(question.type)) {
       return Column(
@@ -337,7 +340,7 @@ class MsgExchange extends StatelessWidget {
             text: question.teikums,
             outgoing: false,
             filled: true,
-            color: const Color(0xFF46B1E1),
+            color: const Color.fromARGB(255, 178, 70, 225),
             text_color: Colors.white,
             max_width: max_msg_width,
           ),

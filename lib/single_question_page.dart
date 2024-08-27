@@ -77,8 +77,7 @@ class _SingleQuestionPageState extends State<SingleQuestionPage> {
         ),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
           children: [
             Padding(
               padding: const EdgeInsets.all(15.0),
@@ -108,13 +107,17 @@ class _SingleQuestionPageState extends State<SingleQuestionPage> {
                   },
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5.0),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 5.0,
+                    horizontal: 15.0,
+                  ),
                   child: Container(
                     width: MediaQuery.of(context).size.width - 30.0,
                     decoration: BoxDecoration(
                       color: (!selected_answers.contains(atbilzu_varianti[i]))
                           ? Colors.white
-                          : (widget.question.pareizas_atb.contains(atbilzu_varianti[i]))
+                          : (widget.question.pareizas_atb
+                                  .contains(atbilzu_varianti[i]))
                               ? Colors.green
                               : Colors.red,
                       borderRadius:

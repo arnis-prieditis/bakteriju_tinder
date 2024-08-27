@@ -73,7 +73,7 @@ class MsgBox extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 text,
-                textAlign: outgoing ? TextAlign.right : TextAlign.left,
+                textAlign: TextAlign.left,
                 style: style,
               ),
             ),

@@ -18,6 +18,9 @@ class AprakstsPage extends StatelessWidget {
       color: theme.colorScheme.onPrimaryContainer,
       fontWeight: FontWeight.bold,
     );
+    final style_p = theme.textTheme.bodyMedium!.copyWith(
+      fontWeight: FontWeight.bold,
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -27,7 +30,11 @@ class AprakstsPage extends StatelessWidget {
         ),
         backgroundColor: theme.colorScheme.primaryContainer,
       ),
-      body: Markdown(data: apraksts),
+      body: Markdown(
+        data: apraksts,
+        styleSheet: MarkdownStyleSheet(p: style_p),
+        padding: const EdgeInsets.all(25.0),
+      ),
     );
   }
 }

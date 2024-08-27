@@ -52,14 +52,17 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Column(
         children: [
-          ElevatedButton(
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const MatchFinderPage(),
-              ),
-            ).then((_) => refreshMatchedList()),
-            child: const Text("Find a Match!"),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: ElevatedButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const MatchFinderPage(),
+                ),
+              ).then((_) => refreshMatchedList()),
+              child: const Text("Find a Match!"),
+            ),
           ),
           const Padding(
             padding: EdgeInsets.all(8.0),
