@@ -5,6 +5,7 @@ import 'dart:math';
 import 'profile_page.dart';
 import 'single_question_page.dart';
 import 'apraksts_page.dart';
+import 'main.dart';
 
 class DmPage extends StatefulWidget {
   final Bakterija bakt;
@@ -15,7 +16,7 @@ class DmPage extends StatefulWidget {
   State<DmPage> createState() => _DmPageState();
 }
 
-class _DmPageState extends State<DmPage> {
+class _DmPageState extends State<DmPage> with RouteAware {
   late List<MCQ> questions;
   bool isLoading = false;
   late int convers_progress;
@@ -23,6 +24,7 @@ class _DmPageState extends State<DmPage> {
   late List<String> atbilzu_varianti;
   List<String> selected_answers = [];
   int correct_answers_selected = 0;
+  final ScrollController _controller = ScrollController();
 
   @override
   void initState() {
@@ -34,7 +36,24 @@ class _DmPageState extends State<DmPage> {
   @override
   void dispose() {
     DatabaseService.instance.close();
+    routeObserver.unsubscribe(this);
     super.dispose();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    routeObserver.subscribe(this, ModalRoute.of(context)!);
+  }
+
+  @override
+  void didPush() {
+    scrollDown();
+  }
+
+  @override
+  void didPopNext() {
+    scrollDown();
   }
 
   Future<void> refreshConversProgress() async {
@@ -60,6 +79,13 @@ class _DmPageState extends State<DmPage> {
         selected_answers.clear();
       });
       refreshConversProgress();
+    }
+  }
+
+  void scrollDown() async {
+    await Future.delayed(const Duration(milliseconds: 100));
+    if (_controller.hasClients) {
+      _controller.jumpTo(_controller.position.maxScrollExtent);
     }
   }
 
@@ -92,6 +118,7 @@ class _DmPageState extends State<DmPage> {
               child: CircularProgressIndicator(),
             )
           : ListView(
+              controller: _controller,
               children: [
                 for (int i = 0;
                     i < min(convers_progress, questions.length);

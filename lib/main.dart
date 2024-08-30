@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'home_page.dart';
 
+final RouteObserver<ModalRoute<void>> routeObserver =
+    RouteObserver<ModalRoute<void>>();
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MainApp());
@@ -23,6 +26,7 @@ class MainApp extends StatelessWidget {
         ),
       ),
       home: const HomePage(),
+      navigatorObservers: <NavigatorObserver>[routeObserver],
     );
   }
 }
