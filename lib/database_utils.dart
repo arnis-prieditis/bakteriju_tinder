@@ -112,6 +112,7 @@ class DatabaseService {
   static const String _mcq_table_name = "MCQ";
   static const String _atbildes_table_name = "Atbildes";
   static const String _pics_table_name = "Pics";
+  static const int new_database_version = 2;
 
   DatabaseService._init();
 
@@ -125,16 +126,23 @@ class DatabaseService {
     // print("initDatabase called");
     final database_dir = await getDatabasesPath();
     final database_path = join(database_dir, "bakterijas.db");
-    final database = await openDatabase(
-      database_path,
-      onCreate: _createDatabase,
-      version: 1,
-    );
+    var database = await openDatabase(database_path);
+    // if DB doesn't exist, version will be 0
+    if (await database.getVersion() != new_database_version) {
+      database.close();
+      await deleteDatabase(database_path);
+      database = await openDatabase(
+        database_path,
+        onCreate: _createDatabase,
+        version: new_database_version,
+      );
+    }
     // print("initDatabase finished");
     return database;
   }
 
   Future<void> _createDatabase(Database db, int version) async {
+    // print("_createDatabase called");
     await db.execute('''
       CREATE TABLE $_bakterijas_table_name(
         id INTEGER PRIMARY KEY,
