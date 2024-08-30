@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'database_utils.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'apraksts_page.dart';
+import 'answered_questions_page.dart';
 
 class ProfilePage extends StatefulWidget {
   final int bakt_id;
@@ -75,22 +76,22 @@ class _ProfilePageState extends State<ProfilePage> {
                       double glob_pos_x = details.globalPosition.dx;
                       double dev_width = MediaQuery.of(context).size.width;
                       if (glob_pos_x >= (dev_width / 2)) {
-                        print("Tapped on right");
+                        // print("Tapped on right");
                         if (curr_pic != db_bakt.pics.last) {
                           int next_index = db_bakt.pics.indexOf(curr_pic) + 1;
                           setState(() {
                             curr_pic = db_bakt.pics[next_index];
                           });
-                          print("Should update pic");
+                          // print("Should update pic");
                         }
                       } else {
-                        print("Tapped on left");
+                        // print("Tapped on left");
                         if (curr_pic != db_bakt.pics.first) {
                           int prev_index = db_bakt.pics.indexOf(curr_pic) - 1;
                           setState(() {
                             curr_pic = db_bakt.pics[prev_index];
                           });
-                          print("Should update pic");
+                          // print("Should update pic");
                         }
                       }
                     },
@@ -98,6 +99,20 @@ class _ProfilePageState extends State<ProfilePage> {
                       curr_pic,
                       fit: BoxFit.fitWidth,
                     ),
+                  ),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.info),
+                  title: GestureDetector(
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AnsweredQuestionsPage(
+                          bakt_id: widget.bakt_id,
+                        ),
+                      ),
+                    ),
+                    child: const Text("Atbildētie jautājumi"),
                   ),
                 ),
                 if (db_bakt.patogen_apr_available)
@@ -108,8 +123,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => AprakstsPage(
-                              bakt_name: db_bakt.name,
-                              apraksts: db_bakt.patogen_apr),
+                            bakt_name: db_bakt.name,
+                            apraksts: db_bakt.patogen_apr,
+                          ),
                         ),
                       ),
                       child: const Text("Patoģenēzes apraksts"),
@@ -123,8 +139,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => AprakstsPage(
-                              bakt_name: db_bakt.name,
-                              apraksts: db_bakt.slimibas_apr),
+                            bakt_name: db_bakt.name,
+                            apraksts: db_bakt.slimibas_apr,
+                          ),
                         ),
                       ),
                       child: const Text("Slimības gaitas apraksts"),

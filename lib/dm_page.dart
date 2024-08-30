@@ -96,13 +96,14 @@ class _DmPageState extends State<DmPage> {
                 for (int i = 0;
                     i < min(convers_progress, questions.length);
                     i++)
-                  ListTile(
-                    title: MsgExchange(
-                      theme: theme,
-                      question: questions[i],
-                      bakt: widget.bakt,
+                  if (questions[i].type != "big")
+                    ListTile(
+                      title: MsgExchange(
+                        theme: theme,
+                        question: questions[i],
+                        bakt: widget.bakt,
+                      ),
                     ),
-                  ),
                 if (isAnswering)
                   ListTile(
                     title: Column(

@@ -91,23 +91,23 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
                     double glob_pos_x = details.globalPosition.dx;
                     double dev_width = MediaQuery.of(context).size.width;
                     if (glob_pos_x >= (dev_width/2)) {
-                      print("Tapped on right");
+                      // print("Tapped on right");
                       if (curr_pic != curr_pot_match!.pics.last) {
                         int next_index = curr_pot_match!.pics.indexOf(curr_pic!) + 1;
                         setState(() {
                           curr_pic = curr_pot_match!.pics[next_index];
                         });
-                        print("Should update pic");
+                        // print("Should update pic");
                       }
                     }
                     else {
-                      print("Tapped on left");
+                      // print("Tapped on left");
                       if (curr_pic != curr_pot_match!.pics.first) {
                         int prev_index = curr_pot_match!.pics.indexOf(curr_pic!) - 1;
                         setState(() {
                           curr_pic = curr_pot_match!.pics[prev_index];
                         });
-                        print("Should update pic");
+                        // print("Should update pic");
                       }
                     }
                   },
