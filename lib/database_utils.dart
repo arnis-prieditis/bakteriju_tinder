@@ -227,6 +227,33 @@ class DatabaseService {
     );
   }
 
+  Future<int> getBaktConversProgress(int id) async {
+    final db = await instance.database;
+    final List<Map<String, Object?>> baktMaps = await db.query(
+      _bakterijas_table_name,
+      where: "id = ?",
+      whereArgs: [id],
+    );
+    final int convers_progress = baktMaps[0]["convers_progress"] as int;
+    return convers_progress;
+  }
+
+  Future<void> incrementBaktConversProgress(int id) async {
+    final db = await instance.database;
+    final List<Map<String, Object?>> baktMaps = await db.query(
+      _bakterijas_table_name,
+      where: "id = ?",
+      whereArgs: [id],
+    );
+    final int curr_convers_progress = baktMaps[0]["convers_progress"] as int;
+    await db.update(
+      _bakterijas_table_name,
+      {"convers_progress": curr_convers_progress + 1},
+      where: "id = ?",
+      whereArgs: [id],
+    );
+  }
+
   Future<void> updateBaktP(int id, bool patogen_apr_available) async {
     final db = await instance.database;
     await db.update(
@@ -245,17 +272,6 @@ class DatabaseService {
       where: "id = ?",
       whereArgs: [id],
     );
-  }
-
-  Future<int> getBaktConversProgress(int id) async {
-    final db = await instance.database;
-    final List<Map<String, Object?>> baktMaps = await db.query(
-      _bakterijas_table_name,
-      where: "id = ?",
-      whereArgs: [id],
-    );
-    final int convers_progress = baktMaps[0]["convers_progress"] as int;
-    return convers_progress;
   }
 
   Future<List<MCQ>> getMcqsOfBakterija(int bakt_id) async {

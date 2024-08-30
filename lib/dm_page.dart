@@ -45,20 +45,15 @@ class _DmPageState extends State<DmPage> {
   }
 
   Future<void> onAnswerTapped(String answer) async {
-    setState(() {
-      selected_answers.add(answer);
-    });
+    if (selected_answers.contains(answer)) return;
+    setState(() => selected_answers.add(answer));
     if (questions[convers_progress].pareizas_atb.contains(answer)) {
-      setState(() {
-        correct_answers_selected++;
-      });
+      correct_answers_selected++;
     }
     if (correct_answers_selected >=
         questions[convers_progress].pareizas_atb.length) {
-      await DatabaseService.instance.updateBaktConversProgress(
-        widget.bakt.id,
-        convers_progress + 1,
-      );
+      await DatabaseService.instance
+          .incrementBaktConversProgress(widget.bakt.id);
       setState(() {
         isAnswering = false;
         correct_answers_selected = 0;
@@ -118,7 +113,7 @@ class _DmPageState extends State<DmPage> {
                           filled: true,
                           color: const Color(0xFF46B1E1),
                           text_color: Colors.white,
-                          max_width: MediaQuery.of(context).size.width * 3 / 4 ,
+                          max_width: MediaQuery.of(context).size.width * 3 / 4,
                         ),
                         const SizedBox(height: 20.0),
                         for (int i = 0; i < atbilzu_varianti.length; i++)
@@ -147,7 +142,7 @@ class _DmPageState extends State<DmPage> {
                                       ? Colors.white
                                       : const Color(0xFF46B1E1),
                                   max_width:
-                                      MediaQuery.of(context).size.width * 3 / 4 ,
+                                      MediaQuery.of(context).size.width * 3 / 4,
                                 ),
                               ),
                               const SizedBox(height: 25.0),
@@ -176,8 +171,7 @@ class _DmPageState extends State<DmPage> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => SingleQuestionPage(
-                                    question: questions[convers_progress],
-                                    bakt_name: widget.bakt.name,
+                                    bakt: widget.bakt,
                                   ),
                                 ),
                               ).then((_) => refreshConversProgress());
@@ -288,7 +282,7 @@ class MsgExchange extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double max_msg_width = MediaQuery.of(context).size.width * 3 / 4 ;
+    final double max_msg_width = MediaQuery.of(context).size.width * 3 / 4;
 
     if (["small", "big"].contains(question.type)) {
       return Column(

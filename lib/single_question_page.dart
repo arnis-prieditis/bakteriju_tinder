@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'database_utils.dart';
-import 'dart:io';
 
 class SingleQuestionPage extends StatefulWidget {
-  final MCQ question;
-  final String bakt_name;
+  final Bakterija bakt;
 
   const SingleQuestionPage({
     super.key,
-    required this.question,
-    required this.bakt_name,
+    required this.bakt,
   });
 
   @override
@@ -17,13 +14,17 @@ class SingleQuestionPage extends StatefulWidget {
 }
 
 class _SingleQuestionPageState extends State<SingleQuestionPage> {
+  bool isLoading = true;
   List<String> selected_answers = [];
   int correct_answers_selected = 0;
-  late List<String> atbilzu_varianti = widget.question.getAtbilzuVarianti();
+  late MCQ question;
+  late List<String> atbilzu_varianti;
+  bool answered = false;
 
   @override
   void initState() {
     super.initState();
+    getNextQuestion();
   }
 
   @override
@@ -32,23 +33,40 @@ class _SingleQuestionPageState extends State<SingleQuestionPage> {
     super.dispose();
   }
 
-  Future<bool> onAnswerTapped(answer) async {
-    setState(() {
-      selected_answers.add(answer);
-      if (widget.question.pareizas_atb.contains(answer)) {
-        correct_answers_selected++;
-      }
-    });
-    if (correct_answers_selected >= widget.question.pareizas_atb.length) {
-      print("Visas pareizās atbildes atzīmētas");
-      int bakt_id = widget.question.bakterija;
-      int curr_conv_progress =
-          await DatabaseService.instance.getBaktConversProgress(bakt_id);
-      await DatabaseService.instance
-          .updateBaktConversProgress(bakt_id, curr_conv_progress + 1);
-      return true;
+  void getNextQuestion() async {
+    setState(() => isLoading = true);
+    int convers_progress =
+        await DatabaseService.instance.getBaktConversProgress(widget.bakt.id);
+    if (convers_progress >= widget.bakt.questions.length) {
+      // the last question has been answered
+      Navigator.pop(context);
+      return;
     }
-    return false;
+    question = widget.bakt.questions[convers_progress];
+    if (question.type != "big") {
+      Navigator.pop(context);
+    }
+    setState(() {
+      atbilzu_varianti = question.getAtbilzuVarianti();
+      selected_answers.clear();
+      correct_answers_selected = 0;
+      answered = false;
+      isLoading = false;
+    });
+  }
+
+  Future<void> onAnswerTapped(String answer) async {
+    if (selected_answers.contains(answer)) return;
+    setState(() => selected_answers.add(answer));
+    if (question.pareizas_atb.contains(answer)) {
+      correct_answers_selected++;
+    }
+    if (!answered && correct_answers_selected >= question.pareizas_atb.length) {
+      // print("Visas pareizās atbildes atzīmētas");
+      int bakt_id = question.bakterija;
+      await DatabaseService.instance.incrementBaktConversProgress(bakt_id);
+      setState(() => answered = true);
+    }
   }
 
   @override
@@ -72,73 +90,82 @@ class _SingleQuestionPageState extends State<SingleQuestionPage> {
       appBar: AppBar(
         backgroundColor: theme.colorScheme.primaryContainer,
         title: Text(
-          widget.bakt_name,
+          widget.bakt.name,
           style: style_title,
         ),
       ),
-      body: Center(
-        child: ListView(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Container(
-                decoration: const BoxDecoration(
-                  color: Color(0xFFFF9966),
-                  borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Text(
-                    widget.question.teikums,
-                    style: style_question,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-            ),
-            for (int i = 0; i < atbilzu_varianti.length; i++)
-              GestureDetector(
-                onTap: () => onAnswerTapped(atbilzu_varianti[i]).then(
-                  (ans_correct) {
-                    if (ans_correct) {
-                      sleep(Durations.extralong1);
-                      Navigator.pop(context);
-                    }
-                  },
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 5.0,
-                    horizontal: 15.0,
-                  ),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width - 30.0,
-                    decoration: BoxDecoration(
-                      color: (!selected_answers.contains(atbilzu_varianti[i]))
-                          ? Colors.white
-                          : (widget.question.pareizas_atb
-                                  .contains(atbilzu_varianti[i]))
-                              ? Colors.green
-                              : Colors.red,
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(10.0)),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        atbilzu_varianti[i],
-                        style: (selected_answers.contains(atbilzu_varianti[i]))
-                            ? style_ans_selected
-                            : style_ans,
-                        textAlign: TextAlign.center,
+      body: isLoading
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : Center(
+              child: ListView(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color:
+                            answered ? Colors.green : const Color(0xFFFF9966),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(20.0)),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text(
+                          question.teikums,
+                          style: style_question,
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     ),
                   ),
-                ),
+                  for (int i = 0; i < atbilzu_varianti.length; i++)
+                    GestureDetector(
+                      onTap: () => onAnswerTapped(atbilzu_varianti[i]),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 5.0,
+                          horizontal: 15.0,
+                        ),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width - 30.0,
+                          decoration: BoxDecoration(
+                            color: (!selected_answers
+                                    .contains(atbilzu_varianti[i]))
+                                ? Colors.white
+                                : (question.pareizas_atb
+                                        .contains(atbilzu_varianti[i]))
+                                    ? Colors.green
+                                    : Colors.red,
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10.0)),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              atbilzu_varianti[i],
+                              style: (selected_answers
+                                      .contains(atbilzu_varianti[i]))
+                                  ? style_ans_selected
+                                  : style_ans,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  if (answered)
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: ElevatedButton(
+                        onPressed: getNextQuestion,
+                        child: const Text("Nākamais jautājums"),
+                      ),
+                    ),
+                ],
               ),
-          ],
-        ),
-      ),
+            ),
     );
   }
 }
