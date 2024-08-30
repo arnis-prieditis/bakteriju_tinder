@@ -30,10 +30,23 @@ class AprakstsPage extends StatelessWidget {
         ),
         backgroundColor: theme.colorScheme.primaryContainer,
       ),
-      body: Markdown(
-        data: apraksts,
-        styleSheet: MarkdownStyleSheet(p: style_p),
-        padding: const EdgeInsets.all(25.0),
+      body: Column(
+        children: [
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              maxHeight: MediaQuery.of(context).size.height * 7 / 10,
+            ),
+            child: Markdown(
+              data: apraksts,
+              styleSheet: MarkdownStyleSheet(p: style_p),
+              padding: const EdgeInsets.all(25.0),
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text("Turpināt"),
+          ),
+        ],
       ),
     );
   }
