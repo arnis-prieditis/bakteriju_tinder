@@ -16,7 +16,6 @@ class _ProfilePageState extends State<ProfilePage> {
   late Bakterija db_bakt;
   int curr_pic_index = 0;
   bool isLoading = true;
-  double pan_start_x_coord = 0;
 
   @override
   void initState() {
@@ -74,29 +73,6 @@ class _ProfilePageState extends State<ProfilePage> {
               children: [
                 ListTile(
                   title: GestureDetector(
-                    onPanStart: (details) =>
-                        pan_start_x_coord = details.globalPosition.dx,
-                    onPanEnd: (details) {
-                      double delta_x =
-                          details.globalPosition.dx - pan_start_x_coord;
-                      // Swiping in right direction => go left
-                      if (delta_x > 0) {
-                        if (curr_pic_index != 0) {
-                          setState(() {
-                            curr_pic_index--;
-                          });
-                        }
-                      }
-                      // Swiping in left direction => go right
-                      if (delta_x < 0) {
-                        if (curr_pic_index != db_bakt.pics.length - 1) {
-                          setState(() {
-                            curr_pic_index++;
-                          });
-                        }
-                      }
-                      pan_start_x_coord = 0;
-                    },
                     onTapUp: (details) {
                       double glob_pos_x = details.globalPosition.dx;
                       double dev_width = MediaQuery.of(context).size.width;

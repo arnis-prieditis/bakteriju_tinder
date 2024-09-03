@@ -50,6 +50,16 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
     return potential_match;
   }
 
+  Future<void> match() async {
+    await DatabaseService.instance.updateBaktMatched(curr_pot_match!.id, true);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => MatchedBannerPage(bakt: curr_pot_match!),
+      ),
+    ).then((_) => refreshNotMatchedList());
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -96,22 +106,16 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
                         onPanEnd: (details) {
                           double delta_x =
                               details.globalPosition.dx - pan_start_x_coord;
-                          // Swiping in right direction => go left
+                          // Swiping in right direction => match with bakterija
                           if (delta_x > 0) {
-                            if (curr_pic_index != 0) {
-                              setState(() {
-                                curr_pic_index--;
-                              });
-                            }
+                            match();
                           }
-                          // Swiping in left direction => go right
+                          // Swiping in left direction => dismiss potential match
                           if (delta_x < 0) {
-                            if (curr_pic_index !=
-                                curr_pot_match!.pics.length - 1) {
-                              setState(() {
-                                curr_pic_index++;
-                              });
-                            }
+                            setState(() {
+                              curr_pot_match = getNewPotentialMatch();
+                              curr_pic_index = 0;
+                            });
                           }
                           pan_start_x_coord = 0;
                         },
@@ -167,12 +171,10 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           ElevatedButton.icon(
-                            onPressed: () {
-                              setState(() {
-                                curr_pot_match = getNewPotentialMatch();
-                                curr_pic_index = 0;
-                              });
-                            },
+                            onPressed: () => setState(() {
+                              curr_pot_match = getNewPotentialMatch();
+                              curr_pic_index = 0;
+                            }),
                             label: const Icon(Icons.close),
                             style: const ButtonStyle(
                               backgroundColor:
@@ -182,17 +184,7 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
                             ),
                           ),
                           ElevatedButton.icon(
-                            onPressed: () async {
-                              await DatabaseService.instance
-                                  .updateBaktMatched(curr_pot_match!.id, true);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      MatchedBannerPage(bakt: curr_pot_match!),
-                                ),
-                              ).then((_) => refreshNotMatchedList());
-                            },
+                            onPressed: match,
                             label: const Icon(Icons.favorite),
                             style: const ButtonStyle(
                               backgroundColor:
