@@ -14,7 +14,7 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   late Bakterija db_bakt;
-  late String curr_pic;
+  int curr_pic_index = 0;
   bool isLoading = true;
 
   @override
@@ -32,7 +32,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Future<void> initBakt() async {
     setState(() => isLoading = true);
     db_bakt = await DatabaseService.instance.getBakterija(widget.bakt_id);
-    curr_pic = db_bakt.pics[0];
+    curr_pic_index = 0;
     setState(() => isLoading = false);
   }
 
@@ -77,26 +77,24 @@ class _ProfilePageState extends State<ProfilePage> {
                       double dev_width = MediaQuery.of(context).size.width;
                       if (glob_pos_x >= (dev_width / 2)) {
                         // print("Tapped on right");
-                        if (curr_pic != db_bakt.pics.last) {
-                          int next_index = db_bakt.pics.indexOf(curr_pic) + 1;
+                        if (curr_pic_index != db_bakt.pics.length - 1) {
                           setState(() {
-                            curr_pic = db_bakt.pics[next_index];
+                            curr_pic_index++;
                           });
                           // print("Should update pic");
                         }
                       } else {
                         // print("Tapped on left");
-                        if (curr_pic != db_bakt.pics.first) {
-                          int prev_index = db_bakt.pics.indexOf(curr_pic) - 1;
+                        if (curr_pic_index != 0) {
                           setState(() {
-                            curr_pic = db_bakt.pics[prev_index];
+                            curr_pic_index--;
                           });
                           // print("Should update pic");
                         }
                       }
                     },
                     child: Image.asset(
-                      curr_pic,
+                      db_bakt.pics[curr_pic_index],
                       fit: BoxFit.fitWidth,
                     ),
                   ),

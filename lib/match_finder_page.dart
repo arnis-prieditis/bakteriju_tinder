@@ -14,7 +14,7 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
   late List<Bakterija> bakt_not_matched_list;
   bool isLoading = false;
   Bakterija? curr_pot_match;
-  late String? curr_pic;
+  int curr_pic_index = 0;
 
   @override
   void initState() {
@@ -32,7 +32,7 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
     setState(() => isLoading = true);
     bakt_not_matched_list = await DatabaseService.instance.getNotMatchedBakterijas();
     curr_pot_match = getNewPotentialMatch();
-    curr_pic = curr_pot_match?.pics[0];
+    curr_pic_index = 0;
     setState(() => isLoading = false);
   }
 
@@ -92,27 +92,25 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
                     double dev_width = MediaQuery.of(context).size.width;
                     if (glob_pos_x >= (dev_width/2)) {
                       // print("Tapped on right");
-                      if (curr_pic != curr_pot_match!.pics.last) {
-                        int next_index = curr_pot_match!.pics.indexOf(curr_pic!) + 1;
+                      if (curr_pic_index != curr_pot_match!.pics.length - 1) {
                         setState(() {
-                          curr_pic = curr_pot_match!.pics[next_index];
+                          curr_pic_index++;
                         });
                         // print("Should update pic");
                       }
                     }
                     else {
                       // print("Tapped on left");
-                      if (curr_pic != curr_pot_match!.pics.first) {
-                        int prev_index = curr_pot_match!.pics.indexOf(curr_pic!) - 1;
+                      if (curr_pic_index != 0) {
                         setState(() {
-                          curr_pic = curr_pot_match!.pics[prev_index];
+                          curr_pic_index--;
                         });
                         // print("Should update pic");
                       }
                     }
                   },
                   child: Image.asset(
-                    curr_pic!,
+                    curr_pot_match!.pics[curr_pic_index],
                     fit: BoxFit.fitWidth,
                   ),
                 ),
@@ -125,7 +123,7 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
                       onPressed: () {
                         setState(() {
                           curr_pot_match = getNewPotentialMatch();
-                          curr_pic = curr_pot_match!.pics[0];
+                          curr_pic_index = 0;
                         });
                       },
                       label: const Icon(Icons.close),
