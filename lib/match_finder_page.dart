@@ -15,6 +15,7 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
   bool isLoading = false;
   Bakterija? curr_pot_match;
   int curr_pic_index = 0;
+  double pan_start_x_coord = 0;
 
   @override
   void initState() {
@@ -30,7 +31,8 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
 
   Future<void> refreshNotMatchedList() async {
     setState(() => isLoading = true);
-    bakt_not_matched_list = await DatabaseService.instance.getNotMatchedBakterijas();
+    bakt_not_matched_list =
+        await DatabaseService.instance.getNotMatchedBakterijas();
     curr_pot_match = getNewPotentialMatch();
     curr_pic_index = 0;
     setState(() => isLoading = false);
@@ -69,99 +71,149 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
         centerTitle: true,
         backgroundColor: theme.colorScheme.primaryContainer,
       ),
-      body: isLoading ?
-        const Center(
-          child: CircularProgressIndicator(),
-        )
-        : bakt_not_matched_list.isEmpty ? 
-          const Center(
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 50.0),
-              child: Text(
-                "You've already matched with everyone, you fuckboy!",
-                textAlign: TextAlign.center,
-              ),
-            ),
-          )
-          : ListView(
-            children: [
-              ListTile(
-                title: GestureDetector(
-                  onTapUp: (details) {
-                    double glob_pos_x = details.globalPosition.dx;
-                    double dev_width = MediaQuery.of(context).size.width;
-                    if (glob_pos_x >= (dev_width/2)) {
-                      // print("Tapped on right");
-                      if (curr_pic_index != curr_pot_match!.pics.length - 1) {
-                        setState(() {
-                          curr_pic_index++;
-                        });
-                        // print("Should update pic");
-                      }
-                    }
-                    else {
-                      // print("Tapped on left");
-                      if (curr_pic_index != 0) {
-                        setState(() {
-                          curr_pic_index--;
-                        });
-                        // print("Should update pic");
-                      }
-                    }
-                  },
-                  child: Image.asset(
-                    curr_pot_match!.pics[curr_pic_index],
-                    fit: BoxFit.fitWidth,
+      body: isLoading
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : bakt_not_matched_list.isEmpty
+              ? const Center(
+                  child: Padding(
+                    padding:
+                        EdgeInsets.symmetric(vertical: 0.0, horizontal: 50.0),
+                    child: Text(
+                      "You've already matched with everyone, you fuckboy!",
+                      textAlign: TextAlign.center,
+                    ),
                   ),
-                ),
-              ),
-              ListTile(
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                )
+              : ListView(
                   children: [
-                    ElevatedButton.icon(
-                      onPressed: () {
-                        setState(() {
-                          curr_pot_match = getNewPotentialMatch();
-                          curr_pic_index = 0;
-                        });
-                      },
-                      label: const Icon(Icons.close),
-                      style: const ButtonStyle(
-                        backgroundColor: WidgetStatePropertyAll(Colors.red),
-                        foregroundColor: WidgetStatePropertyAll(Colors.white),
+                    ListTile(
+                      title: GestureDetector(
+                        onPanStart: (details) =>
+                            pan_start_x_coord = details.globalPosition.dx,
+                        onPanEnd: (details) {
+                          double delta_x =
+                              details.globalPosition.dx - pan_start_x_coord;
+                          // Swiping in right direction => go left
+                          if (delta_x > 0) {
+                            if (curr_pic_index != 0) {
+                              setState(() {
+                                curr_pic_index--;
+                              });
+                            }
+                          }
+                          // Swiping in left direction => go right
+                          if (delta_x < 0) {
+                            if (curr_pic_index !=
+                                curr_pot_match!.pics.length - 1) {
+                              setState(() {
+                                curr_pic_index++;
+                              });
+                            }
+                          }
+                          pan_start_x_coord = 0;
+                        },
+                        onTapUp: (details) {
+                          double glob_pos_x = details.globalPosition.dx;
+                          double dev_width = MediaQuery.of(context).size.width;
+                          if (glob_pos_x >= (dev_width / 2)) {
+                            // print("Tapped on right");
+                            if (curr_pic_index !=
+                                curr_pot_match!.pics.length - 1) {
+                              setState(() {
+                                curr_pic_index++;
+                              });
+                              // print("Should update pic");
+                            }
+                          } else {
+                            // print("Tapped on left");
+                            if (curr_pic_index != 0) {
+                              setState(() {
+                                curr_pic_index--;
+                              });
+                              // print("Should update pic");
+                            }
+                          }
+                        },
+                        child: Image.asset(
+                          curr_pot_match!.pics[curr_pic_index],
+                          fit: BoxFit.fitWidth,
+                        ),
                       ),
                     ),
-                    ElevatedButton.icon(
-                      onPressed: () async {
-                        await DatabaseService.instance.updateBaktMatched(curr_pot_match!.id, true);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => MatchedBannerPage(bakt: curr_pot_match!),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        for (int i = 0; i < curr_pot_match!.pics.length; i++)
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 5),
+                            child: Container(
+                              width: 8,
+                              height: 8,
+                              decoration: BoxDecoration(
+                                color: i == curr_pic_index
+                                    ? Colors.red
+                                    : const Color.fromRGBO(196, 196, 196, 1),
+                                shape: BoxShape.circle,
+                              ),
+                            ),
                           ),
-                        ).then((_) => refreshNotMatchedList());
-                      },
-                      label: const Icon(Icons.favorite),
-                      style: const ButtonStyle(
-                        backgroundColor: WidgetStatePropertyAll(Colors.green),
-                        foregroundColor: WidgetStatePropertyAll(Colors.white),
+                      ],
+                    ),
+                    ListTile(
+                      title: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          ElevatedButton.icon(
+                            onPressed: () {
+                              setState(() {
+                                curr_pot_match = getNewPotentialMatch();
+                                curr_pic_index = 0;
+                              });
+                            },
+                            label: const Icon(Icons.close),
+                            style: const ButtonStyle(
+                              backgroundColor:
+                                  WidgetStatePropertyAll(Colors.red),
+                              foregroundColor:
+                                  WidgetStatePropertyAll(Colors.white),
+                            ),
+                          ),
+                          ElevatedButton.icon(
+                            onPressed: () async {
+                              await DatabaseService.instance
+                                  .updateBaktMatched(curr_pot_match!.id, true);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      MatchedBannerPage(bakt: curr_pot_match!),
+                                ),
+                              ).then((_) => refreshNotMatchedList());
+                            },
+                            label: const Icon(Icons.favorite),
+                            style: const ButtonStyle(
+                              backgroundColor:
+                                  WidgetStatePropertyAll(Colors.green),
+                              foregroundColor:
+                                  WidgetStatePropertyAll(Colors.white),
+                            ),
+                          ),
+                        ],
                       ),
+                    ),
+                    ListTile(
+                      title: Text(
+                        curr_pot_match!.name,
+                        style: style1,
+                      ),
+                    ),
+                    ListTile(
+                      title: MarkdownBody(data: curr_pot_match!.bio),
                     ),
                   ],
                 ),
-              ),
-              ListTile(
-                title: Text(
-                  curr_pot_match!.name,
-                  style: style1,
-                ),
-              ),
-              ListTile(
-                title: MarkdownBody(data: curr_pot_match!.bio),
-              ),
-            ],
-          ),
     );
   }
 }
