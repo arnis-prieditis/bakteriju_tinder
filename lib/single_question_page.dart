@@ -76,7 +76,7 @@ class _SingleQuestionPageState extends State<SingleQuestionPage> {
       color: theme.colorScheme.onPrimaryContainer,
     );
     final style_ans = theme.textTheme.bodyLarge!.copyWith(
-      color: const Color(0xFF46B1E1),
+      color: const Color.fromARGB(255, 0, 100, 164),
     );
     final style_ans_selected = theme.textTheme.bodyLarge!.copyWith(
       color: Colors.white,

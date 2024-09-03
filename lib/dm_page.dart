@@ -168,7 +168,7 @@ class _DmPageState extends State<DmPage> with RouteAware {
                                   text_color: (selected_answers
                                           .contains(atbilzu_varianti[i]))
                                       ? Colors.white
-                                      : const Color(0xFF46B1E1),
+                                      : const Color.fromARGB(255, 0, 100, 164),
                                   max_width:
                                       MediaQuery.of(context).size.width * 3 / 4,
                                 ),

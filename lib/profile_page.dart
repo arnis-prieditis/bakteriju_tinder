@@ -55,6 +55,7 @@ class _ProfilePageState extends State<ProfilePage> {
       color: theme.colorScheme.primary,
       fontWeight: FontWeight.bold,
     );
+    final style_bio = theme.textTheme.bodyLarge;
 
     return Scaffold(
       appBar: AppBar(
@@ -195,7 +196,10 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 ListTile(
-                  title: MarkdownBody(data: db_bakt.bio),
+                  title: MarkdownBody(
+                    data: db_bakt.bio,
+                    styleSheet: MarkdownStyleSheet(p: style_bio),
+                  ),
                 ),
                 ListTile(
                   title: ElevatedButton(

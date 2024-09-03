@@ -61,6 +61,7 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
       color: theme.colorScheme.primary,
       fontWeight: FontWeight.bold,
     );
+    final style_bio = theme.textTheme.bodyLarge;
 
     return Scaffold(
       appBar: AppBar(
@@ -210,7 +211,10 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
                       ),
                     ),
                     ListTile(
-                      title: MarkdownBody(data: curr_pot_match!.bio),
+                      title: MarkdownBody(
+                        data: curr_pot_match!.bio,
+                        styleSheet: MarkdownStyleSheet(p: style_bio),
+                      ),
                     ),
                   ],
                 ),

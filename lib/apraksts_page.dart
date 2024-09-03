@@ -18,7 +18,7 @@ class AprakstsPage extends StatelessWidget {
       color: theme.colorScheme.onPrimaryContainer,
       fontWeight: FontWeight.bold,
     );
-    final style_p = theme.textTheme.bodyMedium!.copyWith(
+    final style_p = theme.textTheme.bodyLarge!.copyWith(
       fontWeight: FontWeight.bold,
     );
 
