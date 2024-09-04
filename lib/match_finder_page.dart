@@ -103,7 +103,8 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
                   onHorizontalDragEnd: (details) {
                     double delta_x =
                         details.globalPosition.dx - pan_start_x_coord;
-                    if (delta_x.abs() <= 35.0) return; // so that the swipe is really intentional
+                    if (delta_x.abs() <= 35.0)
+                      return; // so that the swipe is really intentional
                     // Swiping in right direction => match with bakterija
                     if (delta_x > 0) {
                       match();
@@ -119,56 +120,59 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
                   },
                   child: ListView(
                     children: [
-                      ListTile(
-                        title: GestureDetector(
-                          onTapUp: (details) {
-                            double glob_pos_x = details.globalPosition.dx;
-                            double dev_width =
-                                MediaQuery.of(context).size.width;
-                            if (glob_pos_x >= (dev_width / 2)) {
-                              // print("Tapped on right");
-                              if (curr_pic_index !=
-                                  curr_pot_match!.pics.length - 1) {
-                                setState(() {
-                                  curr_pic_index++;
-                                });
-                                // print("Should update pic");
-                              }
-                            } else {
-                              // print("Tapped on left");
-                              if (curr_pic_index != 0) {
-                                setState(() {
-                                  curr_pic_index--;
-                                });
-                                // print("Should update pic");
-                              }
+                      GestureDetector(
+                        onTapUp: (details) {
+                          double glob_pos_x = details.globalPosition.dx;
+                          double dev_width = MediaQuery.of(context).size.width;
+                          if (glob_pos_x >= (dev_width / 2)) {
+                            // print("Tapped on right");
+                            if (curr_pic_index !=
+                                curr_pot_match!.pics.length - 1) {
+                              setState(() {
+                                curr_pic_index++;
+                              });
+                              // print("Should update pic");
                             }
-                          },
-                          child: Image.asset(
-                            curr_pot_match!.pics[curr_pic_index],
-                            fit: BoxFit.fitWidth,
-                          ),
+                          } else {
+                            // print("Tapped on left");
+                            if (curr_pic_index != 0) {
+                              setState(() {
+                                curr_pic_index--;
+                              });
+                              // print("Should update pic");
+                            }
+                          }
+                        },
+                        child: Image.asset(
+                          curr_pot_match!.pics[curr_pic_index],
+                          fit: BoxFit.fitWidth,
                         ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          for (int i = 0; i < curr_pot_match!.pics.length; i++)
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 5),
-                              child: Container(
-                                width: 8,
-                                height: 8,
-                                decoration: BoxDecoration(
-                                  color: i == curr_pic_index
-                                      ? Colors.red
-                                      : const Color.fromRGBO(196, 196, 196, 1),
-                                  shape: BoxShape.circle,
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            for (int i = 0;
+                                i < curr_pot_match!.pics.length;
+                                i++)
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 5),
+                                child: Container(
+                                  width: 8,
+                                  height: 8,
+                                  decoration: BoxDecoration(
+                                    color: i == curr_pic_index
+                                        ? Colors.red
+                                        : const Color.fromRGBO(
+                                            196, 196, 196, 1),
+                                    shape: BoxShape.circle,
+                                  ),
                                 ),
                               ),
-                            ),
-                        ],
+                          ],
+                        ),
                       ),
                       ListTile(
                         title: Row(
