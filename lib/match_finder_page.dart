@@ -97,118 +97,123 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
                     ),
                   ),
                 )
-              : ListView(
-                  children: [
-                    ListTile(
-                      title: GestureDetector(
-                        onPanStart: (details) =>
-                            pan_start_x_coord = details.globalPosition.dx,
-                        onPanEnd: (details) {
-                          double delta_x =
-                              details.globalPosition.dx - pan_start_x_coord;
-                          // Swiping in right direction => match with bakterija
-                          if (delta_x > 0) {
-                            match();
-                          }
-                          // Swiping in left direction => dismiss potential match
-                          if (delta_x < 0) {
-                            setState(() {
-                              curr_pot_match = getNewPotentialMatch();
-                              curr_pic_index = 0;
-                            });
-                          }
-                          pan_start_x_coord = 0;
-                        },
-                        onTapUp: (details) {
-                          double glob_pos_x = details.globalPosition.dx;
-                          double dev_width = MediaQuery.of(context).size.width;
-                          if (glob_pos_x >= (dev_width / 2)) {
-                            // print("Tapped on right");
-                            if (curr_pic_index !=
-                                curr_pot_match!.pics.length - 1) {
-                              setState(() {
-                                curr_pic_index++;
-                              });
-                              // print("Should update pic");
+              : GestureDetector(
+                  onHorizontalDragStart: (details) =>
+                      pan_start_x_coord = details.globalPosition.dx,
+                  onHorizontalDragEnd: (details) {
+                    double delta_x =
+                        details.globalPosition.dx - pan_start_x_coord;
+                    if (delta_x.abs() <= 35.0) return; // so that the swipe is really intentional
+                    // Swiping in right direction => match with bakterija
+                    if (delta_x > 0) {
+                      match();
+                    }
+                    // Swiping in left direction => dismiss potential match
+                    if (delta_x < 0) {
+                      setState(() {
+                        curr_pot_match = getNewPotentialMatch();
+                        curr_pic_index = 0;
+                      });
+                    }
+                    pan_start_x_coord = 0;
+                  },
+                  child: ListView(
+                    children: [
+                      ListTile(
+                        title: GestureDetector(
+                          onTapUp: (details) {
+                            double glob_pos_x = details.globalPosition.dx;
+                            double dev_width =
+                                MediaQuery.of(context).size.width;
+                            if (glob_pos_x >= (dev_width / 2)) {
+                              // print("Tapped on right");
+                              if (curr_pic_index !=
+                                  curr_pot_match!.pics.length - 1) {
+                                setState(() {
+                                  curr_pic_index++;
+                                });
+                                // print("Should update pic");
+                              }
+                            } else {
+                              // print("Tapped on left");
+                              if (curr_pic_index != 0) {
+                                setState(() {
+                                  curr_pic_index--;
+                                });
+                                // print("Should update pic");
+                              }
                             }
-                          } else {
-                            // print("Tapped on left");
-                            if (curr_pic_index != 0) {
-                              setState(() {
-                                curr_pic_index--;
-                              });
-                              // print("Should update pic");
-                            }
-                          }
-                        },
-                        child: Image.asset(
-                          curr_pot_match!.pics[curr_pic_index],
-                          fit: BoxFit.fitWidth,
+                          },
+                          child: Image.asset(
+                            curr_pot_match!.pics[curr_pic_index],
+                            fit: BoxFit.fitWidth,
+                          ),
                         ),
                       ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        for (int i = 0; i < curr_pot_match!.pics.length; i++)
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 5),
-                            child: Container(
-                              width: 8,
-                              height: 8,
-                              decoration: BoxDecoration(
-                                color: i == curr_pic_index
-                                    ? Colors.red
-                                    : const Color.fromRGBO(196, 196, 196, 1),
-                                shape: BoxShape.circle,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          for (int i = 0; i < curr_pot_match!.pics.length; i++)
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 5),
+                              child: Container(
+                                width: 8,
+                                height: 8,
+                                decoration: BoxDecoration(
+                                  color: i == curr_pic_index
+                                      ? Colors.red
+                                      : const Color.fromRGBO(196, 196, 196, 1),
+                                  shape: BoxShape.circle,
+                                ),
                               ),
                             ),
-                          ),
-                      ],
-                    ),
-                    ListTile(
-                      title: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          ElevatedButton.icon(
-                            onPressed: () => setState(() {
-                              curr_pot_match = getNewPotentialMatch();
-                              curr_pic_index = 0;
-                            }),
-                            label: const Icon(Icons.close),
-                            style: const ButtonStyle(
-                              backgroundColor:
-                                  WidgetStatePropertyAll(Colors.red),
-                              foregroundColor:
-                                  WidgetStatePropertyAll(Colors.white),
-                            ),
-                          ),
-                          ElevatedButton.icon(
-                            onPressed: match,
-                            label: const Icon(Icons.favorite),
-                            style: const ButtonStyle(
-                              backgroundColor:
-                                  WidgetStatePropertyAll(Colors.green),
-                              foregroundColor:
-                                  WidgetStatePropertyAll(Colors.white),
-                            ),
-                          ),
                         ],
                       ),
-                    ),
-                    ListTile(
-                      title: Text(
-                        curr_pot_match!.name,
-                        style: style1,
+                      ListTile(
+                        title: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            ElevatedButton.icon(
+                              onPressed: () => setState(() {
+                                curr_pot_match = getNewPotentialMatch();
+                                curr_pic_index = 0;
+                              }),
+                              label: const Icon(Icons.close),
+                              style: const ButtonStyle(
+                                backgroundColor:
+                                    WidgetStatePropertyAll(Colors.red),
+                                foregroundColor:
+                                    WidgetStatePropertyAll(Colors.white),
+                              ),
+                            ),
+                            ElevatedButton.icon(
+                              onPressed: match,
+                              label: const Icon(Icons.favorite),
+                              style: const ButtonStyle(
+                                backgroundColor:
+                                    WidgetStatePropertyAll(Colors.green),
+                                foregroundColor:
+                                    WidgetStatePropertyAll(Colors.white),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    ListTile(
-                      title: MarkdownBody(
-                        data: curr_pot_match!.bio,
-                        styleSheet: MarkdownStyleSheet(p: style_bio),
+                      ListTile(
+                        title: Text(
+                          curr_pot_match!.name,
+                          style: style1,
+                        ),
                       ),
-                    ),
-                  ],
+                      ListTile(
+                        title: MarkdownBody(
+                          data: curr_pot_match!.bio,
+                          styleSheet: MarkdownStyleSheet(p: style_bio),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
     );
   }
