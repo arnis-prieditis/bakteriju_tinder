@@ -3,6 +3,7 @@ import 'database_utils.dart';
 import 'match_finder_page.dart';
 import 'dm_page.dart';
 import 'profile_page.dart';
+import 'about_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -36,8 +37,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final style = theme.textTheme.titleLarge!.copyWith(
+    final style_app_bar = theme.textTheme.titleLarge!.copyWith(
       color: theme.colorScheme.onPrimaryContainer,
+      fontWeight: FontWeight.bold,
+    );
+    final style_dropdown_text = theme.textTheme.bodyMedium!.copyWith(
+      color: theme.colorScheme.primary,
       fontWeight: FontWeight.bold,
     );
 
@@ -45,10 +50,32 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(
           "Baktēriju Tinder",
-          style: style,
+          style: style_app_bar,
         ),
         centerTitle: true,
         backgroundColor: theme.colorScheme.primaryContainer,
+        actions: [
+          PopupMenuButton(
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                value: 0,
+                child: Text(
+                  "Par aplikāciju",
+                  style: style_dropdown_text,
+                ),
+              ),
+            ],
+            onSelected: (value) {
+              if (value == 0) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const AboutPage()),
+                );
+              }
+            },
+            iconColor: Colors.white,
+          ),
+        ],
       ),
       body: Column(
         children: [
@@ -84,7 +111,8 @@ class _HomePageState extends State<HomePage> {
                               onTap: () => Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => ProfilePage(bakt_id: bakt.id),
+                                  builder: (context) =>
+                                      ProfilePage(bakt_id: bakt.id),
                                 ),
                               ).then((_) => refreshMatchedList()),
                               child: CircleAvatar(
