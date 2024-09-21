@@ -1,0 +1,21 @@
+[bakt skaits]
+Vards
+bio
+patogenezes aprakts
+slimibas gaitas apr
+[jaut skaits] [bilzu skaits]
+1. jaut teksts
+[atbilzu variantu skaits] [tips]
+* pareiza atbilde 1
+nepareiza atbilde
+* pareiza atbilde 2
+vel nepareiza atb
+2. jaut teksts
+[atbilzu variantu skaits] [tips]
+* pareiza atbilde 1
+* pareiza atbilde 2
+nepareiza atbilde
+...
+Vards 2. bakterijai
+...
+
