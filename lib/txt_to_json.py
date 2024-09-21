@@ -4,7 +4,7 @@ import sys
 
 proj_dir = os.path.dirname(os.path.abspath(__file__))
 bakt_txt_path = proj_dir + sys.argv[1]
-db_json_path = proj_dir + "/../assets/db_data_1.json"
+db_json_path = proj_dir + "/../assets/db_data_4.json"
 
 db_data = {"bakterijas": [], "jautajumi": [], "atbildes": [], "bildes": []}
 bakt_id = 0

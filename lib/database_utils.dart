@@ -112,7 +112,7 @@ class DatabaseService {
   static const String _mcq_table_name = "MCQ";
   static const String _atbildes_table_name = "Atbildes";
   static const String _pics_table_name = "Pics";
-  static const int new_database_version = 3;
+  static const int new_database_version = 4;
 
   DatabaseService._init();
 
@@ -183,7 +183,7 @@ class DatabaseService {
       )
     ''');
 
-    var string_data = await rootBundle.loadString("assets/db_data_1.json");
+    var string_data = await rootBundle.loadString("assets/db_data_4.json");
     var db_data = jsonDecode(string_data);
     for (final bakt in db_data["bakterijas"]) {
       await db.insert(
