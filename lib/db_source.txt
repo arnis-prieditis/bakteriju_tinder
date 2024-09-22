@@ -1,4 +1,4 @@
-7
+8
 Enteropatogēnā E. coli (EPEC)
 Ja jau ir tik svarīgi, esmu 1-3 mikrometrus gara. Ikdienā esmu aktīva, ļoti patīk kustēties un pat dažkārt kāpt uz goda pjedestāla. Daudz ceļoju, bet visvairāk man patīk būt aktīvistei un pavadīt laiku ar zīdaiņiem attīstības valstīs, kur es varu radīt vislielāko ietekmi. Visvairāk sevī novērtēju spēju pielāgoties jebkādiem (skābekļa) apstākļiem. Man arī ļoti garšo ēdiens, īpaši piena produkti – laktozi panesu ļoti labi. Varbūt pirmais randiņš mums būs pie kādas saldējuma glāzītes?
 Tu baktērijai ļoti, ļoti, ļoti patīc. Bet tā nevis pieķeras tavai rokai, bet gan tievās zarnas epitēlijam ar savām skropstiņām. Tur tā veido mikrokolonijas un palēnām atstāj sekas tavās zarnās. Tu jūties it kā slavas virsotnēs, jo tā veido pjedestāles tavās zarnās. Baktērija tev arī vēlas atstāt dāvanu – tā sekretē proteīnus. Bet varbūt tā nebija pati labākā dāvana, jo šie proteīni bojā tavu šūnu citoskeletu un mitohondrijus, kas galu galā noved pie tavu šūnu apoptozes. Protams, mēs neviens neesam perfekti, tādēļ tu neļauj šai kļūdai sabojāt tavu iespaidu par to.
@@ -810,3 +810,97 @@ Pretcaurejas līdzekļu lietošana
 assets/ehec_1.png
 assets/ehec_2.png
 assets/ehec_3.png
+Streptococcus pyogenes
+Alkstu pēc attiecībām, kas liktu Tev kvēlot drudža liesmās un atjēgties bez balss. Ko tur liegties - es esmu apburoša, un, ja apskatīsi tuvāk, apžilbsi no mana violetīgā starojuma no manām formīgajām virsmām. Jāatzīst gan, ka mans pieskāriens var reizēm šķist gana ass un atstāt pēdas. Bet esi drošs - Tavas asins šūnas vai sprāgs pušu no manas mīlas intoksikācijas!
+Tu tiešām viņai patīc. Esi gana jauns un spēcīgs, taču pat tava modrā imūnsistēma nespēj izbēgt viņas M proteīna, streptokināzes DNSāzes, kas par katru cenu vēlas ļaut viņai izplatīties pa visu epitēlija slāni. Daži tavi eritrocīti jau atņēma galus, bet, hei, viņa taču brīdināja par savu toksicitāti, ne? Jebkurā gadījumā… Vai tu būsi viņas mīļotais?
+Pat nedēļa nav pagājusi, kad kakls tā kā sācis kasīties, tā kā sāpēt, bet varbūt tomēr tas no bučošanās vējā? Visticamāk, jo arī temperatūra jau virs 38°C - tā laikam tā mīlas kvēle, par kuru viņa runāja. Bet tomēr nejūtos īsti labi. Galvassāpes, nespēks, pie kakla tādi kā bumbuļi pietūkuši, krekšķis. Uz kājas parādās sārti, pleķaini izsitumi… Tā mēs nebijām īsti runājuši
+14 3
+Hey! Tu laikam lieliski lasi domas. Kāds tips man kārojas?
+3 small
+* Nevainīgs puisēns 
+Vīrietis labākajos gados
+Tikko gaismu ieraudzījis zīdainis
+Kāda tev liekas ir manī labākā īpašība?
+5 small
+Obligāti aerobā daba
+Mikroaerofīlā daba
+* Fakultatīvi anaerobā daba
+Aerotolerentā daba
+Obligāti anaerobā daba
+Tu laikam esi stalta auguma. Vismaz es tā ceru. Kā ar mani?
+3 small
+Beidz, tu tāda pati - veseli 5 μm garumā!
+* Esi knapi 1 μm liela… vari VISUR iespraukties!
+Tu liela meitene - 30 μm nav joka lieta
+Aww… Es arī ļoti daudz strādāju pie sava fitnesa, ko tu domā par manu formu?
+4 small
+Tīra nūjiņa, mana mīļākā forma
+Man ļoti patīk, ka vari būt tik dažāda, tāda… polimorfa
+* Tavs apaļīgums man liekas ļoti saistošs
+Tu esi tik slaida, gluži kā diegveida
+Atceries, ka minēju savas mīlas intoksikāciju? Nu, mini - kas ir manā arsenālā?
+3 small
+* Ai, tavs streptolizīns O un S, tavs pirogēnais toksīns mani nobeigs
+Tu tikai fleitē! Tev toksīnu nemaz nav
+Endotoksīns? Jebkurā gadījumā, "endo-" mani ieintriģē vairāk kā "-toksīns"
+Parādi baktērijai, ka tu esi viņu labi iepazinis(-usi)! Izvēlies vislabāko vietu randiņam!
+4 big
+Romantiskas vakariņas
+Uzreiz starp palagiem
+* Pastaiga ar daudz ādas kontaktu
+Rondezvous slimnīcā
+Un tagad tu viņu beidzot esi sastapis(-usi)! Izsaki komplementu par to kas viņai mugurā!
+7 big
+* Kapsula (K antigēns)
+Pili 
+Viciņas (H antigēns)
+Lipopolisaharīdi (O antigēns)
+Veido sporas
+* Šūnas membrāna
+* Šūnapvalks
+Man ļoti patika mūsu randiņš! Gribu vēl tevi redzēt ;)
+0 P
+Mīlu tevi!! ❤️
+0 S
+Jūs esat kopā, taču dažreiz liekas, ka šī baktērija tev ir vēljoprojām sveša. Iepazīsim viņu tuvāk! Kādus paraugus tu vari izmantot?
+6 big
+Urīna paraugs
+Fēču paraugs
+* Asins paraugs
+* Strutas
+* Augšējo elpceļu iztriepe
+Cerebrospinālais šķidrums
+Kuru paraugu tu izmantotu faringīta gadījumā?
+4 big
+* Augšējo elpceļu iztriepi
+Strutas
+Krēpas
+Asins paraugu
+Kādas selektīvās barotnes var izmantot, kas liecinātu par Str. pyogenes klātbūtni?
+10 big
+Pusšķidrais agars
+MacConkey agars
+Bismuta sulfīta agars
+Endo agars
+Kliglera dzelzs agars
+Mannitola sāls agars
+Levina (EMB) agars
+Olas dzeltenuma sāls agars
+Koagulāzes tests
+* Asins agars
+Kā izskatītos asins agars, ja tajā būtu Str. pyogenes kultūra?
+4 big
+* Redzama gaiša, caurspīdīga zona ap baktēriju kolonijām
+Redzams metāliski spīdīgas kolonijas
+Redzama dūmakaina, dzeltena josliņa ap baktēriju kolonijām
+Redzams izteikts koloniju pacēlums
+Tu tagad pazīsti viņu tuvāk, bet kaut kas ir mainījies. Tu viņu vairs neredzi tādu pašu kā agrāk un saproti, ka tu viņu vairāk nemīli. Izdomāsim vislabāko metodi kā šķirties!
+5 big
+* Antibiotikas
+* Nekrektomija (smagākos gadījumos)
+Pagaidīt, pāries
+Amputācija
+Šķiedrvielām bagāta diēta
+assets/s_pyog_1.png
+assets/s_pyog_2.png
+assets/s_pyog_3.png
