@@ -1,4 +1,4 @@
-3
+4
 Enteropatogēnā E. coli (EPEC)
 Ja jau ir tik svarīgi, esmu 1-3 mikrometrus gara. Ikdienā esmu aktīva, ļoti patīk kustēties un pat dažkārt kāpt uz goda pjedestāla. Daudz ceļoju, bet visvairāk man patīk būt aktīvistei un pavadīt laiku ar zīdaiņiem attīstības valstīs, kur es varu radīt vislielāko ietekmi. Visvairāk sevī novērtēju spēju pielāgoties jebkādiem (skābekļa) apstākļiem. Man arī ļoti garšo ēdiens, īpaši piena produkti – laktozi panesu ļoti labi. Varbūt pirmais randiņš mums būs pie kādas saldējuma glāzītes?
 Tu baktērijai ļoti, ļoti, ļoti patīc. Bet tā nevis pieķeras tavai rokai, bet gan tievās zarnas epitēlijam ar savām skropstiņām. Tur tā veido mikrokolonijas un palēnām atstāj sekas tavās zarnās. Tu jūties it kā slavas virsotnēs, jo tā veido pjedestāles tavās zarnās. Baktērija tev arī vēlas atstāt dāvanu – tā sekretē proteīnus. Bet varbūt tā nebija pati labākā dāvana, jo šie proteīni bojā tavu šūnu citoskeletu un mitohondrijus, kas galu galā noved pie tavu šūnu apoptozes. Protams, mēs neviens neesam perfekti, tādēļ tu neļauj šai kļūdai sabojāt tavu iespaidu par to.
@@ -356,3 +356,123 @@ Pretcaurejas līdzekļu lietošana
 assets/eiec_1.png
 assets/eiec_2.png
 assets/eiec_3.png
+Enteroagregatīvā E. coli (EAEC)
+Man patīk visu darīt ilgi un pamatīgi (pat līdz 14 dienām). Uzskatu sevi par celtnieku - varbūt arī tevī iebūvēšu biezu gļotu-baktēriju biofilmu, kas reprezentētu mūsu ciešo kontaktu gan fiziski, gan metaforiski xoxoxoxo
+Kaut arī esat diezgan skaista interjera restorānā, baktērijai nepatīk dekorācijas, īpaši tavā zarnu gļotādā. Tā ar saviem piliem domājams vēlas apskaut tavus enterocītus, bet tas ir tik ciešs, ka tu nevari pretoties. Un tu tagad redzi, ka EAEC cenšas izveidot biezu biofilmu no sevis un tavām gļotām. Tā ir tik skaista, ka uzreiz tajā esi iemīlējies.
+Liekas, ka kaut esat kopā, baktērijai tikai patīk liet un liet ūdeni. Un šis jau liekas par ilgu - veselas 14 dienas. Reizēm arī iznāk kas bīstamāks - asinis un gļotas. Tagad liekas kait kas nav tik miermīlīgi cik izskatās un jāuzzina kas vairāk par šo baktēriju.
+18 3
+Čawiņa! Es esmu tālu zemju ceļotāja, nu vismaz lielākoties. Vai tev arī ar mani ir tas kopīgs?
+3 small
+Jā, tā patīk ceļot pa Eiropu
+* Jā, man patīk ceļot uz attīstības valstīm, palīdz man būt piezemētam
+Nekur jau nav tik labi kā dzimtenē, vai ne?
+Kāda tev liekas ir manī labākā īpašība?
+5 small
+Obligāti aerobā daba
+Mikroaerofīlā daba
+* Fakultatīvi anaerobā daba
+Aerotolerentā daba
+Obligāti anaerobā daba
+Zinu, ka tu esi ļoti garš, bet ko tu domā par manu augumu?
+3 small
+0,5-1 μm… diezgan maza, bet pietiekoši mīļa
+* 1-3 μm… tāds vidējs augums, bet tāpat tu man esi īpaša
+2-6 μm… lielām baktērijām daudz ir ko mīlēt
+Aww… Es arī ļoti daudz strādāju pie sava fitnesa, ko tu domā par manu formu?
+4 small
+Tīra nūjiņa, mana mīļākā forma
+* Man ļoti patīk, ka vari būt tik dažāda, tāda… polimorfa
+Tavs apaļīgums man liekas ļoti saistošs
+Tu esi tik slaida, gluži kā diegveida
+Vispār, daži mani iepriekšējie partneri ir saukuši mani par toksisku… Traki, ne? Varbūt tu arī manī redzi kādus “sarkanos karogus”?
+4 small
+* Man liekas, ka pagaidām nevienu specifisku toksīnu nesaskatu. Mani tikai biedē tas, ka esi Gr– un tev ir tas endotoksīns, bet saprotu, ka tā ir ģimenes lieta un tur neko nevari mainīt.
+Patiesību sakot, tu esi nedaudz biedējoša, it kā tu gribētu izsist manī poras ar α-hemolizīnu. Bet ticu, ka klātienē būs citāds iespaids :)
+Man ir radies iespaids, ka tu varētu būt nedaudz kontrolējoša, it kā tu gribētu inhibēt manu proteīnu sintēzi ar Shiga-like toksīnu. Bet es esmu brīvdomātājs un domāju, ka pretpoli pievelkas.
+Tu man nedaudz esi enigma… it kā tavā klātbūtnē mani signālu pārvades ceļi apstājas un nezinu ko domāt… Tev laikam piemīt tie Heat-lable un heat stable toksīni, jo tu esi hotttt ;)
+Parādi baktērijai, ka tu esi viņu labi iepazinis(-usi)! Izvēlies vislabāko vietu randiņam!
+4 big
+* Romantiskas vakariņas
+Uzreiz starp palagiem
+Pastaiga ar daudz ādas kontaktu
+Rondezvous slimnīcā
+Un tagad tu viņu beidzot esi sastapis(-usi)! Izsaki komplementu par to kas viņai mugurā!
+7 big
+* Kapsula (K antigēns)
+* Pili 
+* Viciņas (H antigēns)
+* Lipopolisaharīdi (O antigēns)
+Veido sporas
+* Šūnas membrāna
+Šūnapvalks
+Man ļoti patika mūsu randiņš! Gribu vēl tevi redzēt ;)
+0 P
+Mīlu tevi!! ❤️
+0 S
+Viskautkā jau var atrast informāciju par savu mīļoto, bet kuru paraugu tu šoreiz savāksi, lai vislabāk saprastu, kas tā ir par baktēriju?
+6 big
+Urīna paraugs
+* Fēču paraugs
+Asins paraugs
+Strutas
+Krēpas
+Cerebrospinālais šķidrums
+Vai dažādu patoloģiju gadījumos var atrast EAEC visos iepriekšminētajos paraugos?
+4 big
+* Jā
+Nē, nevar atrast asinīs
+Nē, nevar atrast cerebrospinālajā šķidrumā
+Nē, nevar atrast strutās
+Kādas selektīvās barotnes var izmantot, kas liecinātu par E. coli klātbūtni?
+9 big
+* Pusšķidrais agars
+* MacConkey agars
+Bismuta sulfīta agars
+* Endo agars
+* Kliglera dzelzs agars
+Mannitola sāls agars
+* Levina (EMB) agars
+Olas dzeltenuma sāls agars
+Koagulāzes tests
+Kā izskatītos pusšķidrais agars, ja tajā būtu E. coli kultūra?
+4 big
+* Viscaur dūmakains
+Kolonijas tikai agara inokulācijas vietā
+Augšdaļa paliktu dzeltena
+Augšdaļa paliktu melna
+Kā izskatītos MacConkey agars, ja uz tā augtu E. coli kolonijas?
+4 big
+Mainītu krāsu no rozā uz dzeltenu
+* Mainītu krāsu no dzeltenas uz rozā
+Veidotu rozā kolonijas ar metāliski zaļu spīdumu
+Veidotos melnas kolonijas
+Kā izskatītos Levina (EMB) agars, ja uz tās augtu E. coli kolonijas?
+4 big
+Veidotos gaiši zilas kolonijas
+Apkārt veidotos dūmakaina josliņa
+* Veidotos kolonijas ar metāliski zaļu spīdumu
+Veidotos melnas kolonijas
+Kā izskatītos Endo agars, ja uz tās augtu E. coli kolonijas?
+4 big
+Veidotos violetas kolonijas
+* Krāsa mainītos uz rozā un būtu kolonijas ar metāliski zaļu spīdumu
+Krāsa mainītos uz dzeltenu
+Apkārt veidotos dūmakaina josliņa
+Kā izskatītos Kliglera dzelzs agars, ja tajā augtu E. coli kolonijas?
+6 big
+* Augša paliktu dzeltena
+Augša būtu sarkana
+Būtu novērojama melna krāsa
+Apakša būtu sarkana
+* Apakša paliktu dzeltena
+* Būtu novērojama gāzes veidošanās
+Tu tagad pazīsti viņu tuvāk, bet kaut kas ir mainījies. Tu viņu vairs neredzi tādu pašu kā agrāk un saproti, ka tu viņu vairāk nemīli. Izdomāsim vislabāko metodi kā šķirties!
+5 big
+Antibiotikas
+* Ghostošana (jo slimība ir pašlimitējoša)
+* Šķidruma un elektrolītu atjaunošana
+Zarnu skalošana
+Pretcaurejas līdzekļu lietošana
+assets/eaec_1.png
+assets/eaec_2.png
+assets/eaec_3.png
