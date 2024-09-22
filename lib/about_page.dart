@@ -15,18 +15,6 @@ class AboutPage extends StatelessWidget {
       // fontWeight: FontWeight.bold,
     );
     const String par_aplikaciju = """
-**Programmētājs:** Arnis Priedītis  
-**Idejas autore, koordinatore un satura veidotāja:** Baiba Ance Barkāne  
-**Palīgi:**  
-Hanna Paškevica  
-Diana Lismane  
-Sindija Anna Vecvērdiņa  
-Deina Vilīte  
-Sofija?  
-[Nezinu vārdu]  
-Madara Šenberga  
-Andris Adamovičs
-
 # Tips & Tricks
 - Pēc matchošanas ar baktēriju var apskatīt viņas profilu - vai nu uzspiežot 
 uz bildes "sākuma lapā" (current matches sarakstā), vai uzspiežot uz tās 
