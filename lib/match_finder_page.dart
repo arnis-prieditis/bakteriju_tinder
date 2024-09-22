@@ -42,7 +42,6 @@ class _MatchFinderPageState extends State<MatchFinderPage> {
     if (bakt_not_matched_list.isEmpty) return null;
     if (curr_pot_match != null) {
       Bakterija last_pot_match = bakt_not_matched_list.removeAt(0);
-      bakt_not_matched_list.shuffle();
       bakt_not_matched_list.add(last_pot_match);
     }
     Bakterija potential_match = bakt_not_matched_list[0];
