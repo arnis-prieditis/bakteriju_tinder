@@ -183,7 +183,7 @@ class DatabaseService {
       )
     ''');
 
-    var string_data = await rootBundle.loadString("assets/db_data_4.json");
+    var string_data = await rootBundle.loadString("assets/db_data.json");
     var db_data = jsonDecode(string_data);
     for (final bakt in db_data["bakterijas"]) {
       await db.insert(
