@@ -43,6 +43,17 @@
             "slimibas_apr_available": 0,
             "bio": "Man patīk visu darīt ilgi un pamatīgi (pat līdz 14 dienām). Uzskatu sevi par celtnieku - varbūt arī tevī iebūvēšu biezu gļotu-baktēriju biofilmu, kas reprezentētu mūsu ciešo kontaktu gan fiziski, gan metaforiski xoxoxoxo",
             "convers_progress": 0
+        },
+        {
+            "id": 4,
+            "name": "Enterotoksigēnā E. coli (ETEC)",
+            "matched": 0,
+            "patogen_apr": "Randiņš protams ir jauks. Baktērija uzreiz piestiprinās pie tavām zarnu bārkstiņām. Tik romantiski! Un kaut ko tā izvelk no savas kabatas - tie ir heat lable un heat-stable toksīni - kas par dāvanu! Tu jūti, ka tas stimulē tev kaut ko enterocītos - tavu adenilātciklāzi, kas ar mediatoru kaskādi liek tev tiešām izdalīt gan nātriju, gan hloru, gan ūdeni.",
+            "slimibas_apr": "Jūs uzsākāt nopietnas attiecības, bet tas ķirsītis vēl nav pazudis - tu tāpat turpini izdalīt daudz ūdeni un elektrolītus ar ūdeņainu caureju. Varbūt pat pārāk daudz… liekas, ka tev jau ir iespējas attīstīt elektrolītu disbalansu un hematolītiski urētisko sindromu. Varbūt šī baktērija ir bīstamāka nekā tev likās, tādēļ ir vērts to iepazīt tuvāk.",
+            "patogen_apr_available": 0,
+            "slimibas_apr_available": 0,
+            "bio": "Man nav īpaši unikāli hobiji - man patīk ceļot, kā jau gandrīz visiem. Visvairāk man patīk būt mazāk attīstītās zemēs, jo domāju, ka varu šo valstu iedzīvotājiem, īpaši zīdaiņiem, ko iedot. Labi varu pielāgoties situācijai - ja par karstu izmantoju savu heat-stable toksīnu, ja ir ok temperatūra: heat-lable, bet tāpat varu ļoti labi stimulēt tavu adenilātciklāzi, ja tu saproti par ko runāju ;) Protams esmu aktīvs un tev arī likšu izdalīt ūdeni un elektrolītus, ja tu ļausi )))))",
+            "convers_progress": 0
         }
     ],
     "jautajumi": [
@@ -471,6 +482,114 @@
             "type": "big",
             "teikums": "Tu tagad pazīsti viņu tuvāk, bet kaut kas ir mainījies. Tu viņu vairs neredzi tādu pašu kā agrāk un saproti, ka tu viņu vairāk nemīli. Izdomāsim vislabāko metodi kā šķirties!",
             "bakterija": 3
+        },
+        {
+            "id": 71,
+            "type": "small",
+            "teikums": "Čau! Zini ko? Es daudz sapņoju. Daudz sapņoju par tiem cilvēkiem, kuriem varu visvairāk “palīdzēt”. Vai tu zini kas tie ir?",
+            "bakterija": 4
+        },
+        {
+            "id": 72,
+            "type": "small",
+            "teikums": "Kāda tev liekas ir manī labākā īpašība?",
+            "bakterija": 4
+        },
+        {
+            "id": 73,
+            "type": "small",
+            "teikums": "Zinu, ka tu esi ļoti garš, bet ko tu domā par manu augumu?",
+            "bakterija": 4
+        },
+        {
+            "id": 74,
+            "type": "small",
+            "teikums": "Aww… Es arī ļoti daudz strādāju pie sava fitnesa, ko tu domā par manu formu?",
+            "bakterija": 4
+        },
+        {
+            "id": 75,
+            "type": "small",
+            "teikums": "Vispār, daži mani iepriekšējie partneri ir saukuši mani par toksisku… Traki, ne? Varbūt tu arī manī redzi kādus “sarkanos karogus”?",
+            "bakterija": 4
+        },
+        {
+            "id": 76,
+            "type": "big",
+            "teikums": "Parādi baktērijai, ka tu esi viņu labi iepazinis(-usi)! Izvēlies vislabāko vietu randiņam!",
+            "bakterija": 4
+        },
+        {
+            "id": 77,
+            "type": "big",
+            "teikums": "Un tagad tu viņu beidzot esi sastapis(-usi)! Izsaki komplementu par to kas viņai mugurā!",
+            "bakterija": 4
+        },
+        {
+            "id": 78,
+            "type": "P",
+            "teikums": "Man ļoti patika mūsu randiņš! Gribu vēl tevi redzēt ;)",
+            "bakterija": 4
+        },
+        {
+            "id": 79,
+            "type": "S",
+            "teikums": "Mīlu tevi!! ❤️",
+            "bakterija": 4
+        },
+        {
+            "id": 80,
+            "type": "big",
+            "teikums": "Viskautkā jau var atrast informāciju par savu mīļoto, bet kuru paraugu tu šoreiz savāksi, lai vislabāk saprastu, kas tā ir par baktēriju?",
+            "bakterija": 4
+        },
+        {
+            "id": 81,
+            "type": "big",
+            "teikums": "Vai dažādu patoloģiju gadījumos var atrast ETEC visos iepriekšminētajos paraugos?",
+            "bakterija": 4
+        },
+        {
+            "id": 82,
+            "type": "big",
+            "teikums": "Kādas selektīvās barotnes var izmantot, kas liecinātu par E. coli klātbūtni?",
+            "bakterija": 4
+        },
+        {
+            "id": 83,
+            "type": "big",
+            "teikums": "Kā izskatītos pusšķidrais agars, ja tajā būtu E. coli kultūra?",
+            "bakterija": 4
+        },
+        {
+            "id": 84,
+            "type": "big",
+            "teikums": "Kā izskatītos MacConkey agars, ja uz tā augtu E. coli kolonijas?",
+            "bakterija": 4
+        },
+        {
+            "id": 85,
+            "type": "big",
+            "teikums": "Kā izskatītos Levina (EMB) agars, ja uz tās augtu E. coli kolonijas?",
+            "bakterija": 4
+        },
+        {
+            "id": 86,
+            "type": "big",
+            "teikums": "Kā izskatītos Endo agars, ja uz tās augtu E. coli kolonijas?",
+            "bakterija": 4
+        },
+        {
+            "id": 87,
+            "type": "big",
+            "teikums": "Kā izskatītos Kliglera dzelzs agars, ja tajā augtu E. coli kolonijas?",
+            "bakterija": 4
+        },
+        {
+            "id": 88,
+            "type": "big",
+            "teikums": "Tu tagad pazīsti viņu tuvāk, bet kaut kas ir mainījies. Tu viņu vairs neredzi tādu pašu kā agrāk un saproti, ka tu viņu vairāk nemīli. Izdomāsim vislabāko metodi kā šķirties!",
+            "bakterija": 4
         }
     ],
     "atbildes": [
@@ -2291,6 +2410,474 @@
             "teikums": "Pretcaurejas līdzekļu lietošana",
             "pareizi": 0,
             "jautajums": 70
+        },
+        {
+            "id": 303,
+            "teikums": "Veci eiropieši",
+            "pareizi": 0,
+            "jautajums": 71
+        },
+        {
+            "id": 304,
+            "teikums": "Latvieši - jo esi īsts patriots",
+            "pareizi": 0,
+            "jautajums": 71
+        },
+        {
+            "id": 305,
+            "teikums": "Zīdaiņi",
+            "pareizi": 1,
+            "jautajums": 71
+        },
+        {
+            "id": 306,
+            "teikums": "Amerikāņi",
+            "pareizi": 0,
+            "jautajums": 71
+        },
+        {
+            "id": 307,
+            "teikums": "Ceļotāji",
+            "pareizi": 1,
+            "jautajums": 71
+        },
+        {
+            "id": 308,
+            "teikums": "Obligāti aerobā daba",
+            "pareizi": 0,
+            "jautajums": 72
+        },
+        {
+            "id": 309,
+            "teikums": "Mikroaerofīlā daba",
+            "pareizi": 0,
+            "jautajums": 72
+        },
+        {
+            "id": 310,
+            "teikums": "Fakultatīvi anaerobā daba",
+            "pareizi": 1,
+            "jautajums": 72
+        },
+        {
+            "id": 311,
+            "teikums": "Aerotolerentā daba",
+            "pareizi": 0,
+            "jautajums": 72
+        },
+        {
+            "id": 312,
+            "teikums": "Obligāti anaerobā daba",
+            "pareizi": 0,
+            "jautajums": 72
+        },
+        {
+            "id": 313,
+            "teikums": "0,5-1 μm… diezgan maza, bet pietiekoši mīļa",
+            "pareizi": 0,
+            "jautajums": 73
+        },
+        {
+            "id": 314,
+            "teikums": "1-3 μm… tāds vidējs augums, bet tāpat tu man esi īpaša",
+            "pareizi": 1,
+            "jautajums": 73
+        },
+        {
+            "id": 315,
+            "teikums": "2-6 μm… lielām baktērijām daudz ir ko mīlēt",
+            "pareizi": 0,
+            "jautajums": 73
+        },
+        {
+            "id": 316,
+            "teikums": "Tīra nūjiņa, mana mīļākā forma",
+            "pareizi": 0,
+            "jautajums": 74
+        },
+        {
+            "id": 317,
+            "teikums": "Man ļoti patīk, ka vari būt tik dažāda, tāda… polimorfa",
+            "pareizi": 1,
+            "jautajums": 74
+        },
+        {
+            "id": 318,
+            "teikums": "Tavs apaļīgums man liekas ļoti saistošs",
+            "pareizi": 0,
+            "jautajums": 74
+        },
+        {
+            "id": 319,
+            "teikums": "Tu esi tik slaida, gluži kā diegveida",
+            "pareizi": 0,
+            "jautajums": 74
+        },
+        {
+            "id": 320,
+            "teikums": "Man liekas, ka pagaidām nevienu specifisku toksīnu nesaskatu. Mani tikai biedē tas, ka esi Gr– un tev ir tas endotoksīns, bet saprotu, ka tā ir ģimenes lieta un tur neko nevari mainīt.",
+            "pareizi": 0,
+            "jautajums": 75
+        },
+        {
+            "id": 321,
+            "teikums": "Patiesību sakot, tu esi nedaudz biedējoša, it kā tu gribētu izsist manī poras ar α-hemolizīnu. Bet ticu, ka klātienē būs citāds iespaids :)",
+            "pareizi": 0,
+            "jautajums": 75
+        },
+        {
+            "id": 322,
+            "teikums": "Man ir radies iespaids, ka tu varētu būt nedaudz kontrolējoša, it kā tu gribētu inhibēt manu proteīnu sintēzi ar Shiga-like toksīnu. Bet es esmu brīvdomātājs un domāju, ka pretpoli pievelkas.",
+            "pareizi": 0,
+            "jautajums": 75
+        },
+        {
+            "id": 323,
+            "teikums": "Tu man nedaudz esi enigma… it kā tavā klātbūtnē mani signālu pārvades ceļi apstājas un nezinu ko domāt… Tev laikam piemīt tie Heat-lable un heat stable toksīni, jo tu esi hotttt ;)",
+            "pareizi": 1,
+            "jautajums": 75
+        },
+        {
+            "id": 324,
+            "teikums": "Romantiskas vakariņas",
+            "pareizi": 1,
+            "jautajums": 76
+        },
+        {
+            "id": 325,
+            "teikums": "Uzreiz starp palagiem",
+            "pareizi": 0,
+            "jautajums": 76
+        },
+        {
+            "id": 326,
+            "teikums": "Pastaiga ar daudz ādas kontaktu",
+            "pareizi": 0,
+            "jautajums": 76
+        },
+        {
+            "id": 327,
+            "teikums": "Rondezvous slimnīcā",
+            "pareizi": 0,
+            "jautajums": 76
+        },
+        {
+            "id": 328,
+            "teikums": "Kapsula (K antigēns)",
+            "pareizi": 1,
+            "jautajums": 77
+        },
+        {
+            "id": 329,
+            "teikums": "Pili ",
+            "pareizi": 1,
+            "jautajums": 77
+        },
+        {
+            "id": 330,
+            "teikums": "Viciņas (H antigēns)",
+            "pareizi": 1,
+            "jautajums": 77
+        },
+        {
+            "id": 331,
+            "teikums": "Lipopolisaharīdi (O antigēns)",
+            "pareizi": 1,
+            "jautajums": 77
+        },
+        {
+            "id": 332,
+            "teikums": "Veido sporas",
+            "pareizi": 0,
+            "jautajums": 77
+        },
+        {
+            "id": 333,
+            "teikums": "Šūnas membrāna",
+            "pareizi": 1,
+            "jautajums": 77
+        },
+        {
+            "id": 334,
+            "teikums": "Šūnapvalks",
+            "pareizi": 0,
+            "jautajums": 77
+        },
+        {
+            "id": 335,
+            "teikums": "Urīna paraugs",
+            "pareizi": 0,
+            "jautajums": 80
+        },
+        {
+            "id": 336,
+            "teikums": "Fēču paraugs",
+            "pareizi": 1,
+            "jautajums": 80
+        },
+        {
+            "id": 337,
+            "teikums": "Asins paraugs",
+            "pareizi": 0,
+            "jautajums": 80
+        },
+        {
+            "id": 338,
+            "teikums": "Strutas",
+            "pareizi": 0,
+            "jautajums": 80
+        },
+        {
+            "id": 339,
+            "teikums": "Krēpas",
+            "pareizi": 0,
+            "jautajums": 80
+        },
+        {
+            "id": 340,
+            "teikums": "Cerebrospinālais šķidrums",
+            "pareizi": 0,
+            "jautajums": 80
+        },
+        {
+            "id": 341,
+            "teikums": "Jā",
+            "pareizi": 1,
+            "jautajums": 81
+        },
+        {
+            "id": 342,
+            "teikums": "Nē, nevar atrast asinīs",
+            "pareizi": 0,
+            "jautajums": 81
+        },
+        {
+            "id": 343,
+            "teikums": "Nē, nevar atrast cerebrospinālajā šķidrumā",
+            "pareizi": 0,
+            "jautajums": 81
+        },
+        {
+            "id": 344,
+            "teikums": "Nē, nevar atrast strutās",
+            "pareizi": 0,
+            "jautajums": 81
+        },
+        {
+            "id": 345,
+            "teikums": "Pusšķidrais agars",
+            "pareizi": 1,
+            "jautajums": 82
+        },
+        {
+            "id": 346,
+            "teikums": "MacConkey agars",
+            "pareizi": 1,
+            "jautajums": 82
+        },
+        {
+            "id": 347,
+            "teikums": "Bismuta sulfīta agars",
+            "pareizi": 0,
+            "jautajums": 82
+        },
+        {
+            "id": 348,
+            "teikums": "Endo agars",
+            "pareizi": 1,
+            "jautajums": 82
+        },
+        {
+            "id": 349,
+            "teikums": "Kliglera dzelzs agars",
+            "pareizi": 1,
+            "jautajums": 82
+        },
+        {
+            "id": 350,
+            "teikums": "Mannitola sāls agars",
+            "pareizi": 0,
+            "jautajums": 82
+        },
+        {
+            "id": 351,
+            "teikums": "Levina (EMB) agars",
+            "pareizi": 1,
+            "jautajums": 82
+        },
+        {
+            "id": 352,
+            "teikums": "Olas dzeltenuma sāls agars",
+            "pareizi": 0,
+            "jautajums": 82
+        },
+        {
+            "id": 353,
+            "teikums": "Koagulāzes tests",
+            "pareizi": 0,
+            "jautajums": 82
+        },
+        {
+            "id": 354,
+            "teikums": "Viscaur dūmakains",
+            "pareizi": 1,
+            "jautajums": 83
+        },
+        {
+            "id": 355,
+            "teikums": "Kolonijas tikai agara inokulācijas vietā",
+            "pareizi": 0,
+            "jautajums": 83
+        },
+        {
+            "id": 356,
+            "teikums": "Augšdaļa paliktu dzeltena",
+            "pareizi": 0,
+            "jautajums": 83
+        },
+        {
+            "id": 357,
+            "teikums": "Augšdaļa paliktu melna",
+            "pareizi": 0,
+            "jautajums": 83
+        },
+        {
+            "id": 358,
+            "teikums": "Mainītu krāsu no rozā uz dzeltenu",
+            "pareizi": 0,
+            "jautajums": 84
+        },
+        {
+            "id": 359,
+            "teikums": "Mainītu krāsu no dzeltenas uz rozā",
+            "pareizi": 1,
+            "jautajums": 84
+        },
+        {
+            "id": 360,
+            "teikums": "Veidotu rozā kolonijas ar metāliski zaļu spīdumu",
+            "pareizi": 0,
+            "jautajums": 84
+        },
+        {
+            "id": 361,
+            "teikums": "Veidotos melnas kolonijas",
+            "pareizi": 0,
+            "jautajums": 84
+        },
+        {
+            "id": 362,
+            "teikums": "Veidotos gaiši zilas kolonijas",
+            "pareizi": 0,
+            "jautajums": 85
+        },
+        {
+            "id": 363,
+            "teikums": "Apkārt veidotos dūmakaina josliņa",
+            "pareizi": 0,
+            "jautajums": 85
+        },
+        {
+            "id": 364,
+            "teikums": "Veidotos kolonijas ar metāliski zaļu spīdumu",
+            "pareizi": 1,
+            "jautajums": 85
+        },
+        {
+            "id": 365,
+            "teikums": "Veidotos melnas kolonijas",
+            "pareizi": 0,
+            "jautajums": 85
+        },
+        {
+            "id": 366,
+            "teikums": "Veidotos violetas kolonijas",
+            "pareizi": 0,
+            "jautajums": 86
+        },
+        {
+            "id": 367,
+            "teikums": "Krāsa mainītos uz rozā un būtu kolonijas ar metāliski zaļu spīdumu",
+            "pareizi": 1,
+            "jautajums": 86
+        },
+        {
+            "id": 368,
+            "teikums": "Krāsa mainītos uz dzeltenu",
+            "pareizi": 0,
+            "jautajums": 86
+        },
+        {
+            "id": 369,
+            "teikums": "Apkārt veidotos dūmakaina josliņa",
+            "pareizi": 0,
+            "jautajums": 86
+        },
+        {
+            "id": 370,
+            "teikums": "Augša paliktu dzeltena",
+            "pareizi": 1,
+            "jautajums": 87
+        },
+        {
+            "id": 371,
+            "teikums": "Augša būtu sarkana",
+            "pareizi": 0,
+            "jautajums": 87
+        },
+        {
+            "id": 372,
+            "teikums": "Būtu novērojama melna krāsa",
+            "pareizi": 0,
+            "jautajums": 87
+        },
+        {
+            "id": 373,
+            "teikums": "Apakša būtu sarkana",
+            "pareizi": 0,
+            "jautajums": 87
+        },
+        {
+            "id": 374,
+            "teikums": "Apakša paliktu dzeltena",
+            "pareizi": 1,
+            "jautajums": 87
+        },
+        {
+            "id": 375,
+            "teikums": "Būtu novērojama gāzes veidošanās",
+            "pareizi": 1,
+            "jautajums": 87
+        },
+        {
+            "id": 376,
+            "teikums": "Antibiotikas",
+            "pareizi": 0,
+            "jautajums": 88
+        },
+        {
+            "id": 377,
+            "teikums": "Ghostošana (jo slimība ir pašlimitējoša)",
+            "pareizi": 1,
+            "jautajums": 88
+        },
+        {
+            "id": 378,
+            "teikums": "Šķidruma un elektrolītu atjaunošana",
+            "pareizi": 1,
+            "jautajums": 88
+        },
+        {
+            "id": 379,
+            "teikums": "Zarnu skalošana",
+            "pareizi": 0,
+            "jautajums": 88
+        },
+        {
+            "id": 380,
+            "teikums": "Pretcaurejas līdzekļu lietošana",
+            "pareizi": 0,
+            "jautajums": 88
         }
     ],
     "bildes": [
@@ -2353,6 +2940,21 @@
             "id": 11,
             "path": "assets/eaec_3.png",
             "bakterija": 3
+        },
+        {
+            "id": 12,
+            "path": "assets/etec_1.png",
+            "bakterija": 4
+        },
+        {
+            "id": 13,
+            "path": "assets/etec_2.png",
+            "bakterija": 4
+        },
+        {
+            "id": 14,
+            "path": "assets/etec_3.png",
+            "bakterija": 4
         }
     ]
 }
