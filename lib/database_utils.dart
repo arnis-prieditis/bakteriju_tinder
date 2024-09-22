@@ -112,7 +112,7 @@ class DatabaseService {
   static const String _mcq_table_name = "MCQ";
   static const String _atbildes_table_name = "Atbildes";
   static const String _pics_table_name = "Pics";
-  static const int new_database_version = 9;
+  static const int new_database_version = 10;
 
   DatabaseService._init();
 
