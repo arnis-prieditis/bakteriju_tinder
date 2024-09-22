@@ -119,10 +119,10 @@ Pretcaurejas līdzekļu lietošana
 assets/epec_1.png
 assets/epec_2.png
 assets/epec_3.png
-[nepabeigts] Staphylococcus aureus
+Staphylococcus aureus
 Esmu apaļīga, 1 μm gara, bet gaužām izskatīga biznesmene, kura spējusi attīstīt veiksmīgus uzņēmumus pat viss nelabvēlīgākajos apstākļos. Nebaidos būt oportūniste un izmantot visus iespējamos ieejas vārtus gan profesionālajā gan personīgajā dzīvē;). Labākā īpašība- mana daudzpusība, esmu īsta renesanses sieviete. Brīvajā laikā eksperimentēju ar kulinārmākslu (ļoti labi panesu sāļus ēdienus) un piedalos brīvprātīgo pasākumos, galvenokārt, ar senioriem un bērniem, bet es neesmu izvēlīga-katram dzīvē var gadīties mirklis, kad būs nepieciešama mana palīdzība:) Meklēju kādu, kurš nebaidās no tuvības un novērtē izturību. Dažkārt pat nejutīsi, ka esmu klāt, bet es zinu kā pievērst sev uzmanību;)
 Baktērijai esi ļoti iepaticies, tik ļoti, ka viņa pieķērusies tavām padusēm, cirkšņiem un pat iedzīvojusies degunā. Varbūt nav tipiskākais kopdzīves veids, bet tu neesi īpaši aizspriedumains. Randiņa beigās pat grūti atvadīties, baktērijas virsmas adhēzijas proteīni un šūnapvalka proteīni ieenkurojušies tavā fibronektīnā, elastīnā un kolagēnā. Cik romantiski!
-Kāmēr (nav pabeigts)
+Tiešām jūsu attiecības var būt tik dažādās, tikai jāmaina tavs skata punkts. Dažkārt jūsu attiecības ir diezgan seklas, tikai miesā - bet tās atstāj pēdas - veidojās impetigo, folikuļi, furunkuļi un pat karbunkuļi. Dažkārt jūs esat tik tuvi kā neviens - baktērija ir tavās dzīslās pat sirdī, veidojot endokardītu. S. aureus arī aizcērt tev elpu ar savu būtību - rodas pneimonija un empiēma. Tava kaisle pret baktēriju pat tev liedz fiziski aiziet nekur citur, jo ir attīstījies ostemielīts un septisks artrīts.
 17 3
 Klau, parasti neielaižos ar tādiem kā tu, bet laikam neesmu iedzērusi savu rīta smūtiju, jo izskaties tīri ok. Kas tev likās manī tik interesants?
 4 small
@@ -168,7 +168,7 @@ Viciņas (H antigēns)
 Lipopolisaharīdi (O antigēns)
 Veido sporas
 * Šūnas membrāna
-* Šūnapvalks
+Šūnapvalks
 Man patika mūsu randiņš.
 0 P
 Bučas Tev! ❤️
@@ -226,12 +226,12 @@ Kā izskatītos koagulāzes testa rezultāts, ja to veiktu ar S. aureus?
 2 big
 * Redzama truša plazmas koagulācija
 Truša plazma paliks neizmainīta
-Tu tagad pazīsti viņu tuvāk, bet kaut kas ir mainījies. Tu viņu vairs neredzi tādu pašu kā agrāk un saproti, ka tu viņu vairāk nemīli. Izdomāsim vislabāko metodi kā šķirties! [kura ir pareizā atb??]
+Tu tagad pazīsti viņu tuvāk, bet kaut kas ir mainījies. Tu viņu vairs neredzi tādu pašu kā agrāk un saproti, ka tu viņu vairāk nemīli. Izdomāsim vislabāko metodi kā šķirties!
 5 big
 * Lokālas antibiotikas
 Ghostošana (jo slimība ir pašlimitējoša)
 Šķidruma un elektrolītu atjaunošana
-Sistēmiskas antibiotikas
+* Sistēmiskas antibiotikas
 Pretcaurejas līdzekļu lietošana
 assets/s_aureus_1.jpg
 assets/s_aureus_2.jpg
