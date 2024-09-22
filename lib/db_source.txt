@@ -1,4 +1,4 @@
-5
+6
 Enteropatogēnā E. coli (EPEC)
 Ja jau ir tik svarīgi, esmu 1-3 mikrometrus gara. Ikdienā esmu aktīva, ļoti patīk kustēties un pat dažkārt kāpt uz goda pjedestāla. Daudz ceļoju, bet visvairāk man patīk būt aktīvistei un pavadīt laiku ar zīdaiņiem attīstības valstīs, kur es varu radīt vislielāko ietekmi. Visvairāk sevī novērtēju spēju pielāgoties jebkādiem (skābekļa) apstākļiem. Man arī ļoti garšo ēdiens, īpaši piena produkti – laktozi panesu ļoti labi. Varbūt pirmais randiņš mums būs pie kādas saldējuma glāzītes?
 Tu baktērijai ļoti, ļoti, ļoti patīc. Bet tā nevis pieķeras tavai rokai, bet gan tievās zarnas epitēlijam ar savām skropstiņām. Tur tā veido mikrokolonijas un palēnām atstāj sekas tavās zarnās. Tu jūties it kā slavas virsotnēs, jo tā veido pjedestāles tavās zarnās. Baktērija tev arī vēlas atstāt dāvanu – tā sekretē proteīnus. Bet varbūt tā nebija pati labākā dāvana, jo šie proteīni bojā tavu šūnu citoskeletu un mitohondrijus, kas galu galā noved pie tavu šūnu apoptozes. Protams, mēs neviens neesam perfekti, tādēļ tu neļauj šai kļūdai sabojāt tavu iespaidu par to.
@@ -598,3 +598,94 @@ Pretcaurejas līdzekļu lietošana
 assets/etec_1.png
 assets/etec_2.png
 assets/etec_3.png
+Streptococcus pneumoniae s. pneimokoks
+Esmu nedaudz bailīga, tāpēc sabiedrībā parasti dodos pārī vai nelielās grupiņās ar draudzenēm. Esmu salīga, tāpēc vienmēr tērpjos biezā polisaharīdu kapsulā. Brīdinu, ka manai personībai ir 100 šķautnes (serotipi), tāpēc arī Tava imūnreakcijas atbilde katrā gadījumā var atšķirties.  - Es Tevi brīdināju, ja kas - nevaino mani.
+Jūs satiekaties un baktērijas klātbūtne tev aizrauj elpu - kaut kas, kas arī nākotnē visdrīzāk turpināsies. Tā ir tik piemīlīga, ka taviem fagocītiem to gribās gluži apēst, bet nē… šī Str. pneumoniae to nepieļauj - tā kavē fagocitozi. Tā vēlas iekarot tavu sirdi, nu, ne gluži - vairāk to kas tai ir no abām pusēm apkārt. Tā ir neatlaidīga, un pēkšņi saka: “Vai tu būsi mans mīļotais?”
+Tu tiešām neesi piedzīvojis tādu baktēriju - tā var uzrasties gluži 100 dažādos veidos un tu katram no tiem atbildi citādāk. Tev aizcērtās elpa diezgan regulāri (pneimonija), dvēseles karstums ir gluži neizturams (drudzis) un tu vēlies ar to dalīties (brūnganu krēpu veidā). Tava sirds gluži kā plīst baktērijas priekšā (sāpes krūtīs). Emocijas uzsit tik augstu vilni, ka dažreiz pat sāp galva, tā liekas pilna (sinusīts, vidusauss iekaisums). Brīžos, kad jūties īpaši novārdzis tev var parādīties kakla stīvums (meningīts). Tu jūties baktērijas pārņemts - tā ir tev dzīslās (bakterēmija) un iekaro tavu sirdi (endokardīts). Šī kaisle ir visu pārņemoša, bet viss, kas stipri deg, izdeg ļoti ātri. Tu zini ka kaut kas nav pareizi un tev rodas vēlme baktēriju labāk iepazīt.
+14 3
+Kā Tev šķiet, kādi tipāži mani pievelk?
+3 small
+Partneris ar sāpošu punci
+Sliktie puiši, kam ir daudz ādas brūču
+* Cilvēki, kuru imūnās sistēmas vai elpceļi nespēj cīnīties ar manu neatvairāmo šarmu
+Kāda tev liekas ir manī labākā īpašība?
+5 small
+Obligāti aerobā daba
+Mikroaerofīlā daba
+* Fakultatīvi anaerobā daba
+Aerotolerentā daba
+Obligāti anaerobā daba
+Aww… Es arī ļoti daudz strādāju pie sava fitnesa, ko tu domā par manu formu?
+4 small
+Tīra nūjiņa, mana mīļākā forma
+Man ļoti patīk, ka vari būt tik dažāda, tāda… polimorfa
+* Tavi abi apaļīgie pauguriņi man šķiet ļoti saistoši
+Tu esi tik slaida, gluži kā diegveida
+Zinu, ka neesmu viena no tām toksiskajām čiksēm, bet… Varbūt Tev ir kāds red-flag, ko redzi manī?
+3 small
+* Nē, Tu esi meita uz goda, tikai dažreiz sievišķīgi izvēlīga uz tām barotnēm un arī jūtīga pret optohīnu.
+Vispār, ja jau tā prasi… Mani neapmierina Tavs streptolizīns
+Negribu jau neko teikt, bet dažreiz tas TSST-1 pilnīgi mani nošokē
+Parādi baktērijai, ka tu esi viņu labi iepazinis(-usi)! Izvēlies vislabāko vietu randiņam!
+4 big
+Romantiskas vakariņas
+Uzreiz starp palagiem
+Pastaiga ar daudz ādas kontaktu
+* Rondezvous slimnīcā
+Un tagad tu viņu beidzot esi sastapis(-usi)! Izsaki komplementu par to kas viņai mugurā!
+7 big
+* Kapsula
+Pili 
+Viciņas
+Lipopolisaharīdi
+Veido sporas
+* Šūnas membrāna
+Šūnapvalks
+Man ļoti patika mūsu randiņš! Gribu vēl tevi redzēt ;)
+0 P
+Mīlu tevi!! ❤️
+0 S
+Viskautkā jau var atrast informāciju par savu mīļoto, bet kādus paraugus tu vari izmantot?
+6 big
+Urīna paraugs
+* Iztriepe no rīkles
+* Asins paraugs
+Strutas
+Krēpas
+* Cerebrospinālais šķidrums
+Kuru paraugu tu izmantotu pneimonijas gadījumā?
+3 big
+Asinis
+* Krēpas
+Fēces
+Kādas selektīvās barotnes var izmantot, kas liecinātu par [baktērijas nosaukums] klātbūtni?
+9 big
+Pusšķidrais agars
+MacConkey agars
+Bismuta sulfīta agars
+* Asins agars
+Kliglera dzelzs agars
+Mannitola sāls agars
+Levina (EMB) agars
+Olas dzeltenuma sāls agars
+Koagulāzes tests
+Kā izskatītos asins agars, ja tajā būtu Streptococcus pneumoniae kultūra?
+3 big
+Redzama gaiša caurspīdīga ap kolonijām
+Melnas spīdīgas kolonijas
+* Agars zem kolonijas gaišs un nedaudz zaļgans (alfa-hemolīze)
+Tu tagad pazīsti viņu tuvāk, bet kaut kas ir mainījies. Tu viņu vairs neredzi tādu pašu kā agrāk un saproti, ka tu viņu vairāk nemīli. Izdomāsim vislabāko metodi kā šķirties!
+4 big
+Pretiekaisuma līdzekļi
+* Antibiotikas
+Elpceļu skalošana
+Skābekļa inhlācijas 
+Vai būtu bijis kāds īpašs veids kā uzreiz zināt, ka šī baktērija nav tev labvēlīga iepriekš?
+4 big
+Nē, tā ir jāpārdzīvo, lai atklātu šīs baktērijas īstās krāsas
+* Būtu bijusi noderīga polisaharīdu vakcīna, bet protams, es jau nepotējos
+* Zini, ja es būtu klausījusi mammu un vispirms dabūtu ar proteīnu konjugētu vakcīnu, šī baktērija man pat netiktu klāt
+Ka tik es būtu redzējis šīs baktērijas mirstīgās atliekas inaktivētajā vakcīnā, tad es zinātu…
+assets/s_pneu_1.png
+assets/s_pneu_2.png
+assets/s_pneu_3.png

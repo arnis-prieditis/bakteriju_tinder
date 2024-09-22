@@ -54,6 +54,17 @@
             "slimibas_apr_available": 0,
             "bio": "Man nav īpaši unikāli hobiji - man patīk ceļot, kā jau gandrīz visiem. Visvairāk man patīk būt mazāk attīstītās zemēs, jo domāju, ka varu šo valstu iedzīvotājiem, īpaši zīdaiņiem, ko iedot. Labi varu pielāgoties situācijai - ja par karstu izmantoju savu heat-stable toksīnu, ja ir ok temperatūra: heat-lable, bet tāpat varu ļoti labi stimulēt tavu adenilātciklāzi, ja tu saproti par ko runāju ;) Protams esmu aktīvs un tev arī likšu izdalīt ūdeni un elektrolītus, ja tu ļausi )))))",
             "convers_progress": 0
+        },
+        {
+            "id": 5,
+            "name": "Streptococcus pneumoniae s. pneimokoks",
+            "matched": 0,
+            "patogen_apr": "Jūs satiekaties un baktērijas klātbūtne tev aizrauj elpu - kaut kas, kas arī nākotnē visdrīzāk turpināsies. Tā ir tik piemīlīga, ka taviem fagocītiem to gribās gluži apēst, bet nē… šī Str. pneumoniae to nepieļauj - tā kavē fagocitozi. Tā vēlas iekarot tavu sirdi, nu, ne gluži - vairāk to kas tai ir no abām pusēm apkārt. Tā ir neatlaidīga, un pēkšņi saka: “Vai tu būsi mans mīļotais?”",
+            "slimibas_apr": "Tu tiešām neesi piedzīvojis tādu baktēriju - tā var uzrasties gluži 100 dažādos veidos un tu katram no tiem atbildi citādāk. Tev aizcērtās elpa diezgan regulāri (pneimonija), dvēseles karstums ir gluži neizturams (drudzis) un tu vēlies ar to dalīties (brūnganu krēpu veidā). Tava sirds gluži kā plīst baktērijas priekšā (sāpes krūtīs). Emocijas uzsit tik augstu vilni, ka dažreiz pat sāp galva, tā liekas pilna (sinusīts, vidusauss iekaisums). Brīžos, kad jūties īpaši novārdzis tev var parādīties kakla stīvums (meningīts). Tu jūties baktērijas pārņemts - tā ir tev dzīslās (bakterēmija) un iekaro tavu sirdi (endokardīts). Šī kaisle ir visu pārņemoša, bet viss, kas stipri deg, izdeg ļoti ātri. Tu zini ka kaut kas nav pareizi un tev rodas vēlme baktēriju labāk iepazīt.",
+            "patogen_apr_available": 0,
+            "slimibas_apr_available": 0,
+            "bio": "Esmu nedaudz bailīga, tāpēc sabiedrībā parasti dodos pārī vai nelielās grupiņās ar draudzenēm. Esmu salīga, tāpēc vienmēr tērpjos biezā polisaharīdu kapsulā. Brīdinu, ka manai personībai ir 100 šķautnes (serotipi), tāpēc arī Tava imūnreakcijas atbilde katrā gadījumā var atšķirties.  - Es Tevi brīdināju, ja kas - nevaino mani.",
+            "convers_progress": 0
         }
     ],
     "jautajumi": [
@@ -590,6 +601,90 @@
             "type": "big",
             "teikums": "Tu tagad pazīsti viņu tuvāk, bet kaut kas ir mainījies. Tu viņu vairs neredzi tādu pašu kā agrāk un saproti, ka tu viņu vairāk nemīli. Izdomāsim vislabāko metodi kā šķirties!",
             "bakterija": 4
+        },
+        {
+            "id": 89,
+            "type": "small",
+            "teikums": "Kā Tev šķiet, kādi tipāži mani pievelk?",
+            "bakterija": 5
+        },
+        {
+            "id": 90,
+            "type": "small",
+            "teikums": "Kāda tev liekas ir manī labākā īpašība?",
+            "bakterija": 5
+        },
+        {
+            "id": 91,
+            "type": "small",
+            "teikums": "Aww… Es arī ļoti daudz strādāju pie sava fitnesa, ko tu domā par manu formu?",
+            "bakterija": 5
+        },
+        {
+            "id": 92,
+            "type": "small",
+            "teikums": "Zinu, ka neesmu viena no tām toksiskajām čiksēm, bet… Varbūt Tev ir kāds red-flag, ko redzi manī?",
+            "bakterija": 5
+        },
+        {
+            "id": 93,
+            "type": "big",
+            "teikums": "Parādi baktērijai, ka tu esi viņu labi iepazinis(-usi)! Izvēlies vislabāko vietu randiņam!",
+            "bakterija": 5
+        },
+        {
+            "id": 94,
+            "type": "big",
+            "teikums": "Un tagad tu viņu beidzot esi sastapis(-usi)! Izsaki komplementu par to kas viņai mugurā!",
+            "bakterija": 5
+        },
+        {
+            "id": 95,
+            "type": "P",
+            "teikums": "Man ļoti patika mūsu randiņš! Gribu vēl tevi redzēt ;)",
+            "bakterija": 5
+        },
+        {
+            "id": 96,
+            "type": "S",
+            "teikums": "Mīlu tevi!! ❤️",
+            "bakterija": 5
+        },
+        {
+            "id": 97,
+            "type": "big",
+            "teikums": "Viskautkā jau var atrast informāciju par savu mīļoto, bet kādus paraugus tu vari izmantot?",
+            "bakterija": 5
+        },
+        {
+            "id": 98,
+            "type": "big",
+            "teikums": "Kuru paraugu tu izmantotu pneimonijas gadījumā?",
+            "bakterija": 5
+        },
+        {
+            "id": 99,
+            "type": "big",
+            "teikums": "Kādas selektīvās barotnes var izmantot, kas liecinātu par [baktērijas nosaukums] klātbūtni?",
+            "bakterija": 5
+        },
+        {
+            "id": 100,
+            "type": "big",
+            "teikums": "Kā izskatītos asins agars, ja tajā būtu Streptococcus pneumoniae kultūra?",
+            "bakterija": 5
+        },
+        {
+            "id": 101,
+            "type": "big",
+            "teikums": "Tu tagad pazīsti viņu tuvāk, bet kaut kas ir mainījies. Tu viņu vairs neredzi tādu pašu kā agrāk un saproti, ka tu viņu vairāk nemīli. Izdomāsim vislabāko metodi kā šķirties!",
+            "bakterija": 5
+        },
+        {
+            "id": 102,
+            "type": "big",
+            "teikums": "Vai būtu bijis kāds īpašs veids kā uzreiz zināt, ka šī baktērija nav tev labvēlīga iepriekš?",
+            "bakterija": 5
         }
     ],
     "atbildes": [
@@ -2878,6 +2973,336 @@
             "teikums": "Pretcaurejas līdzekļu lietošana",
             "pareizi": 0,
             "jautajums": 88
+        },
+        {
+            "id": 381,
+            "teikums": "Partneris ar sāpošu punci",
+            "pareizi": 0,
+            "jautajums": 89
+        },
+        {
+            "id": 382,
+            "teikums": "Sliktie puiši, kam ir daudz ādas brūču",
+            "pareizi": 0,
+            "jautajums": 89
+        },
+        {
+            "id": 383,
+            "teikums": "Cilvēki, kuru imūnās sistēmas vai elpceļi nespēj cīnīties ar manu neatvairāmo šarmu",
+            "pareizi": 1,
+            "jautajums": 89
+        },
+        {
+            "id": 384,
+            "teikums": "Obligāti aerobā daba",
+            "pareizi": 0,
+            "jautajums": 90
+        },
+        {
+            "id": 385,
+            "teikums": "Mikroaerofīlā daba",
+            "pareizi": 0,
+            "jautajums": 90
+        },
+        {
+            "id": 386,
+            "teikums": "Fakultatīvi anaerobā daba",
+            "pareizi": 1,
+            "jautajums": 90
+        },
+        {
+            "id": 387,
+            "teikums": "Aerotolerentā daba",
+            "pareizi": 0,
+            "jautajums": 90
+        },
+        {
+            "id": 388,
+            "teikums": "Obligāti anaerobā daba",
+            "pareizi": 0,
+            "jautajums": 90
+        },
+        {
+            "id": 389,
+            "teikums": "Tīra nūjiņa, mana mīļākā forma",
+            "pareizi": 0,
+            "jautajums": 91
+        },
+        {
+            "id": 390,
+            "teikums": "Man ļoti patīk, ka vari būt tik dažāda, tāda… polimorfa",
+            "pareizi": 0,
+            "jautajums": 91
+        },
+        {
+            "id": 391,
+            "teikums": "Tavi abi apaļīgie pauguriņi man šķiet ļoti saistoši",
+            "pareizi": 1,
+            "jautajums": 91
+        },
+        {
+            "id": 392,
+            "teikums": "Tu esi tik slaida, gluži kā diegveida",
+            "pareizi": 0,
+            "jautajums": 91
+        },
+        {
+            "id": 393,
+            "teikums": "Nē, Tu esi meita uz goda, tikai dažreiz sievišķīgi izvēlīga uz tām barotnēm un arī jūtīga pret optohīnu.",
+            "pareizi": 1,
+            "jautajums": 92
+        },
+        {
+            "id": 394,
+            "teikums": "Vispār, ja jau tā prasi… Mani neapmierina Tavs streptolizīns",
+            "pareizi": 0,
+            "jautajums": 92
+        },
+        {
+            "id": 395,
+            "teikums": "Negribu jau neko teikt, bet dažreiz tas TSST-1 pilnīgi mani nošokē",
+            "pareizi": 0,
+            "jautajums": 92
+        },
+        {
+            "id": 396,
+            "teikums": "Romantiskas vakariņas",
+            "pareizi": 0,
+            "jautajums": 93
+        },
+        {
+            "id": 397,
+            "teikums": "Uzreiz starp palagiem",
+            "pareizi": 0,
+            "jautajums": 93
+        },
+        {
+            "id": 398,
+            "teikums": "Pastaiga ar daudz ādas kontaktu",
+            "pareizi": 0,
+            "jautajums": 93
+        },
+        {
+            "id": 399,
+            "teikums": "Rondezvous slimnīcā",
+            "pareizi": 1,
+            "jautajums": 93
+        },
+        {
+            "id": 400,
+            "teikums": "Kapsula",
+            "pareizi": 1,
+            "jautajums": 94
+        },
+        {
+            "id": 401,
+            "teikums": "Pili ",
+            "pareizi": 0,
+            "jautajums": 94
+        },
+        {
+            "id": 402,
+            "teikums": "Viciņas",
+            "pareizi": 0,
+            "jautajums": 94
+        },
+        {
+            "id": 403,
+            "teikums": "Lipopolisaharīdi",
+            "pareizi": 0,
+            "jautajums": 94
+        },
+        {
+            "id": 404,
+            "teikums": "Veido sporas",
+            "pareizi": 0,
+            "jautajums": 94
+        },
+        {
+            "id": 405,
+            "teikums": "Šūnas membrāna",
+            "pareizi": 1,
+            "jautajums": 94
+        },
+        {
+            "id": 406,
+            "teikums": "Šūnapvalks",
+            "pareizi": 0,
+            "jautajums": 94
+        },
+        {
+            "id": 407,
+            "teikums": "Urīna paraugs",
+            "pareizi": 0,
+            "jautajums": 97
+        },
+        {
+            "id": 408,
+            "teikums": "Iztriepe no rīkles",
+            "pareizi": 1,
+            "jautajums": 97
+        },
+        {
+            "id": 409,
+            "teikums": "Asins paraugs",
+            "pareizi": 1,
+            "jautajums": 97
+        },
+        {
+            "id": 410,
+            "teikums": "Strutas",
+            "pareizi": 0,
+            "jautajums": 97
+        },
+        {
+            "id": 411,
+            "teikums": "Krēpas",
+            "pareizi": 0,
+            "jautajums": 97
+        },
+        {
+            "id": 412,
+            "teikums": "Cerebrospinālais šķidrums",
+            "pareizi": 1,
+            "jautajums": 97
+        },
+        {
+            "id": 413,
+            "teikums": "Asinis",
+            "pareizi": 0,
+            "jautajums": 98
+        },
+        {
+            "id": 414,
+            "teikums": "Krēpas",
+            "pareizi": 1,
+            "jautajums": 98
+        },
+        {
+            "id": 415,
+            "teikums": "Fēces",
+            "pareizi": 0,
+            "jautajums": 98
+        },
+        {
+            "id": 416,
+            "teikums": "Pusšķidrais agars",
+            "pareizi": 0,
+            "jautajums": 99
+        },
+        {
+            "id": 417,
+            "teikums": "MacConkey agars",
+            "pareizi": 0,
+            "jautajums": 99
+        },
+        {
+            "id": 418,
+            "teikums": "Bismuta sulfīta agars",
+            "pareizi": 0,
+            "jautajums": 99
+        },
+        {
+            "id": 419,
+            "teikums": "Asins agars",
+            "pareizi": 1,
+            "jautajums": 99
+        },
+        {
+            "id": 420,
+            "teikums": "Kliglera dzelzs agars",
+            "pareizi": 0,
+            "jautajums": 99
+        },
+        {
+            "id": 421,
+            "teikums": "Mannitola sāls agars",
+            "pareizi": 0,
+            "jautajums": 99
+        },
+        {
+            "id": 422,
+            "teikums": "Levina (EMB) agars",
+            "pareizi": 0,
+            "jautajums": 99
+        },
+        {
+            "id": 423,
+            "teikums": "Olas dzeltenuma sāls agars",
+            "pareizi": 0,
+            "jautajums": 99
+        },
+        {
+            "id": 424,
+            "teikums": "Koagulāzes tests",
+            "pareizi": 0,
+            "jautajums": 99
+        },
+        {
+            "id": 425,
+            "teikums": "Redzama gaiša caurspīdīga ap kolonijām",
+            "pareizi": 0,
+            "jautajums": 100
+        },
+        {
+            "id": 426,
+            "teikums": "Melnas spīdīgas kolonijas",
+            "pareizi": 0,
+            "jautajums": 100
+        },
+        {
+            "id": 427,
+            "teikums": "Agars zem kolonijas gaišs un nedaudz zaļgans (alfa-hemolīze)",
+            "pareizi": 1,
+            "jautajums": 100
+        },
+        {
+            "id": 428,
+            "teikums": "Pretiekaisuma līdzekļi",
+            "pareizi": 0,
+            "jautajums": 101
+        },
+        {
+            "id": 429,
+            "teikums": "Antibiotikas",
+            "pareizi": 1,
+            "jautajums": 101
+        },
+        {
+            "id": 430,
+            "teikums": "Elpceļu skalošana",
+            "pareizi": 0,
+            "jautajums": 101
+        },
+        {
+            "id": 431,
+            "teikums": "Skābekļa inhlācijas ",
+            "pareizi": 0,
+            "jautajums": 101
+        },
+        {
+            "id": 432,
+            "teikums": "Nē, tā ir jāpārdzīvo, lai atklātu šīs baktērijas īstās krāsas",
+            "pareizi": 0,
+            "jautajums": 102
+        },
+        {
+            "id": 433,
+            "teikums": "Būtu bijusi noderīga polisaharīdu vakcīna, bet protams, es jau nepotējos",
+            "pareizi": 1,
+            "jautajums": 102
+        },
+        {
+            "id": 434,
+            "teikums": "Zini, ja es būtu klausījusi mammu un vispirms dabūtu ar proteīnu konjugētu vakcīnu, šī baktērija man pat netiktu klāt",
+            "pareizi": 1,
+            "jautajums": 102
+        },
+        {
+            "id": 435,
+            "teikums": "Ka tik es būtu redzējis šīs baktērijas mirstīgās atliekas inaktivētajā vakcīnā, tad es zinātu…",
+            "pareizi": 0,
+            "jautajums": 102
         }
     ],
     "bildes": [
@@ -2955,6 +3380,21 @@
             "id": 14,
             "path": "assets/etec_3.png",
             "bakterija": 4
+        },
+        {
+            "id": 15,
+            "path": "assets/s_pneu_1.png",
+            "bakterija": 5
+        },
+        {
+            "id": 16,
+            "path": "assets/s_pneu_2.png",
+            "bakterija": 5
+        },
+        {
+            "id": 17,
+            "path": "assets/s_pneu_3.png",
+            "bakterija": 5
         }
     ]
 }
